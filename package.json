@@ -1,0 +1,16 @@
+{
+  "name": "horizontal-well-presentation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slidev presentation: Horizontal Well Technology overview (3 slides).",
+  "scripts": {
+    "dev": "slidev --open",
+    "start": "slidev",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.50.0",
+    "@slidev/theme-default": "^0.25.0"
+  }
+}
