@@ -41,5 +41,3 @@ src: ./pages/lesson9.md
 ---
 src: ./pages/lesson10.md
 ---
-
-

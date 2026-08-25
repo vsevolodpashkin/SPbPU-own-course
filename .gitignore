@@ -2,3 +2,4 @@ node_modules
 .omo
 .codegraph
 package-lock.json
+dist
