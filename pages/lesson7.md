@@ -1,4 +1,84 @@
 ---
+layout: center
+---
+
+# Архитектура ПО
+
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 1</div>
+<div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+
+---
+layout: default
+---
+
+# Архитектура ПО по IEEE Std 1471-2000
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+<em>Recommended Practice for Architectural Description of Software-Intensive Systems</em> — стандарт, определяющий терминологию и практики описания архитектуры программно-нагруженных систем.
+</p>
+
+<!-- Главное определение -->
+<div class="mt-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-3 relative">
+  <div class="absolute top-2 right-2 flex items-center gap-1 bg-white border border-indigo-200 rounded px-2 py-1 shadow-sm">
+    <span class="font-mono font-bold text-indigo-800 text-sm">IEEE</span>
+    <span class="text-[9px] text-gray-500 font-mono leading-none">Std<br>1471<br>2000</span>
+  </div>
+  <p class="text-[13px] text-gray-800 leading-relaxed pr-24">
+    <strong class="text-indigo-900">Архитектура</strong> — <em>фундаментальная организация системы</em>, воплощённая в её компонентах, их взаимосвязях друг с другом и со средой, а также принципах, определяющих её проектирование и эволюцию.
+  </p>
+  <div class="text-[10px] text-gray-500 italic mt-2">
+    Перевод термина 3.5 «architecture» из IEEE Std 1471-2000.
+  </div>
+</div>
+
+<!-- Ключевые термины -->
+<div class="grid grid-cols-3 gap-2 mt-3 text-xs">
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Stakeholder</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">заинтересованная сторона</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Лицо, группа или организация, имеющие интересы относительно системы.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Concern</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">интерес / забота</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">То, что важно для удовлетворения заинтересованной стороны в системе.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Mission</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">миссия</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Роль или назначение системы в её среде.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Architectural Description</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">архитектурное описание (AD)</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Коллекция продуктов, документирующих архитектуру.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Viewpoint</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">точка зрения</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Спецификация соглашений для построения и использования представлений.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">View</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">представление</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Репрезентация всей системы с позиции определённого набора интересов.</p>
+  </div>
+
+</div>
+
+<!-- Атрибуция -->
+<div class="mt-3 text-[9px] text-gray-400 leading-tight text-center italic">
+  IEEE, IEEE Std и название стандарта являются торговыми марками Institute of Electrical and Electronics Engineers, Inc.
+  Цитата термина приведена в учебных целях (fair use). Логотип IEEE не воспроизводится во избежание нарушения товарных знаков.
+</div>
+
+---
 layout: default
 ---
 

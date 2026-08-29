@@ -1,90 +1,216 @@
 ---
+layout: center
+---
+
+# Архитектура ПО
+
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 2</div>
+<div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+
+---
 layout: default
 ---
 
-# Принципы REST
+# Архитектурные стили
 
-<p class="text-sm leading-snug -mt-3">REST задаётся пятью архитектурными ограничениями.</p>
+<p class="text-sm leading-snug -mt-3">
+<strong class="text-gray-900">Архитектурный стиль</strong> — набор принципов и шаблонов, определяющих структуру системы: как организованы компоненты, как они взаимодействуют и развёртываются.
+</p>
 
-<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="grid grid-cols-2 gap-x-6 mt-3">
 
-<!-- 1. Ресурсы и представления -->
-<div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2.5">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="flex-shrink-0 bg-indigo-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
-        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
-        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
-      </svg>
-    </span>
-    <strong class="text-indigo-900 text-sm">Ресурсы и представления</strong>
+<!-- Монолитные -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1 border-b border-gray-300">
+    <span class="text-sm font-semibold uppercase tracking-wide text-gray-700">Монолитные</span>
+    <span class="text-xs text-gray-400">— единый артефакт развёртывания</span>
   </div>
-  <p class="text-xs leading-relaxed">Любая сущность — ресурс с URI; клиент работает лишь с её представлением (JSON, XML, HTML).</p>
-</div>
 
-<!-- 2. Отсутствие состояний на сервере -->
-<div class="bg-slate-50 border-2 border-slate-300 rounded-xl p-2.5">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="flex-shrink-0 bg-slate-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M7 2h10a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
-        <line x1="2" y1="2" x2="22" y2="22"/>
-      </svg>
-    </span>
-    <strong class="text-slate-900 text-sm">Отсутствие состояний на сервере</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Каждый запрос самодостаточен: сервер не хранит контекст клиента между вызовами.</p>
-</div>
-
-<!-- 3. Самоописываемые сообщения -->
-<div class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2.5">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M8 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1"/>
-        <path d="M16 3h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-1"/>
-      </svg>
-    </span>
-    <strong class="text-cyan-900 text-sm">Самоописываемые сообщения</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Метаданные (Content-Type, схема) в сообщении говорят получателю, как его обработать.</p>
-</div>
-
-<!-- 4. Возможность кэширования -->
-<div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5">
-  <div class="flex items-center gap-2 mb-1.5">
-    <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <ellipse cx="12" cy="5" rx="9" ry="3"/>
-        <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
-        <path d="M3 12a9 3 0 0 0 18 0"/>
-      </svg>
-    </span>
-    <strong class="text-amber-900 text-sm">Возможность кэширования</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Ответы помечаются Cache-Control — клиент может не обращаться к серверу повторно.</p>
-</div>
-
-</div>
-
-<!-- HATEOAS: full-width highlighted principle -->
-<div class="mt-2 bg-gradient-to-r from-rose-50 to-pink-50 border-2 border-rose-300 rounded-xl p-2.5">
-  <div class="flex items-start gap-2.5">
-    <span class="flex-shrink-0 bg-rose-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M9 17H7a5 5 0 0 1 0-10h2"/>
-        <path d="M15 7h2a5 5 0 1 1 0 10h-2"/>
-        <line x1="8" y1="12" x2="16" y2="12"/>
-      </svg>
-    </span>
-    <div class="min-w-0">
-      <div class="flex items-baseline gap-1.5 flex-wrap">
-        <strong class="text-rose-900 text-sm">HATEOAS</strong>
-        <span class="text-rose-700 text-xs italic">гипермедиа для навигации по API</span>
-      </div>
-      <p class="text-xs leading-relaxed mt-0.5">Сервер возвращает ссылки на действия и ресурсы — клиент переходит по API как по веб-странице.</p>
+  <!-- Многоуровневая (highlighted) -->
+  <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded p-2 mb-1.5">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-emerald-900 text-sm">Многоуровневая</strong>
+      <span class="text-xs text-emerald-700 italic">(Layered)</span>
     </div>
+    <p class="text-xs text-gray-700 leading-snug mt-0.5">Разделение на слои: представление → бизнес-логика → данные.</p>
+  </div>
+
+  <!-- Конвейерная -->
+  <div class="px-2 py-1.5 mb-1.5">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">Конвейерная</strong>
+      <span class="text-xs text-gray-500 italic">(Pipeline)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Данные проходят цепочку последовательных обработчиков (фильтров).</p>
+  </div>
+
+  <!-- Микроядерная -->
+  <div class="px-2 py-1.5">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">Микроядерная</strong>
+      <span class="text-xs text-gray-500 italic">(Microkernel)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Минимальное ядро + подключаемые модули-плагины.</p>
+  </div>
+</div>
+
+<!-- Распределённые -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1 border-b border-gray-300">
+    <span class="text-sm font-semibold uppercase tracking-wide text-gray-700">Распределённые</span>
+    <span class="text-xs text-gray-400">— компоненты на разных узлах</span>
+  </div>
+
+  <!-- На основе сервисов -->
+  <div class="px-2 py-0 mb-0">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">На основе сервисов</strong>
+      <span class="text-xs text-gray-500 italic">(Service-Based)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Несколько крупных сервисов, разделяющих общую БД.</p>
+  </div>
+
+  <!-- Управляемая событиями -->
+  <div class="px-2 py-0 mb-0">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">Управляемая событиями</strong>
+      <span class="text-xs text-gray-500 italic">(Event-Driven)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Асинхронное взаимодействие через брокер событий.</p>
+  </div>
+
+  <!-- На основе пространства -->
+  <div class="px-2 py-0 mb-0">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">На основе пространства</strong>
+      <span class="text-xs text-gray-500 italic">(Space-Based)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Масштабирование через репликацию данных in-memory.</p>
+  </div>
+
+  <!-- Сервис-ориентированная -->
+  <div class="px-2 py-0 mb-0">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-gray-900 text-sm">Сервис-ориентированная</strong>
+      <span class="text-xs text-gray-500 italic">(SOA)</span>
+    </div>
+    <p class="text-xs text-gray-600 leading-snug mt-0.5">Слабо связанные сервисы, общаются через ESB.</p>
+  </div>
+
+  <!-- Микросервисов (highlighted) -->
+  <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded p-1">
+    <div class="flex items-baseline gap-2">
+      <strong class="text-emerald-900 text-sm">Микросервисов</strong>
+      <span class="text-xs text-emerald-700 italic">(Microservices)</span>
+    </div>
+    <p class="text-xs text-gray-700 leading-snug mt-0.5">Мелкие сервисы со своей БД и независимым деплоем.</p>
+  </div>
+</div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson8">← Занятие 8</a>
+  <a href="/lesson10">Занятие 10 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Монолитная многоуровневая архитектура
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Единый артефакт с разделением кода на слои: <strong class="text-gray-700">Presentation → Business Logic → Data Access</strong>. Без строгой дисциплины быстро превращается в «big ball of mud».
+</p>
+
+<div class="grid grid-cols-2 gap-4 mt-2">
+
+<!-- Преимущества -->
+<div class="bg-emerald-50 border-l-4 border-emerald-500 rounded p-2.5">
+  <h3 class="text-sm font-semibold text-emerald-800 mb-1.5 flex items-center gap-1.5">
+    <span class="text-emerald-600">✓</span> Преимущества
+  </h3>
+  <ul class="text-xs text-gray-700 leading-snug space-y-1">
+    <li>• <strong class="text-gray-900">Простая структура</strong> — легко понять и начать</li>
+    <li>• <strong class="text-gray-900">Один артефакт</strong> — быстрый локальный деплой</li>
+    <li>• <strong class="text-gray-900">Стандартные паттерны</strong> — привычные инструменты</li>
+    <li>• <strong class="text-gray-900">Простое тестирование</strong> — слои изолированы</li>
+  </ul>
+</div>
+
+<!-- Недостатки -->
+<div class="bg-red-50 border-l-4 border-red-500 rounded p-2.5">
+  <h3 class="text-sm font-semibold text-red-800 mb-1.5 flex items-center gap-1.5">
+    <span class="text-red-600">✗</span> Недостатки
+  </h3>
+  <ul class="text-xs text-gray-700 leading-snug space-y-1">
+    <li>• <strong class="text-gray-900">Сильная связанность</strong> при слабой дисциплине</li>
+    <li>• <strong class="text-gray-900">Только целиком</strong> — нет частичного масштабирования</li>
+    <li>• <strong class="text-gray-900">Долгие build/deploy</strong> с ростом кодовой базы</li>
+    <li>• <strong class="text-gray-900">Lock-in на стек</strong> + single point of failure</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- Пример спагетти-кода -->
+<div class="mt-2.5">
+  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+    <span class="font-mono text-gray-700">app.py</span>
+    <span class="text-gray-300">·</span>
+    <span>спагетти-вариант: все слои в одном файле</span>
+  </div>
+  <div class="bg-gray-900 rounded-lg p-2.5 overflow-hidden">
+
+<pre class="text-[9px] leading-[1.3] font-mono text-gray-100 overflow-auto"><code><span class="text-purple-400">import</span> sqlite3
+<span class="text-purple-400">from</span> flask <span class="text-purple-400">import</span> Flask, request, jsonify
+
+app = Flask(__name__)
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">db</span>(): <span class="text-purple-400">return</span> sqlite3.connect(<span class="text-emerald-300">"shop.db"</span>)  <span class="text-gray-500"># «слой данных»</span>
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">get_user</span>(uid):                                                <span class="text-gray-500"># бизнес</span>
+    r = db().execute(<span class="text-emerald-300">"SELECT * FROM users WHERE id=?"</span>, (uid,)).fetchone()
+    <span class="text-purple-400">return</span> r <span class="text-purple-400">and</span> {<span class="text-emerald-300">"id"</span>: r[<span class="text-amber-300">0</span>], <span class="text-emerald-300">"name"</span>: r[<span class="text-amber-300">1</span>], <span class="text-emerald-300">"balance"</span>: r[<span class="text-amber-300">2</span>]}
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">charge_user</span>(uid, amount):                                    <span class="text-gray-500"># бизнес → данные + email</span>
+    user = get_user(uid)
+    <span class="text-purple-400">if not</span> user <span class="text-purple-400">or</span> user[<span class="text-emerald-300">"balance"</span>] &lt; amount:
+        send_email(uid, <span class="text-emerald-300">"no money"</span>)                              <span class="text-gray-500"># → email</span>
+        <span class="text-purple-400">return</span> <span class="text-purple-400">False</span>
+    db().execute(<span class="text-emerald-300">"UPDATE users SET balance=balance-? WHERE id=?"</span>, (amount, uid))
+    <span class="text-purple-400">return</span> <span class="text-purple-400">True</span>
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">send_email</span>(uid, msg):                                         <span class="text-gray-500"># бизнес знает про SMTP</span>
+    <span class="text-purple-400">print</span>(<span class="text-green-300">f"[SMTP] u{uid}: {msg}"</span>)
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">place_order</span>(uid, items):                                     <span class="text-gray-500"># бизнес</span>
+    total = <span class="text-yellow-300">sum</span>(i[<span class="text-emerald-300">"price"</span>]*i[<span class="text-emerald-300">"qty"</span>] <span class="text-purple-400">for</span> i <span class="text-purple-400">in</span> items)
+    <span class="text-purple-400">if not</span> charge_user(uid, total): <span class="text-purple-400">return</span> <span class="text-purple-400">None</span>
+    cur = db().execute(<span class="text-emerald-300">"INSERT INTO orders VALUES(NULL,?,?,1)"</span>, (uid, total))
+    send_email(uid, <span class="text-emerald-300">f"order #{cur.lastrowid}"</span>)
+    <span class="text-purple-400">if</span> total &gt; <span class="text-amber-300">10000</span>: notify_admin(<span class="text-emerald-300">f"big #{cur.lastrowid}"</span>)  <span class="text-gray-500"># → админ</span>
+    <span class="text-purple-400">return</span> cur.lastrowid
+
+<span class="text-purple-400">def</span> <span class="text-yellow-300">notify_admin</span>(m): <span class="text-purple-400">print</span>(<span class="text-emerald-300">f"[ADMIN] {m}"</span>)              <span class="text-gray-500"># бизнес знает админа</span>
+
+<span class="text-cyan-300">@app</span>.route(<span class="text-emerald-300">"/users/&lt;int:uid&gt;"</span>)
+<span class="text-purple-400">def</span> <span class="text-yellow-300">user_view</span>(uid):                                             <span class="text-gray-500"># presentation</span>
+    user = get_user(uid)
+    <span class="text-purple-400">if not</span> user: <span class="text-purple-400">return</span> jsonify({<span class="text-emerald-300">"error"</span>:<span class="text-emerald-300">"not_found"</span>}), <span class="text-amber-300">404</span>
+    <span class="text-gray-500"># presentation лезет в БД напрямую:</span>
+    cnt = db().execute(<span class="text-emerald-300">"SELECT COUNT(*) FROM orders WHERE user_id=?"</span>, (uid,)).fetchone()[<span class="text-amber-300">0</span>]
+    <span class="text-purple-400">return</span> jsonify({**user, <span class="text-emerald-300">"orders_count"</span>: cnt})
+
+<span class="text-cyan-300">@app</span>.route(<span class="text-emerald-300">"/orders"</span>, methods=[<span class="text-emerald-300">"POST"</span>])
+<span class="text-purple-400">def</span> <span class="text-yellow-300">create_order</span>():
+    d = request.get_json()
+    oid = place_order(d[<span class="text-emerald-300">"user_id"</span>], d[<span class="text-emerald-300">"items"</span>])
+    <span class="text-purple-400">return</span> jsonify({<span class="text-emerald-300">"order_id"</span>: oid}) <span class="text-purple-400">if</span> oid <span class="text-purple-400">else</span> (jsonify({<span class="text-emerald-300">"error"</span>:<span class="text-emerald-300">"pay"</span>}), <span class="text-amber-300">402</span>)
+
+db().executescript(<span class="text-emerald-300">"CREATE TABLE users(id,name,balance); CREATE TABLE orders(id,user_id,total,paid);"</span>)
+app.run(debug=<span class="text-purple-400">True</span>)</code></pre>
   </div>
 </div>
 

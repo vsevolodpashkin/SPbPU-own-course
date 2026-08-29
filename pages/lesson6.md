@@ -1,4 +1,13 @@
 ---
+layout: center
+---
+
+# Основы проектирования ПО
+
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 3</div>
+<div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+
+---
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -112,8 +121,17 @@ layoutClass: gap-8
 </div>
 
 ---
+layout: center
+---
+
+# Основы проектирования ПО
+
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 2</div>
+<div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+
+---
 layout: two-cols
-layoutClass: gap-4
+layoutClass: gap-8
 ---
 
 # Сообщения
@@ -197,3 +215,452 @@ em {
   margin-bottom: 0.5rem;
 }
 </style>
+
+---
+layout: default
+---
+
+# Принципы REST
+
+<p class="text-sm leading-snug -mt-3">REST задаётся пятью архитектурными ограничениями.</p>
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+
+<!-- 1. Ресурсы и представления -->
+<div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-indigo-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+      </svg>
+    </span>
+    <strong class="text-indigo-900 text-sm">Ресурсы и представления</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Любая сущность — ресурс с URI; клиент работает лишь с её представлением (JSON, XML, HTML).</p>
+</div>
+
+<!-- 2. Отсутствие состояний на сервере -->
+<div class="bg-slate-50 border-2 border-slate-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-slate-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 2h10a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+        <line x1="2" y1="2" x2="22" y2="22"/>
+      </svg>
+    </span>
+    <strong class="text-slate-900 text-sm">Отсутствие состояний на сервере</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Каждый запрос самодостаточен: сервер не хранит контекст клиента между вызовами.</p>
+</div>
+
+<!-- 3. Самоописываемые сообщения -->
+<div class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1"/>
+        <path d="M16 3h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-1"/>
+      </svg>
+    </span>
+    <strong class="text-cyan-900 text-sm">Самоописываемые сообщения</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Метаданные (Content-Type, схема) в сообщении говорят получателю, как его обработать.</p>
+</div>
+
+<!-- 4. Возможность кэширования -->
+<div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+        <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+        <path d="M3 12a9 3 0 0 0 18 0"/>
+      </svg>
+    </span>
+    <strong class="text-amber-900 text-sm">Возможность кэширования</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Ответы помечаются Cache-Control — клиент может не обращаться к серверу повторно.</p>
+</div>
+
+</div>
+
+<!-- HATEOAS: full-width highlighted principle -->
+<div class="mt-2 bg-gradient-to-r from-rose-50 to-pink-50 border-2 border-rose-300 rounded-xl p-2.5">
+  <div class="flex items-start gap-2.5">
+    <span class="flex-shrink-0 bg-rose-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 17H7a5 5 0 0 1 0-10h2"/>
+        <path d="M15 7h2a5 5 0 1 1 0 10h-2"/>
+        <line x1="8" y1="12" x2="16" y2="12"/>
+      </svg>
+    </span>
+    <div class="min-w-0">
+      <div class="flex items-baseline gap-1.5 flex-wrap">
+        <strong class="text-rose-900 text-sm">HATEOAS</strong>
+        <span class="text-rose-700 text-xs italic">гипермедиа для навигации по API</span>
+      </div>
+      <p class="text-xs leading-relaxed mt-0.5">Сервер возвращает ссылки на действия и ресурсы — клиент переходит по API как по веб-странице.</p>
+    </div>
+  </div>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Структура HTTP-запроса
+
+<p class="text-sm leading-snug -mt-3">Запрос состоит из четырёх логических частей: метода, эндпоинта, заголовков и тела.</p>
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+
+<!-- 1. Эндпоинт -->
+<div v-click class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-indigo-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    </span>
+    <strong class="text-indigo-900 text-sm">Эндпоинт</strong>
+  </div>
+  <p class="text-xs leading-snug"><strong class="text-indigo-800">URL запроса</strong> — адрес, на который отправляются сообщения.</p>
+  <p class="text-xs leading-snug mt-0.5">Структура: <code class="font-mono text-[11px] text-indigo-900 bg-white border border-indigo-200 rounded px-1 py-px">root-endpoint/?{params1=value1}&amp;{...}</code></p>
+</div>
+
+<!-- 2. HTTP-метод -->
+<div v-click class="bg-slate-50 border-2 border-slate-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-slate-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+    </span>
+    <strong class="text-slate-900 text-sm">HTTP-метод</strong>
+  </div>
+  <p class="text-xs leading-snug">Тип запроса, который хотим отправить на сервер: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>.</p>
+</div>
+
+<!-- 3. Заголовки -->
+<div v-click class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+        <line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+    </span>
+    <strong class="text-cyan-900 text-sm">Заголовки</strong>
+  </div>
+  <p class="text-xs leading-snug">Набор пар «имя-значение»: кодировка, User-Agent, авторизация и т. д.</p>
+</div>
+
+<!-- 4. Тело запроса -->
+<div v-click class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+    </span>
+    <strong class="text-amber-900 text-sm">Тело запроса</strong>
+  </div>
+  <p class="text-xs leading-snug">Данные, которые хотим отправить на сервер. Используется только с <code>POST</code>, <code>PUT</code>, <code>PATCH</code> или <code>DELETE</code>.</p>
+</div>
+
+</div>
+
+<!-- Пример curl: полноширинный блок под карточками -->
+<div v-click class="mt-2 bg-gray-900 rounded-lg p-2.5">
+<pre class="text-xs leading-snug text-gray-100 overflow-auto"><code><span class="text-slate-300">curl</span> <span class="text-slate-300 font-semibold">-X POST</span> <span class="text-indigo-300 font-semibold">https://api.example.com/v1/orders?priority=high</span> \
+  <span class="text-cyan-300">-H</span> <span class="text-cyan-200">"Content-Type: application/json"</span> \
+  <span class="text-cyan-300">-H</span> <span class="text-cyan-200">"Authorization: Bearer eyJhbGciOi..."</span> \
+  <span class="text-amber-300 font-semibold">-d</span> <span class="text-amber-200">'{"customer_id":"u-42","items":[{"sku":"ABC-001","qty":2}],"total":99.98}'</span></code></pre>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Методы HTTP
+
+<div class="mt-2 overflow-hidden rounded-lg border border-gray-200">
+<table class="w-full text-[11px] leading-tight">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="text-left py-1 px-2 font-semibold">Метод</th>
+      <th class="text-left py-1 px-2 font-semibold">Назначение</th>
+      <th class="text-center py-1 px-2 font-semibold">Безопасный</th>
+      <th class="text-center py-1 px-2 font-semibold">Идемпотентный</th>
+      <th class="text-center py-1 px-2 font-semibold">Кэшируемый</th>
+      <th class="text-center py-1 px-2 font-semibold">Тело</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">GET</td>
+      <td class="py-0.5 px-2">Получение ресурса</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">HEAD</td>
+      <td class="py-0.5 px-2">Только заголовки ответа</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">OPTIONS</td>
+      <td class="py-0.5 px-2">Доступные методы / CORS-preflight</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">TRACE</td>
+      <td class="py-0.5 px-2">Эхо-петля (диагностика)</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">POST</td>
+      <td class="py-0.5 px-2">Создание / обработка данных</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">PUT</td>
+      <td class="py-0.5 px-2">Замена / создание ресурса</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">PATCH</td>
+      <td class="py-0.5 px-2">Частичное обновление</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">DELETE</td>
+      <td class="py-0.5 px-2">Удаление ресурса</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">CONNECT</td>
+      <td class="py-0.5 px-2">Туннель (напр. TLS)</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <!-- QUERY: новый пользовательский метод по RFC 10008 -->
+    <tr class="border-t-2 border-rose-300 bg-rose-50">
+      <td class="py-0.5 px-2 font-mono font-bold text-rose-900">QUERY</td>
+      <td class="py-0.5 px-2 text-rose-900">Безопасный запрос с телом <span class="inline-block text-[9px] bg-rose-200 text-rose-900 px-1 py-px rounded font-semibold align-middle ml-0.5">RFC 10008</span></td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Легенда: одна горизонтальная строка -->
+<div class="mt-1.5 text-[10px] leading-snug text-gray-700 flex flex-wrap gap-x-3 gap-y-0.5 justify-center">
+  <span><strong class="text-gray-900">Safe</strong> — не меняет состояние сервера</span>
+  <span class="text-gray-300">·</span>
+  <span><strong class="text-gray-900">Idempotent</strong> — N одинаковых запросов = один по эффекту</span>
+  <span class="text-gray-300">·</span>
+  <span><strong class="text-gray-900">Cacheable</strong> — ответ можно сохранить в кэше</span>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Коды ответов HTTP
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">Стандартные коды состояния, которые сервер возвращает в ответ на запрос.</p>
+
+<div class="grid grid-cols-3 gap-x-10 mt-4">
+
+<!-- 2xx Success -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-emerald-600">2xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Success</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">200</span><span><span class="font-medium text-gray-900">OK</span> <span class="text-gray-400">—</span> <span class="text-gray-600">успешный ответ</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">201</span><span><span class="font-medium text-gray-900">Created</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ресурс создан</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">204</span><span><span class="font-medium text-gray-900">No Content</span> <span class="text-gray-400">—</span> <span class="text-gray-600">без тела ответа</span></span></li>
+  </ul>
+</div>
+
+<!-- 4xx Client Error -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-amber-600">4xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Client Error</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">400</span><span><span class="font-medium text-gray-900">Bad Request</span> <span class="text-gray-400">—</span> <span class="text-gray-600">неверный формат</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">401</span><span><span class="font-medium text-gray-900">Unauthorized</span> <span class="text-gray-400">—</span> <span class="text-gray-600">требуется авторизация</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">403</span><span><span class="font-medium text-gray-900">Forbidden</span> <span class="text-gray-400">—</span> <span class="text-gray-600">доступ запрещён</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">404</span><span><span class="font-medium text-gray-900">Not Found</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ресурс не найден</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">409</span><span><span class="font-medium text-gray-900">Conflict</span> <span class="text-gray-400">—</span> <span class="text-gray-600">конфликт состояния</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">422</span><span><span class="font-medium text-gray-900">Unprocessable</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ошибка валидации</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">429</span><span><span class="font-medium text-gray-900">Too Many Req.</span> <span class="text-gray-400">—</span> <span class="text-gray-600">превышен rate limit</span></span></li>
+  </ul>
+</div>
+
+<!-- 5xx Server Error -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-red-600">5xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Server Error</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">500</span><span><span class="font-medium text-gray-900">Internal Error</span> <span class="text-gray-400">—</span> <span class="text-gray-600">необработанная</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">502</span><span><span class="font-medium text-gray-900">Bad Gateway</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ошибка шлюза</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">503</span><span><span class="font-medium text-gray-900">Unavailable</span> <span class="text-gray-400">—</span> <span class="text-gray-600">сервис недоступен</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">504</span><span><span class="font-medium text-gray-900">Gateway Timeout</span> <span class="text-gray-400">—</span> <span class="text-gray-600">таймаут шлюза</span></span></li>
+  </ul>
+</div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# OpenAPI
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">Стандарт описания REST API в машиночитаемом формате (YAML или JSON). Текущая версия — 3.1; ранее известен как Swagger.</p>
+
+<div class="grid grid-cols-5 gap-5 mt-3">
+
+<!-- ЛЕВАЯ КОЛОНКА: особенности + инструменты -->
+<div class="col-span-2 space-y-3 text-xs">
+
+  <div>
+    <h3 class="text-sm font-semibold text-gray-900 mb-1 pb-0.5 border-b border-gray-200">Технические особенности</h3>
+    <ul class="space-y-0.5 text-gray-700 leading-snug">
+      <li><strong class="text-gray-900">paths</strong> — эндпоинты, параметры, ответы</li>
+      <li><strong class="text-gray-900">components/schemas</strong> — модели данных (JSON Schema)</li>
+      <li><strong class="text-gray-900">securitySchemes</strong> — API-Key, OAuth2, JWT, Basic…</li>
+      <li><strong class="text-gray-900">$ref</strong> — переиспользование компонентов</li>
+      <li><strong class="text-gray-900">tags</strong> — группировка эндпоинтов</li>
+      <li><strong class="text-gray-900">examples</strong> — примеры запросов/ответов</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-sm font-semibold text-gray-900 mb-1 pb-0.5 border-b border-gray-200">Инструменты</h3>
+    <ul class="space-y-0.5 text-gray-700 leading-snug">
+      <li><strong class="text-gray-900">Swagger UI</strong> — интерактивная документация</li>
+      <li><strong class="text-gray-900">Redoc</strong> — статичная трёхколоночная дока</li>
+      <li><strong class="text-gray-900">Swagger Editor</strong> — редактор с live-preview</li>
+      <li><strong class="text-gray-900">OpenAPI Generator</strong> — SDK/стабы на 50+ языков</li>
+      <li><strong class="text-gray-900">Spectral</strong> — линтер спецификации</li>
+      <li><strong class="text-gray-900">Prism</strong> — mock-сервер по спеке</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ПРАВАЯ КОЛОНКА: визуальный пример спецификации -->
+<div class="col-span-3">
+  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+    <span class="font-mono text-gray-700">petstore.yaml</span>
+    <span class="text-gray-300">·</span>
+    <span>фрагмент спецификации OpenAPI 3.0</span>
+  </div>
+  <div class="bg-gray-900 rounded-lg p-2.5 overflow-hidden">
+
+<pre class="text-[9px] leading-[1.3] font-mono text-gray-100 overflow-auto"><code><span class="text-sky-300">openapi</span>: <span class="text-amber-300">3.0.3</span>
+<span class="text-sky-300">info</span>: { <span class="text-sky-300">title</span>: <span class="text-emerald-300">"Pet Store API"</span>, <span class="text-sky-300">version</span>: <span class="text-emerald-300">"1.0.0"</span> }
+<span class="text-sky-300">servers</span>: [{ <span class="text-sky-300">url</span>: <span class="text-emerald-300">"https://api.example.com/v1"</span> }]
+
+<span class="text-sky-300">paths</span>:
+  <span class="text-pink-300 font-semibold">/pets</span>:
+    <span class="text-sky-300">get</span>:
+      <span class="text-sky-300">summary</span>: <span class="text-emerald-300">"Список питомцев"</span>
+      <span class="text-sky-300">tags</span>: [<span class="text-emerald-300">pets</span>]
+      <span class="text-sky-300">parameters</span>:
+        - { <span class="text-sky-300">name</span>: <span class="text-emerald-300">limit</span>, <span class="text-sky-300">in</span>: <span class="text-emerald-300">query</span>,
+            <span class="text-sky-300">schema</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">integer</span>, <span class="text-sky-300">default</span>: <span class="text-amber-300">20</span> } }
+      <span class="text-sky-300">responses</span>:
+        <span class="text-amber-300">'200'</span>:
+          <span class="text-sky-300">description</span>: <span class="text-emerald-300">"Успех"</span>
+          <span class="text-sky-300">content</span>:
+            <span class="text-sky-300">application/json</span>:
+              <span class="text-sky-300">schema</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">array</span>,
+                <span class="text-sky-300">items</span>: { <span class="text-sky-300">$ref</span>: <span class="text-emerald-300">"#/components/schemas/Pet"</span> } }
+
+<span class="text-sky-300">components</span>:
+  <span class="text-sky-300">schemas</span>:
+    <span class="text-pink-300 font-semibold">Pet</span>:
+      <span class="text-sky-300">type</span>: <span class="text-emerald-300">object</span>
+      <span class="text-sky-300">required</span>: [<span class="text-emerald-300">id</span>, <span class="text-emerald-300">name</span>]
+      <span class="text-sky-300">properties</span>:
+        <span class="text-pink-300">id</span>:   { <span class="text-sky-300">type</span>: <span class="text-emerald-300">integer</span>, <span class="text-sky-300">format</span>: <span class="text-emerald-300">int64</span> }
+        <span class="text-pink-300">name</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">string</span> }
+        <span class="text-pink-300">tag</span>:  { <span class="text-sky-300">type</span>: <span class="text-emerald-300">string</span>, <span class="text-sky-300">enum</span>: [<span class="text-emerald-300">dog</span>, <span class="text-emerald-300">cat</span>, <span class="text-emerald-300">bird</span>] }
+  <span class="text-sky-300">securitySchemes</span>:
+    <span class="text-pink-300 font-semibold">BearerAuth</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">http</span>, <span class="text-sky-300">scheme</span>: <span class="text-emerald-300">bearer</span>, <span class="text-sky-300">bearerFormat</span>: <span class="text-emerald-300">JWT</span> }</code></pre>
+  </div>
+  <div class="text-[10px] text-gray-400 mt-1 leading-snug">
+    <span class="text-sky-300">■</span> ключ · <span class="text-emerald-300">■</span> строка · <span class="text-amber-300">■</span> число · <span class="text-pink-300">■</span> имя ресурса/схемы
+  </div>
+</div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
