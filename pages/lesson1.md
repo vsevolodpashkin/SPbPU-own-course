@@ -4,7 +4,7 @@ layout: center
 
 # Бизнес-анализ
 
-<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 1</div>
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 1. Обзор ИТ индустрии. Требования к ПО, немного про бизнес</div>
 <div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
 
 
@@ -12,14 +12,147 @@ layout: center
 layout: default
 ---
 
-# Провалы каскадных (Waterfall) проектов в мировой IT-практике
+# Основные тренды мировой ИТ-отрасли
 
-<p class="text-sm opacity-70 italic -mt-2">Когда жёсткое «сверху-вниз» планирование превращается в катастрофу: 4 канонических кейса</p>
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+ИТ-индустрия находится в фазе структурной перестройки — одни технологии становятся Commodity, другие задают новую операционную модель.
+</p>
+
+<!-- 3 ГЛАВНЫХ ТРЕНДА — большие карточки -->
+<div class="grid grid-cols-3 gap-3 mt-3">
+
+  <!-- 1. ИИ -->
+  <div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="flex-shrink-0 bg-indigo-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0-3 6.5V14a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-.5a4 4 0 0 0-3-6.5V6a4 4 0 0 0-4-4z"/>
+          <line x1="9" y1="20" x2="15" y2="20"/>
+          <line x1="12" y1="18" x2="12" y2="22"/>
+        </svg>
+      </span>
+      <strong class="text-indigo-900 text-base">Искусственный интеллект</strong>
+    </div>
+    <ul class="text-xs text-gray-800 leading-snug space-y-1">
+      <li><strong class="text-indigo-900">Генеративный AI</strong> — LLM, мультимодальные модели в продукты</li>
+      <li><strong class="text-indigo-900">AI-агенты</strong> — автономные оркестраторы задач</li>
+      <li><strong class="text-indigo-900">Регулирование</strong> — AI Act ЕС, эксперименты РФ</li>
+    </ul>
+  </div>
+
+  <!-- 2. Кибербезопасность -->
+  <div class="bg-red-50 border-2 border-red-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="flex-shrink-0 bg-red-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <strong class="text-red-900 text-base">Кибербезопасность</strong>
+    </div>
+    <ul class="text-xs text-gray-800 leading-snug space-y-1">
+      <li><strong class="text-red-900">Zero Trust</strong> как индустриальный стандарт</li>
+      <li><strong class="text-red-900">Supply-chain атаки</strong> — SolarWinds, Log4j, 3CX</li>
+      <li><strong class="text-red-900">Постквантовая криптография</strong> — миграция NIST PQC</li>
+    </ul>
+  </div>
+
+  <!-- 3. Импортозамещение / Тех. суверенитет -->
+  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="flex-shrink-0 bg-emerald-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 21h18"/>
+          <path d="M5 21V7l7-4 7 4v14"/>
+          <path d="M9 9h2v6H9zM13 9h2v6h-2z"/>
+          <path d="M9 13h6"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-900 text-base">Импортозамещение и<br>технологический суверенитет</strong>
+    </div>
+    <ul class="text-xs text-gray-800 leading-snug space-y-1">
+      <li><strong class="text-emerald-900">Реестры отеч. ПО и ПАК</strong> — обязательные закупки в госсекторе</li>
+      <li><strong class="text-emerald-900">Суверенный стек</strong> — ОС (Astra, ALT, РЕД), СУБД, офис</li>
+      <li><strong class="text-emerald-900">Open Source</strong> как стратегия суверенитета</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ЗАГОЛОВОК СЕКЦИИ ДРУГИХ ТРЕНДОВ -->
+<div class="text-[10px] uppercase tracking-wider font-semibold text-gray-500 mt-3 mb-1">Другие заметные тренды</div>
+
+<!-- 7 мини-карточек -->
+<div class="grid grid-cols-7 gap-1.5">
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">☁️</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">Cloud & Edge</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">⚛️</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">Quantum</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">🔗</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">Blockchain & Web3</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">📡</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">IoT / IIoT</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">🧩</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">Low-code</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">📶</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">5G / 6G</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-1.5 text-center">
+    <div class="text-base">🌱</div>
+    <div class="text-[10px] font-semibold text-slate-800 leading-tight">Green IT</div>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/15">← BRD</a>
+  <a href="/13">Занятие 2 →</a>
+</div>
+
+---
+layout: default
+---
+
+# 2-я половина XX века - время каскадных моделей (Waterfall)
+
+<div class="flex justify-center mt-2">
+<img src="/GANT_DIAGRAM.png" alt="Календарный план проекта — диаграмма Ганта" class="max-h-[40vh] max-w-[100%] object-contain rounded shadow-lg" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/title">← Титульный слайд</a>
+  <a href="/lesson2">Занятие 2 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Провалы каскадных (Waterfall) проектов в мировой IT-практике
 
 <div class="grid grid-cols-2 gap-3 mt-4">
 
 <!-- Case 1: NHS NPfIT -->
-<div class="bg-red-50 border-2 border-red-200 rounded-lg p-3">
+<div class="bg-red-50 border-2 border-red-200 rounded-lg p-1">
   <div class="flex items-baseline justify-between mb-1">
     <strong class="text-sm text-red-900">🇬🇧 NHS National Programme for IT</strong>
     <span class="text-xs opacity-70">2002–2011</span>
@@ -35,7 +168,7 @@ layout: default
 </div>
 
 <!-- Case 2: FBI VCF -->
-<div class="bg-red-50 border-2 border-red-200 rounded-lg p-3">
+<div class="bg-red-50 border-2 border-red-200 rounded-lg p-1">
   <div class="flex items-baseline justify-between mb-1">
     <strong class="text-sm text-red-900">🇺🇸 FBI Virtual Case File</strong>
     <span class="text-xs opacity-70">2000–2005</span>
@@ -51,7 +184,7 @@ layout: default
 </div>
 
 <!-- Case 3: Healthcare.gov -->
-<div class="bg-red-50 border-2 border-red-200 rounded-lg p-3">
+<div class="bg-red-50 border-2 border-red-200 rounded-lg p-1">
   <div class="flex items-baseline justify-between mb-1">
     <strong class="text-sm text-red-900">🇺🇸 Healthcare.gov</strong>
     <span class="text-xs opacity-70">2013</span>
@@ -67,7 +200,7 @@ layout: default
 </div>
 
 <!-- Case 4: IRS Modernization / CADE -->
-<div class="bg-red-50 border-2 border-red-200 rounded-lg p-3">
+<div class="bg-red-50 border-2 border-red-200 rounded-lg p-1">
   <div class="flex items-baseline justify-between mb-1">
     <strong class="text-sm text-red-900">🇺🇸 IRS Modernization (CADE)</strong>
     <span class="text-xs opacity-70">кон. 1990-х — 2010</span>
@@ -82,23 +215,6 @@ layout: default
   </div>
 </div>
 
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/title">← Титульный слайд</a>
-  <a href="/lesson2">Занятие 2 →</a>
-</div>
-
----
-layout: default
----
-
-# Календарный план проекта (диаграмма Ганта)
-
-<p class="text-sm opacity-70 italic -mt-2">1 год · 6 ключевых этапов по 2 месяца каждый</p>
-
-<div class="flex justify-center mt-2">
-<img src="/GANT_DIAGRAM.png" alt="Календарный план проекта — диаграмма Ганта" class="max-h-[40vh] max-w-[100%] object-contain rounded shadow-lg" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -253,6 +369,119 @@ layout: default
 layout: default
 ---
 
+# Scrum — фреймворк гибкой разработки
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Итеративная поставка ценности фиксированными <strong class="text-gray-700">циклами по 2 недели</strong> с ежедневной синхронизацией команды и ревизией процессов в конце каждого Sprint'а.
+</p>
+
+<!-- Timeline-диаграмма Sprint -->
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded-lg p-2">
+<svg viewBox="0 0 840 220" class="w-full" text-rendering="optimizeLegibility">
+<text x="20" y="22" style="font:600 13px sans-serif" fill="#1e293b">Sprint №N · 2 недели · 10 рабочих дней</text>
+<text x="820" y="22" text-anchor="end" style="font:400 11px sans-serif" fill="#64748b" font-style="italic">замкнутый цикл →</text>
+<defs>
+<marker id="arrow-end" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+<path d="M0,0 L0,6 L7,3 z" fill="#475569"/></marker>
+</defs>
+<line x1="40" y1="120" x2="820" y2="120" stroke="#475569" stroke-width="2" marker-end="url(#arrow-end)"/>
+<g style="font:400 10px sans-serif" fill="#64748b">
+<line x1="60" y1="115" x2="60" y2="125" stroke="#94a3b8"/>
+<text x="60" y="145" text-anchor="middle">Пн 1</text>
+<line x1="140" y1="115" x2="140" y2="125" stroke="#94a3b8"/>
+<text x="140" y="145" text-anchor="middle">Вт 2</text>
+<line x1="220" y1="115" x2="220" y2="125" stroke="#94a3b8"/>
+<text x="220" y="145" text-anchor="middle">Ср 3</text>
+<line x1="300" y1="115" x2="300" y2="125" stroke="#94a3b8"/>
+<text x="300" y="145" text-anchor="middle">Чт 4</text>
+<line x1="380" y1="115" x2="380" y2="125" stroke="#94a3b8"/>
+<text x="380" y="145" text-anchor="middle">Пт 5</text>
+</g>
+<line x1="420" y1="65" x2="420" y2="155" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="230" y="170" text-anchor="middle" style="font:500 10px sans-serif" fill="#94a3b8">Неделя 1</text>
+<g style="font:400 10px sans-serif" fill="#64748b">
+<line x1="460" y1="115" x2="460" y2="125" stroke="#94a3b8"/>
+<text x="460" y="145" text-anchor="middle">Пн 6</text>
+<line x1="540" y1="115" x2="540" y2="125" stroke="#94a3b8"/>
+<text x="540" y="145" text-anchor="middle">Вт 7</text>
+<line x1="620" y1="115" x2="620" y2="125" stroke="#94a3b8"/>
+<text x="620" y="145" text-anchor="middle">Ср 8</text>
+<line x1="700" y1="115" x2="700" y2="125" stroke="#94a3b8"/>
+<text x="700" y="145" text-anchor="middle">Чт 9</text>
+<line x1="780" y1="115" x2="780" y2="125" stroke="#94a3b8"/>
+<text x="780" y="145" text-anchor="middle">Пт 10</text>
+</g>
+<text x="600" y="170" text-anchor="middle" style="font:500 10px sans-serif" fill="#94a3b8">Неделя 2</text>
+<g style="font:600 9px sans-serif" fill="#1e40af">
+<rect x="20" y="60" width="80" height="34" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="4"/>
+<text x="60" y="76" text-anchor="middle">Sprint</text>
+<text x="60" y="88" text-anchor="middle">Planning</text>
+<line x1="100" y1="94" x2="60" y2="115" stroke="#2563eb" stroke-width="1.5"/>
+</g>
+<text x="180" y="55" text-anchor="middle" style="font:600 9px sans-serif" fill="#7c3aed">⇄</text>
+<g style="font:600 9px sans-serif" fill="#6b21a8">
+<rect x="180" y="38" width="80" height="30" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5" rx="4" stroke-dasharray="4,3"/>
+<text x="220" y="50" text-anchor="middle">Backlog</text>
+<text x="220" y="62" text-anchor="middle">Refinement</text>
+<line x1="220" y1="68" x2="220" y2="100" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="3,3"/>
+<rect x="580" y="38" width="80" height="30" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5" rx="4" stroke-dasharray="4,3"/>
+<text x="620" y="50" text-anchor="middle">Backlog</text>
+<text x="620" y="62" text-anchor="middle">Refinement</text>
+<line x1="620" y1="68" x2="620" y2="100" stroke="#9333ea" stroke-width="1.5" stroke-dasharray="3,3"/>
+</g>
+<g style="font:600 9px sans-serif" fill="#854d0e">
+<circle cx="140" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="300" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="380" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="460" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="540" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<circle cx="700" cy="105" r="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="430" y="35" text-anchor="middle" style="font:600 10px sans-serif" fill="#b45309">↑ Daily Standup · 15 мин каждое утро</text>
+</g>
+<g style="font:600 9px sans-serif" fill="#065f46">
+<rect x="720" y="60" width="100" height="34" fill="#d1fae5" stroke="#059669" stroke-width="1.5" rx="4"/>
+<text x="770" y="76" text-anchor="middle">Sprint Review</text>
+<text x="770" y="88" text-anchor="middle">+ Retro</text>
+<line x1="770" y1="94" x2="780" y2="115" stroke="#059669" stroke-width="1.5"/>
+<text x="770" y="56" text-anchor="middle" style="font:600 10px sans-serif" fill="#047857">финальные</text>
+</g>
+</svg>
+</div>
+
+<!-- Роли и принципы -->
+<div class="mt-3 grid grid-cols-3 gap-2 text-[11px]">
+  <div class="bg-white border border-slate-200 rounded-lg p-2 text-center">
+    <div class="font-semibold text-slate-900">Product Owner</div>
+    <div class="text-slate-600 text-[10px] mt-0.5">отвечает за что и зачем</div>
+  </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-2 text-center">
+    <div class="font-semibold text-slate-900">Scrum Master</div>
+    <div class="text-slate-600 text-[10px] mt-0.5">убирает препятствия</div>
+  </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-2 text-center">
+    <div class="font-semibold text-slate-900">Developers</div>
+    <div class="text-slate-600 text-[10px] mt-0.5">доставляют инкремент</div>
+  </div>
+</div>
+
+<div class="mt-2 text-center text-[10px] text-gray-500">
+  <strong class="text-gray-700">3 столпа эмпиризма:</strong>
+  <span class="text-blue-700">прозрачность</span> ·
+  <span class="text-emerald-700">инспекция</span> ·
+  <span class="text-orange-700">адаптация</span>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/14">← BRD</a>
+  <a href="/13">Занятие 2 →</a>
+</div>
+
+
+
+---
+layout: default
+---
+
 # Бизнес-анализ - работа с требованиями
 
 <div class="grid grid-cols-2 gap-8 mt-2">
@@ -294,6 +523,268 @@ layout: default
   <a href="/lesson2">Занятие 2 →</a>
 </div>
 
+---
+layout: default
+---
+
+# Чек-лист качества требований
+
+<!-- 7 критериев -->
+<div class="grid grid-cols-2 gap-x-6 gap-y-1.5 mt-3 text-xs">
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Полнота</strong> — <span class="text-gray-700">все требования зафиксированы</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Структурированность</strong> — <span class="text-gray-700">ясная структура документа</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Непротиворечивость</strong> — <span class="text-gray-700">нет противоречий</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Удовлетворённость</strong> — <span class="text-gray-700">связи «удовлетворяется посредством» покрывают всё</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Отсутствие избыточности</strong> — <span class="text-gray-700">нет дублирования требований</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Модульность</strong> — <span class="text-gray-700">связанные требования в одном разделе</span></div>
+  </div>
+  <div></div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Тестируемость</strong> — <span class="text-gray-700">требования покрыты тестами</span></div>
+  </div>
+</div>
+
+<!-- Хороший и плохой пример — компактнее -->
+<div class="grid grid-cols-2 gap-4 mt-3">
+  <div class="bg-red-50 border-l-4 border-red-500 rounded p-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="text-red-600 font-bold text-base leading-none">✗</span>
+      <strong class="text-red-800 text-xs">«Система должна работать быстро»</strong>
+    </div>
+    <p class="text-[10px] text-gray-500 italic mt-0.5">расплывчато · не тестируемо · субъективно</p>
+  </div>
+  <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded p-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="text-emerald-600 font-bold text-base leading-none">✓</span>
+      <strong class="text-emerald-800 text-xs">«Система сохраняет результаты теста за ≤ 30 секунд»</strong>
+    </div>
+    <p class="text-[10px] text-gray-500 italic mt-0.5">конкретно · тестируемо · однозначно</p>
+  </div>
+</div>
+
+<!-- Источник — в подвале -->
+<div class="text-[8px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Халл Э., Джексон К., Дик Дж. <em>Инженерия требований: практ. руководство</em> / пер. с англ. А.&nbsp;Снастина — М.&nbsp;: ДМК Пресс, 2017. — 225&nbsp;с.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson2">← Занятие 2</a>
+  <a href="/lesson3">Занятие 3 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Почему нужны хорошие требования
+
+A minimal domain model for a horizontal well, illustrating the geometry behind the schematic.
+
+---
+layout: default
+---
+
+# Пользовательская история
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Краткое описание требования от лица пользователя в трёх частях: <strong class="text-gray-700">роль → действие → выгода</strong>.
+</p>
+
+<!-- Шаблон User Story -->
+<div class="mt-3 bg-indigo-50 border-2 border-indigo-300 rounded-xl p-4">
+  <div class="text-center text-base leading-relaxed">
+    <span class="text-indigo-700 font-medium">Как</span>
+    <span class="inline-block mx-1.5 px-2.5 py-0.5 bg-white border border-indigo-300 rounded text-indigo-900 font-semibold text-sm">пользователь</span>
+    <span class="text-indigo-700 font-medium">я хочу</span>
+    <span class="inline-block mx-1.5 px-2.5 py-0.5 bg-white border border-indigo-300 rounded text-indigo-900 font-semibold text-sm">действие</span>
+    <span class="text-indigo-700 font-medium">чтобы</span>
+    <span class="inline-block mx-1.5 px-2.5 py-0.5 bg-white border border-indigo-300 rounded text-indigo-900 font-semibold text-sm">выгода / цель</span>
+  </div>
+
+  <!-- Конкретный пример -->
+  <div class="mt-3 pt-2.5 border-t border-indigo-200">
+    <div class="text-center text-[10px] uppercase tracking-wider text-indigo-500 font-semibold mb-1">пример</div>
+    <div class="text-center text-sm leading-relaxed">
+      <span class="text-indigo-700 font-medium">Как</span>
+      <span class="inline-block mx-1 px-2 py-0.5 bg-cyan-100 border border-cyan-300 rounded text-cyan-900 font-medium">покупатель</span><span class="text-indigo-700 font-medium">,</span>
+      <span class="text-indigo-700 font-medium">я хочу</span>
+      <span class="inline-block mx-1 px-2 py-0.5 bg-amber-100 border border-amber-300 rounded text-amber-900 font-medium">добавить товар в корзину</span>
+      <span class="text-indigo-700 font-medium">чтобы</span>
+      <span class="inline-block mx-1 px-2 py-0.5 bg-emerald-100 border border-emerald-300 rounded text-emerald-900 font-medium">оформить заказ позже</span><span class="text-indigo-700 font-medium">.</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 компонента -->
+<div class="grid grid-cols-3 gap-3 mt-3">
+
+  <!-- 1. Пользователь -->
+  <div class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </span>
+      <strong class="text-cyan-900 text-sm">Пользователь</strong>
+    </div>
+    <p class="text-xs text-gray-700 leading-snug">
+      Каждая user story составляется на основе мнений и пожеланий <strong class="text-gray-900">целевой аудитории</strong>, поэтому важно отметить, <strong class="text-gray-900">кто именно</strong> этот пользователь.
+    </p>
+  </div>
+
+  <!-- 2. Действие -->
+  <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+      </span>
+      <strong class="text-amber-900 text-sm">Действие</strong>
+    </div>
+    <p class="text-xs text-gray-700 leading-snug">
+      Что хочет сделать пользователь с помощью продукта или его функции.
+    </p>
+  </div>
+
+  <!-- 3. Выгода / Цель -->
+  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="flex-shrink-0 bg-emerald-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-900 text-sm">Выгода / Цель</strong>
+    </div>
+    <p class="text-xs text-gray-700 leading-snug">
+      <strong class="text-gray-900">Конечная цель</strong> у пользователя — зачем ему совершать это действие.
+    </p>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson1">← Занятие 1</a>
+  <a href="/lesson3">Занятие 3 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Сценарий использования (Use Case)
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Описание поведения системы при взаимодействии с <strong class="text-gray-700">актёром</strong> для достижения конкретной цели. Содержит предусловия, основной сценарий и постусловия.
+</p>
+
+<div class="grid grid-cols-2 gap-5 mt-3">
+
+<!-- ЛЕВАЯ КОЛОНКА: UML-диаграмма -->
+<div>
+  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+    <span class="font-mono text-gray-700">UML Use Case</span>
+    <span class="text-gray-300">·</span>
+    <span>диаграмма</span>
+  </div>
+  <div class="bg-blue-50/40 border border-blue-200 rounded-xl p-2">
+    <svg viewBox="0 0 420 280" class="w-full" text-rendering="optimizeLegibility">
+      <!-- Системная граница -->
+      <rect x="105" y="22" width="305" height="240" fill="white" fill-opacity="0.6" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" rx="6"/>
+      <text x="257" y="16" text-anchor="middle" fill="#475569" style="font:600 11px sans-serif">Интернет-магазин</text>
+      <!-- Актёр (человечек) -->
+      <g stroke="#475569" stroke-width="1.5" fill="none" stroke-linecap="round">
+        <circle cx="45" cy="118" r="10" fill="white"/>
+        <line x1="45" y1="128" x2="45" y2="168"/>
+        <line x1="30" y1="143" x2="60" y2="143"/>
+        <line x1="45" y1="168" x2="33" y2="193"/>
+        <line x1="45" y1="168" x2="57" y2="193"/>
+      </g>
+      <text x="45" y="216" text-anchor="middle" fill="#1e293b" style="font:600 11px sans-serif">Покупатель</text>
+      <!-- Use case овалы -->
+      <ellipse cx="180" cy="80" rx="60" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="180" y="80" text-anchor="middle" dominant-baseline="central" fill="#1e40af" style="font:500 11px sans-serif">Зарегистрироваться</text>
+      <ellipse cx="335" cy="80" rx="55" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="335" y="80" text-anchor="middle" dominant-baseline="central" fill="#1e40af" style="font:500 11px sans-serif">Найти товар</text>
+      <ellipse cx="180" cy="180" rx="62" ry="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+      <text x="180" y="180" text-anchor="middle" dominant-baseline="central" fill="#1e3a8a" style="font:600 11px sans-serif">Оформить заказ</text>
+      <ellipse cx="335" cy="180" rx="55" ry="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="335" y="180" text-anchor="middle" dominant-baseline="central" fill="#1e40af" style="font:500 11px sans-serif">Оставить отзыв</text>
+      <!-- Связи актер → use cases -->
+      <line x1="55" y1="133" x2="125" y2="80" stroke="#64748b" stroke-width="1.2"/>
+      <line x1="58" y1="143" x2="282" y2="80" stroke="#64748b" stroke-width="1.2"/>
+      <line x1="58" y1="158" x2="123" y2="180" stroke="#2563eb" stroke-width="1.8"/>
+      <line x1="60" y1="170" x2="282" y2="180" stroke="#64748b" stroke-width="1.2"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ПРАВАЯ КОЛОНКА: пример с разметкой структуры -->
+<div>
+  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+    <span class="font-mono text-gray-700">«Оформить заказ»</span>
+    <span class="text-gray-300">·</span>
+    <span>структура Use Case</span>
+  </div>
+  <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-xs leading-snug space-y-1.5">
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Актёр:</span><span class="text-gray-700">Покупатель (авторизован)</span></div>
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Предусловие:</span><span class="text-gray-700">в корзине ≥ 1 товар</span></div>
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Триггер:</span><span class="text-gray-700">покупатель жмёт «Оформить заказ»</span></div>
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Сценарий:</span>
+      <ol class="list-decimal ml-3 text-gray-700 space-y-0.5 marker:text-gray-400">
+        <li>Система показывает форму адреса доставки</li>
+        <li>Покупатель вводит адрес и подтверждает</li>
+        <li>Система отображает способы оплаты</li>
+        <li>Покупатель выбирает способ</li>
+        <li>Система проводит оплату, создаёт заказ, шлёт email</li>
+      </ol>
+    </div>
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Постусловие:</span><span class="text-gray-700">заказ в БД, оплата списана, email отправлен</span></div>
+    <div class="flex gap-1.5"><span class="text-blue-600 font-semibold shrink-0 w-24">Альтернатива:</span><span class="text-gray-700">оплата отклонена → заказ не создаётся</span></div>
+  </div>
+</div>
+
+</div>
+
+<!-- Структурная формула -->
+<div class="mt-2 text-center text-[10px] text-gray-500">
+  <strong class="text-gray-700">Use Case =</strong>
+  <span class="text-blue-600 font-medium">Актёр</span> +
+  <span class="text-blue-600 font-medium">Предусловие</span> +
+  <span class="text-blue-600 font-medium">Триггер</span> +
+  <span class="text-blue-600 font-medium">Сценарий</span> +
+  <span class="text-blue-600 font-medium">Постусловие</span> +
+  <span class="text-blue-600 font-medium">Альтернативы</span>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/12">← Занятие 1</a>
+  <a href="/18">Занятие 3 →</a>
+</div>
+
 
 ---
 layout: default
@@ -328,3 +819,4 @@ layout: default
   <a href="/1">← Титульный слайд</a>
   <a href="/13">Занятие 2 →</a>
 </div>
+

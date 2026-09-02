@@ -218,3 +218,107 @@ app.run(debug=<span class="text-purple-400">True</span>)</code></pre>
   <a href="/lesson7">← Занятие 7</a>
   <a href="/lesson9">Занятие 9 →</a>
 </div>
+
+---
+layout: default
+---
+
+# Микросервисная архитектура
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Стиль архитектуры, при котором система строится как набор слабо связанных, <strong class="text-gray-700">независимо развёртываемых сервисов</strong>, взаимодействующих через лёгкие сетевые протоколы (HTTP/REST, gRPC, очереди сообщений).
+</p>
+
+<!-- Hero-определение с иконкой -->
+<div class="mt-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-1 flex items-start gap-3">
+  <span class="flex-shrink-0 bg-indigo-600 text-white rounded-lg w-10 h-10 flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3"/>
+      <circle cx="4" cy="4" r="2"/>
+      <circle cx="20" cy="4" r="2"/>
+      <circle cx="4" cy="20" r="2"/>
+      <circle cx="20" cy="20" r="2"/>
+      <line x1="5.5" y1="5.5" x2="9.5" y2="9.5"/>
+      <line x1="14.5" y1="9.5" x2="18.5" y2="5.5"/>
+      <line x1="9.5" y1="14.5" x2="5.5" y2="18.5"/>
+      <line x1="14.5" y1="14.5" x2="18.5" y2="18.5"/>
+    </svg>
+  </span>
+  <div class="flex-1">
+    <div class="text-[10px] uppercase tracking-wider font-semibold text-indigo-600">определение</div>
+    <p class="text-sm text-gray-800 leading-snug mt-0.5">
+      <em>«Микросервисная архитектура»</em> — подход к разработке единой системы как набора <strong class="text-indigo-900">слабо связанных</strong>, <strong class="text-indigo-900">автономно развёртываемых</strong> сервисов, каждый из которых отвечает за <strong class="text-indigo-900">одну бизнес-возможность</strong> и общается с другими через сетевые протоколы.
+    </p>
+  </div>
+</div>
+
+<!-- Плюсы и минусы -->
+<div class="grid grid-cols-2 gap-4 mt-3">
+
+  <!-- ПЛЮСЫ -->
+  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-emerald-200">
+      <span class="flex-shrink-0 bg-emerald-600 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-800 text-base">Плюсы</strong>
+    </div>
+    <ul class="text-xs text-gray-800 leading-snug space-y-1">
+      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Высокая масштабируемость</strong> — каждый сервис масштабируется независимо под свою нагрузку</div></li>
+      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Гибкость изменения</strong> — изменение одного сервиса не затрагивает остальные, легче катить релизы</div></li>
+      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Модульность</strong> — каждый сервис = отдельная бизнес-возможность со своей командой и стеком</div></li>
+      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Эластичность</strong> — автоматическое масштабирование спотовой нагрузки, отказ отдельных узлов без потери системы</div></li>
+    </ul>
+  </div>
+
+  <!-- МИНУСЫ -->
+  <div class="bg-red-50 border-2 border-red-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-red-200">
+      <span class="flex-shrink-0 bg-red-600 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </span>
+      <strong class="text-red-800 text-base">Минусы</strong>
+    </div>
+    <ul class="text-xs text-gray-800 leading-snug space-y-1">
+      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Сложность общего решения</strong> — распределённые транзакции, сетевые задержки, eventual consistency</div></li>
+      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Общая стоимость владения</strong> — больше инфраструктуры, мониторинга, команд DevOps</div></li>
+      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Скорость работы</strong> — сетевые вызовы между сервисами медленнее вызовов функций в монолите</div></li>
+      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Сложность инфраструктуры</strong> — CI/CD, service mesh, observability, развёртывание — отдельная дисциплина</div></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/48">← C4 Level 2</a>
+  <a href="/lesson10">Занятие 10 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Микросервисная архитектура — пример
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Типовая схема микросервисной системы на примере e-commerce
+</p>
+
+<!-- Изображение -->
+<div class="flex items-center justify-center mt-3">
+  <img src="/Microservices.png" alt="Схема микросервисной архитектуры e-commerce системы" class="rounded shadow-md border border-gray-200 max-h-[40vh] max-w-[90vw] object-contain bg-white" />
+</div>
+
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
+  На схеме: 5 доменных сервисов (пользователи, заказы, каталог, платежи, доставка) с собственными БД и общим API-шлюзом + наблюдаемость (логирование, мониторинг, трейсинг, конфигурирование, реестр сервисов).
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/49">← Определение MSA</a>
+  <a href="/lesson10">Занятие 10 →</a>
+</div>
