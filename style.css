@@ -1,0 +1,7 @@
+/* Hide the slide-jump dialog (#slidev-goto-dialog) that opens on the 'g'
+   keypress — it shows a side panel with a list of all slides, which is not
+   wanted in the deployed presentation. Defense-in-depth: even if the dialog
+   is programmatically opened, it stays hidden. */
+#slidev-goto-dialog {
+  display: none !important;
+}
