@@ -1,13 +1,16 @@
 {
-  "name": "horizontal-well-presentation",
+  "name": "spbpu-is-design-course",
   "version": "1.0.0",
   "private": true,
-  "description": "Slidev presentation: Horizontal Well Technology overview (3 slides).",
+  "description": "Курс «Проектирование современных информационных систем» на Slidev (СПбПУ Петра Великого).",
   "scripts": {
     "dev": "slidev --open",
     "start": "slidev",
     "build": "slidev build",
     "export": "slidev export"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@slidev/cli": "^0.50.0",

@@ -2,231 +2,669 @@
 layout: center
 ---
 
-# Архитектура ПО
+# Основы проектирования ПО
 
-<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 1</div>
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 3</div>
 <div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
 
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Обмен файлами (File Transfer)
+
+## Преимущества
+
+- ✅ Не нужны сведения о внутренней реализации
+
+## Недостатки
+
+- ❌ Необязательные затраты (уникальность имен, блокировки, перенос фалов)
+- ❌ Рассинхронизация интегрируемых систем вследствие низкой частоты обмена информацией
+- ❌ Семантический диссонанс
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="/FTP_06.png" alt="Обмен файлами (File Transfer)" class="rounded shadow-lg max-h-[65vh]" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Общая база данных (Shared Database)
+
+## Преимущества
+
+- ✅ Данные всегда согласованы
+
+## Недостатки
+
+- ❌ Единая точка отказа
+- ❌ Высокая связанность
+- ❌ Блокировки данных
+- ❌ Скорость извлечения данных резко падает при росте БД
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="/sharedDB_06.png" alt="Общая база данных (Shared Database)" class="rounded shadow-lg max-h-[65vh]" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Удаленный вызов процедур (Remote procedure Invocation)
+
+## Преимущества
+
+- ✅ Инкапсуляция данных
+
+## Недостатки
+
+- ❌ Низкая надежность (сбои при сетевом взаимодействии)
+- ❌ Также высокая связанность, но ниже чем при общей БД
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="/remoteProcedure_06.png" alt="Удалённый вызов процедур (RPC)" class="rounded shadow-lg max-h-[65vh]" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Обмен сообщениями (Messaging)
+
+## Преимущества
+
+- ✅ Асинхронный способ интеграции
+- ✅ Масштабируемость системы
+
+## Недостатки
+
+- ❌ Критически важны тактики надежности в распределенной системе (отказоустойчивость)
+- ❌ При неправильной архитектуре большой latency системы
+- ❌ Проблемы с согласованностью данных
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="/messaging_06.png" alt="Обмен сообщениями (Messaging)" class="rounded shadow-lg max-h-[65vh]" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+
+---
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Сообщения
+
+Для передачи информации между двумя приложениями используйте формат сообщений
+
+```python
+producer = KafkaProducer(
+    bootstrap_servers='localhost:9092',
+    value_serializer=lambda v: json.dumps(v).encode(),
+    key_serializer=lambda k: k.encode() if k else None,
+)
+
+producer.send(
+    'orders',
+    key='order-12345',
+    value={'order_id': '12345', 'customer': 'Alice', 'total': 229.48},
+    headers=[
+        ('content-type', b'application/json'),
+        ('source', b'orders-service'),
+        ('trace-id', b'abc-def-123'),
+    ],
+)
+
+producer.flush()
+```
+
+::right::
+
+## Структура сообщения
+
+### 🔑 Key
+
+```
+order-12345
+```
+
+
+### 📋 Headers
+
+```
+content-type: application/json
+source: orders-service
+trace-id: abc-def-123
+```
+
+### 📦 Payload (Value)
+
+```json
+{
+  "order_id": "12345",
+  "customer": "Alice",
+  "items": [
+    {"sku": "ABC-001", "qty": 2, "price": 49.99},
+    {"sku": "XYZ-099", "qty": 1, "price": 129.50}
+  ],
+  "total": 229.48
+}
+```
+
+<div class="abs-b m-2 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+<style>
+h3 {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+em {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+</style>
+
 ---
 layout: default
 ---
 
-# Архитектура ПО по IEEE Std 1471-2000
+# Принципы REST
 
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-<em>Recommended Practice for Architectural Description of Software-Intensive Systems</em> — стандарт, определяющий терминологию и практики описания архитектуры программно-нагруженных систем.
-</p>
+<p class="text-sm leading-snug -mt-3">REST задаётся пятью архитектурными ограничениями.</p>
 
-<!-- Главное определение -->
-<div class="mt-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-3 relative">
-  <div class="absolute top-2 right-2 flex items-center gap-1 bg-white border border-indigo-200 rounded px-2 py-1 shadow-sm">
-    <span class="font-mono font-bold text-indigo-800 text-sm">IEEE</span>
-    <span class="text-[9px] text-gray-500 font-mono leading-none">Std<br>1471<br>2000</span>
+<div class="grid grid-cols-2 gap-2 mt-2">
+
+<!-- 1. Ресурсы и представления -->
+<div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-indigo-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+        <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
+        <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+      </svg>
+    </span>
+    <strong class="text-indigo-900 text-sm">Ресурсы и представления</strong>
   </div>
-  <p class="text-[13px] text-gray-800 leading-relaxed pr-24">
-    <strong class="text-indigo-900">Архитектура</strong> — <em>фундаментальная организация системы</em>, воплощённая в её компонентах, их взаимосвязях друг с другом и со средой, а также принципах, определяющих её проектирование и эволюцию.
-  </p>
-  <div class="text-[10px] text-gray-500 italic mt-2">
-    Перевод термина 3.5 «architecture» из IEEE Std 1471-2000.
+  <p class="text-xs leading-relaxed">Любая сущность — ресурс с URI; клиент работает лишь с её представлением (JSON, XML, HTML).</p>
+</div>
+
+<!-- 2. Отсутствие состояний на сервере -->
+<div class="bg-slate-50 border-2 border-slate-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-slate-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 2h10a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+        <line x1="2" y1="2" x2="22" y2="22"/>
+      </svg>
+    </span>
+    <strong class="text-slate-900 text-sm">Отсутствие состояний на сервере</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Каждый запрос самодостаточен: сервер не хранит контекст клиента между вызовами.</p>
+</div>
+
+<!-- 3. Самоописываемые сообщения -->
+<div class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M8 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1"/>
+        <path d="M16 3h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-1"/>
+      </svg>
+    </span>
+    <strong class="text-cyan-900 text-sm">Самоописываемые сообщения</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Метаданные (Content-Type, схема) в сообщении говорят получателю, как его обработать.</p>
+</div>
+
+<!-- 4. Возможность кэширования -->
+<div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5">
+  <div class="flex items-center gap-2 mb-1.5">
+    <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+        <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+        <path d="M3 12a9 3 0 0 0 18 0"/>
+      </svg>
+    </span>
+    <strong class="text-amber-900 text-sm">Возможность кэширования</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Ответы помечаются Cache-Control — клиент может не обращаться к серверу повторно.</p>
+</div>
+
+</div>
+
+<!-- HATEOAS: full-width highlighted principle -->
+<div class="mt-2 bg-gradient-to-r from-rose-50 to-pink-50 border-2 border-rose-300 rounded-xl p-2.5">
+  <div class="flex items-start gap-2.5">
+    <span class="flex-shrink-0 bg-rose-500 text-white rounded-lg w-8 h-8 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 17H7a5 5 0 0 1 0-10h2"/>
+        <path d="M15 7h2a5 5 0 1 1 0 10h-2"/>
+        <line x1="8" y1="12" x2="16" y2="12"/>
+      </svg>
+    </span>
+    <div class="min-w-0">
+      <div class="flex items-baseline gap-1.5 flex-wrap">
+        <strong class="text-rose-900 text-sm">HATEOAS</strong>
+        <span class="text-rose-700 text-xs italic">гипермедиа для навигации по API</span>
+      </div>
+      <p class="text-xs leading-relaxed mt-0.5">Сервер возвращает ссылки на действия и ресурсы — клиент переходит по API как по веб-странице.</p>
+    </div>
   </div>
 </div>
 
-<!-- Ключевые термины -->
-<div class="grid grid-cols-3 gap-2 mt-3 text-xs">
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Stakeholder</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">заинтересованная сторона</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">Лицо, группа или организация, имеющие интересы относительно системы.</p>
-  </div>
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Concern</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">интерес / забота</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">То, что важно для удовлетворения заинтересованной стороны в системе.</p>
-  </div>
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Mission</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">миссия</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">Роль или назначение системы в её среде.</p>
-  </div>
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Architectural Description</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">архитектурное описание (AD)</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">Коллекция продуктов, документирующих архитектуру.</p>
-  </div>
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Viewpoint</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">точка зрения</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">Спецификация соглашений для построения и использования представлений.</p>
-  </div>
-
-  <div class="bg-white border border-gray-200 rounded-lg p-2">
-    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">View</div>
-    <div class="text-gray-500 text-[10px] mt-0.5">представление</div>
-    <p class="text-gray-700 text-[11px] leading-snug mt-1">Репрезентация всей системы с позиции определённого набора интересов.</p>
-  </div>
-
-</div>
-
-<!-- Атрибуция -->
-<div class="mt-3 text-[9px] text-gray-400 leading-tight text-center italic">
-  IEEE, IEEE Std и название стандарта являются торговыми марками Institute of Electrical and Electronics Engineers, Inc.
-  Цитата термина приведена в учебных целях (fair use). Логотип IEEE не воспроизводится во избежание нарушения товарных знаков.
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
 </div>
 
 ---
 layout: default
 ---
 
-# Теорема CAP
+# Структура HTTP-запроса
 
-<p class="text-sm leading-snug -mt-2">Любая сетевая система, предоставляющая общие данные, может предоставлять только 2 из следующих 3-х свойств:</p>
-<ul class="text-xs leading-snug mt-1 mb-2 space-y-0.5 list-none">
-  <li><span class="font-bold text-blue-700">C</span>: <em>consistency</em> — согласованность, при которой общий и реплицируемый элемент данных отображается в виде единой актуальной копии</li>
-  <li><span class="font-bold text-green-700">A</span>: <em>availability</em> — доступность, с помощью которой всегда будут выполняться обновления</li>
-  <li><span class="font-bold text-orange-700">P</span>: <em>partition tolerance</em> — допустимость разделения группы процессов (например, из-за сбоя сети)</li>
-</ul>
+<p class="text-sm leading-snug -mt-3">Запрос состоит из четырёх логических частей: метода, эндпоинта, заголовков и тела.</p>
 
-<div class="flex justify-center my-2">
-<svg viewBox="0 0 420 400" class="w-full max-w-md" text-rendering="optimizeLegibility">
-<polygon points="210,60 60,310 360,310" fill="#fafafa" stroke="#374151" stroke-width="2.5" stroke-linejoin="round"/>
-<circle cx="210" cy="60" r="32" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
-<circle cx="60" cy="310" r="32" fill="#10b981" stroke="#047857" stroke-width="2"/>
-<circle cx="360" cy="310" r="32" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
-<text x="210" y="60" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">C</text>
-<text x="60" y="310" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">A</text>
-<text x="360" y="310" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">P</text>
-<text x="210" y="20" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Согласованность</text>
-<text x="60" y="372" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Доступность</text>
-<text x="360" y="372" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Устойчивость</text>
-<text x="128" y="200" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">CA</text>
-<text x="292" y="200" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">CP</text>
-<text x="210" y="285" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">AP</text>
-<text x="210" y="230" text-anchor="middle" dominant-baseline="central" style="fill:#6b7280;font:italic 11px sans-serif">при Partition →</text>
-<text x="210" y="248" text-anchor="middle" dominant-baseline="central" style="fill:#6b7280;font:italic 11px sans-serif">выбор: C или A</text>
-</svg>
+<div class="grid grid-cols-2 gap-2 mt-2">
+
+<!-- 1. Эндпоинт -->
+<div v-click class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-indigo-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    </span>
+    <strong class="text-indigo-900 text-sm">Эндпоинт</strong>
+  </div>
+  <p class="text-xs leading-snug"><strong class="text-indigo-800">URL запроса</strong> — адрес, на который отправляются сообщения.</p>
+  <p class="text-xs leading-snug mt-0.5">Структура: <code class="font-mono text-[11px] text-indigo-900 bg-white border border-indigo-200 rounded px-1 py-px">root-endpoint/?{params1=value1}&amp;{...}</code></p>
 </div>
 
-<div class="grid grid-cols-3 gap-4">
-
-<!-- C card -->
-<div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="bg-blue-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">C</span>
-    <strong class="text-blue-900">Consistency</strong>
+<!-- 2. HTTP-метод -->
+<div v-click class="bg-slate-50 border-2 border-slate-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-slate-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+    </span>
+    <strong class="text-slate-900 text-sm">HTTP-метод</strong>
   </div>
-  <p class="text-xs leading-relaxed mb-2">Каждое чтение возвращает результат последней записи или ошибку.</p>
-  <div class="text-xs opacity-75 leading-relaxed">
-    <span class="font-semibold">CP-системы:</span> HBase, MongoDB, etcd, Consul, ZooKeeper
-  </div>
+  <p class="text-xs leading-snug">Тип запроса, который хотим отправить на сервер: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>.</p>
 </div>
 
-<!-- A card -->
-<div class="bg-green-50 border-2 border-green-200 rounded-lg p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="bg-green-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">A</span>
-    <strong class="text-green-900">Availability</strong>
+<!-- 3. Заголовки -->
+<div v-click class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-cyan-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+        <line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+    </span>
+    <strong class="text-cyan-900 text-sm">Заголовки</strong>
   </div>
-  <p class="text-xs leading-relaxed mb-2">Каждый запрос получает ответ, без гарантии свежести данных.</p>
-  <div class="text-xs opacity-75 leading-relaxed">
-    <span class="font-semibold">AP-системы:</span> Cassandra, DynamoDB, CouchDB, Riak
-  </div>
+  <p class="text-xs leading-snug">Набор пар «имя-значение»: кодировка, User-Agent, авторизация и т. д.</p>
 </div>
 
-<!-- P card -->
-<div class="bg-orange-50 border-2 border-orange-200 rounded-lg p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="bg-orange-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">P</span>
-    <strong class="text-orange-900">Partition tolerance</strong>
+<!-- 4. Тело запроса -->
+<div v-click class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="flex-shrink-0 bg-amber-500 text-white rounded-lg w-7 h-7 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+    </span>
+    <strong class="text-amber-900 text-sm">Тело запроса</strong>
   </div>
-  <p class="text-xs leading-relaxed mb-2">Система работает при потере/задержке сообщений между узлами.</p>
-  <div class="text-xs opacity-75 leading-relaxed">
-    ⚠️ <span class="font-semibold">P обязательно</span> в любой распределённой системе → реальный выбор между CP и AP.
+  <p class="text-xs leading-snug">Данные, которые хотим отправить на сервер. Используется только с <code>POST</code>, <code>PUT</code>, <code>PATCH</code> или <code>DELETE</code>.</p>
+</div>
+
+</div>
+
+<!-- Пример curl: полноширинный блок под карточками -->
+<div v-click class="mt-2 bg-gray-900 rounded-lg p-2.5">
+<pre class="text-xs leading-snug text-gray-100 overflow-auto"><code><span class="text-slate-300">curl</span> <span class="text-slate-300 font-semibold">-X POST</span> <span class="text-indigo-300 font-semibold">https://api.example.com/v1/orders?priority=high</span> \
+  <span class="text-cyan-300">-H</span> <span class="text-cyan-200">"Content-Type: application/json"</span> \
+  <span class="text-cyan-300">-H</span> <span class="text-cyan-200">"Authorization: Bearer eyJhbGciOi..."</span> \
+  <span class="text-amber-300 font-semibold">-d</span> <span class="text-amber-200">'{"customer_id":"u-42","items":[{"sku":"ABC-001","qty":2}],"total":99.98}'</span></code></pre>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Методы HTTP
+
+<div class="mt-2 overflow-hidden rounded-lg border border-gray-200">
+<table class="w-full text-[11px] leading-tight">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="text-left py-1 px-2 font-semibold">Метод</th>
+      <th class="text-left py-1 px-2 font-semibold">Назначение</th>
+      <th class="text-center py-1 px-2 font-semibold">Безопасный</th>
+      <th class="text-center py-1 px-2 font-semibold">Идемпотентный</th>
+      <th class="text-center py-1 px-2 font-semibold">Кэшируемый</th>
+      <th class="text-center py-1 px-2 font-semibold">Тело</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">GET</td>
+      <td class="py-0.5 px-2">Получение ресурса</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">HEAD</td>
+      <td class="py-0.5 px-2">Только заголовки ответа</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">OPTIONS</td>
+      <td class="py-0.5 px-2">Доступные методы / CORS-preflight</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">TRACE</td>
+      <td class="py-0.5 px-2">Эхо-петля (диагностика)</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">POST</td>
+      <td class="py-0.5 px-2">Создание / обработка данных</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">PUT</td>
+      <td class="py-0.5 px-2">Замена / создание ресурса</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">PATCH</td>
+      <td class="py-0.5 px-2">Частичное обновление</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-gray-50">
+      <td class="py-0.5 px-2 font-mono">DELETE</td>
+      <td class="py-0.5 px-2">Удаление ресурса</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <tr class="border-t border-gray-200 bg-white">
+      <td class="py-0.5 px-2 font-mono">CONNECT</td>
+      <td class="py-0.5 px-2">Туннель (напр. TLS)</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-red-500 font-bold">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+      <td class="text-center py-0.5 px-2 text-gray-400">✗</td>
+    </tr>
+    <!-- QUERY: новый пользовательский метод по RFC 10008 -->
+    <tr class="border-t-2 border-rose-300 bg-rose-50">
+      <td class="py-0.5 px-2 font-mono font-bold text-rose-900">QUERY</td>
+      <td class="py-0.5 px-2 text-rose-900">Безопасный запрос с телом <span class="inline-block text-[9px] bg-rose-200 text-rose-900 px-1 py-px rounded font-semibold align-middle ml-0.5">RFC 10008</span></td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+      <td class="text-center py-0.5 px-2 text-green-600 font-bold">✓</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Легенда: одна горизонтальная строка -->
+<div class="mt-1.5 text-[10px] leading-snug text-gray-700 flex flex-wrap gap-x-3 gap-y-0.5 justify-center">
+  <span><strong class="text-gray-900">Safe</strong> — не меняет состояние сервера</span>
+  <span class="text-gray-300">·</span>
+  <span><strong class="text-gray-900">Idempotent</strong> — N одинаковых запросов = один по эффекту</span>
+  <span class="text-gray-300">·</span>
+  <span><strong class="text-gray-900">Cacheable</strong> — ответ можно сохранить в кэше</span>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Коды ответов HTTP
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">Стандартные коды состояния, которые сервер возвращает в ответ на запрос.</p>
+
+<div class="grid grid-cols-3 gap-x-10 mt-4">
+
+<!-- 2xx Success -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-emerald-600">2xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Success</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">200</span><span><span class="font-medium text-gray-900">OK</span> <span class="text-gray-400">—</span> <span class="text-gray-600">успешный ответ</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">201</span><span><span class="font-medium text-gray-900">Created</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ресурс создан</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-emerald-600 w-8 shrink-0">204</span><span><span class="font-medium text-gray-900">No Content</span> <span class="text-gray-400">—</span> <span class="text-gray-600">без тела ответа</span></span></li>
+  </ul>
+</div>
+
+<!-- 4xx Client Error -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-amber-600">4xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Client Error</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">400</span><span><span class="font-medium text-gray-900">Bad Request</span> <span class="text-gray-400">—</span> <span class="text-gray-600">неверный формат</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">401</span><span><span class="font-medium text-gray-900">Unauthorized</span> <span class="text-gray-400">—</span> <span class="text-gray-600">требуется авторизация</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">403</span><span><span class="font-medium text-gray-900">Forbidden</span> <span class="text-gray-400">—</span> <span class="text-gray-600">доступ запрещён</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">404</span><span><span class="font-medium text-gray-900">Not Found</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ресурс не найден</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">409</span><span><span class="font-medium text-gray-900">Conflict</span> <span class="text-gray-400">—</span> <span class="text-gray-600">конфликт состояния</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">422</span><span><span class="font-medium text-gray-900">Unprocessable</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ошибка валидации</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-amber-600 w-8 shrink-0">429</span><span><span class="font-medium text-gray-900">Too Many Req.</span> <span class="text-gray-400">—</span> <span class="text-gray-600">превышен rate limit</span></span></li>
+  </ul>
+</div>
+
+<!-- 5xx Server Error -->
+<div>
+  <div class="flex items-baseline gap-2 mb-2 pb-1.5 border-b border-gray-200">
+    <span class="font-mono text-lg font-semibold text-red-600">5xx</span>
+    <span class="text-sm font-medium text-gray-500 uppercase tracking-wide">Server Error</span>
+  </div>
+  <ul class="space-y-1 text-xs leading-snug">
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">500</span><span><span class="font-medium text-gray-900">Internal Error</span> <span class="text-gray-400">—</span> <span class="text-gray-600">необработанная</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">502</span><span><span class="font-medium text-gray-900">Bad Gateway</span> <span class="text-gray-400">—</span> <span class="text-gray-600">ошибка шлюза</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">503</span><span><span class="font-medium text-gray-900">Unavailable</span> <span class="text-gray-400">—</span> <span class="text-gray-600">сервис недоступен</span></span></li>
+    <li class="flex gap-2"><span class="font-mono font-semibold text-red-600 w-8 shrink-0">504</span><span><span class="font-medium text-gray-900">Gateway Timeout</span> <span class="text-gray-400">—</span> <span class="text-gray-600">таймаут шлюза</span></span></li>
+  </ul>
+</div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+---
+layout: default
+---
+
+# OpenAPI
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">Стандарт описания REST API в машиночитаемом формате (YAML или JSON). Текущая версия — 3.1; ранее известен как Swagger.</p>
+
+<div class="grid grid-cols-5 gap-5 mt-3">
+
+<!-- ЛЕВАЯ КОЛОНКА: особенности + инструменты -->
+<div class="col-span-2 space-y-3 text-xs">
+
+  <div>
+    <h3 class="text-sm font-semibold text-gray-900 mb-1 pb-0.5 border-b border-gray-200">Технические особенности</h3>
+    <ul class="space-y-0.5 text-gray-700 leading-snug">
+      <li><strong class="text-gray-900">paths</strong> — эндпоинты, параметры, ответы</li>
+      <li><strong class="text-gray-900">components/schemas</strong> — модели данных (JSON Schema)</li>
+      <li><strong class="text-gray-900">securitySchemes</strong> — API-Key, OAuth2, JWT, Basic…</li>
+      <li><strong class="text-gray-900">$ref</strong> — переиспользование компонентов</li>
+      <li><strong class="text-gray-900">tags</strong> — группировка эндпоинтов</li>
+      <li><strong class="text-gray-900">examples</strong> — примеры запросов/ответов</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="text-sm font-semibold text-gray-900 mb-1 pb-0.5 border-b border-gray-200">Инструменты</h3>
+    <ul class="space-y-0.5 text-gray-700 leading-snug">
+      <li><strong class="text-gray-900">Swagger UI</strong> — интерактивная документация</li>
+      <li><strong class="text-gray-900">Redoc</strong> — статичная трёхколоночная дока</li>
+      <li><strong class="text-gray-900">Swagger Editor</strong> — редактор с live-preview</li>
+      <li><strong class="text-gray-900">OpenAPI Generator</strong> — SDK/стабы на 50+ языков</li>
+      <li><strong class="text-gray-900">Spectral</strong> — линтер спецификации</li>
+      <li><strong class="text-gray-900">Prism</strong> — mock-сервер по спеке</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ПРАВАЯ КОЛОНКА: визуальный пример спецификации -->
+<div class="col-span-3">
+  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
+    <span class="font-mono text-gray-700">petstore.yaml</span>
+    <span class="text-gray-300">·</span>
+    <span>фрагмент спецификации OpenAPI 3.0</span>
+  </div>
+  <div class="bg-gray-900 rounded-lg p-2.5 overflow-hidden">
+
+<pre class="text-[9px] leading-[1.3] font-mono text-gray-100 overflow-auto"><code><span class="text-sky-300">openapi</span>: <span class="text-amber-300">3.0.3</span>
+<span class="text-sky-300">info</span>: { <span class="text-sky-300">title</span>: <span class="text-emerald-300">"Pet Store API"</span>, <span class="text-sky-300">version</span>: <span class="text-emerald-300">"1.0.0"</span> }
+<span class="text-sky-300">servers</span>: [{ <span class="text-sky-300">url</span>: <span class="text-emerald-300">"https://api.example.com/v1"</span> }]
+
+<span class="text-sky-300">paths</span>:
+  <span class="text-pink-300 font-semibold">/pets</span>:
+    <span class="text-sky-300">get</span>:
+      <span class="text-sky-300">summary</span>: <span class="text-emerald-300">"Список питомцев"</span>
+      <span class="text-sky-300">tags</span>: [<span class="text-emerald-300">pets</span>]
+      <span class="text-sky-300">parameters</span>:
+        - { <span class="text-sky-300">name</span>: <span class="text-emerald-300">limit</span>, <span class="text-sky-300">in</span>: <span class="text-emerald-300">query</span>,
+            <span class="text-sky-300">schema</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">integer</span>, <span class="text-sky-300">default</span>: <span class="text-amber-300">20</span> } }
+      <span class="text-sky-300">responses</span>:
+        <span class="text-amber-300">'200'</span>:
+          <span class="text-sky-300">description</span>: <span class="text-emerald-300">"Успех"</span>
+          <span class="text-sky-300">content</span>:
+            <span class="text-sky-300">application/json</span>:
+              <span class="text-sky-300">schema</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">array</span>,
+                <span class="text-sky-300">items</span>: { <span class="text-sky-300">$ref</span>: <span class="text-emerald-300">"#/components/schemas/Pet"</span> } }
+
+<span class="text-sky-300">components</span>:
+  <span class="text-sky-300">schemas</span>:
+    <span class="text-pink-300 font-semibold">Pet</span>:
+      <span class="text-sky-300">type</span>: <span class="text-emerald-300">object</span>
+      <span class="text-sky-300">required</span>: [<span class="text-emerald-300">id</span>, <span class="text-emerald-300">name</span>]
+      <span class="text-sky-300">properties</span>:
+        <span class="text-pink-300">id</span>:   { <span class="text-sky-300">type</span>: <span class="text-emerald-300">integer</span>, <span class="text-sky-300">format</span>: <span class="text-emerald-300">int64</span> }
+        <span class="text-pink-300">name</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">string</span> }
+        <span class="text-pink-300">tag</span>:  { <span class="text-sky-300">type</span>: <span class="text-emerald-300">string</span>, <span class="text-sky-300">enum</span>: [<span class="text-emerald-300">dog</span>, <span class="text-emerald-300">cat</span>, <span class="text-emerald-300">bird</span>] }
+  <span class="text-sky-300">securitySchemes</span>:
+    <span class="text-pink-300 font-semibold">BearerAuth</span>: { <span class="text-sky-300">type</span>: <span class="text-emerald-300">http</span>, <span class="text-sky-300">scheme</span>: <span class="text-emerald-300">bearer</span>, <span class="text-sky-300">bearerFormat</span>: <span class="text-emerald-300">JWT</span> }</code></pre>
+  </div>
+  <div class="text-[10px] text-gray-400 mt-1 leading-snug">
+    <span class="text-sky-300">■</span> ключ · <span class="text-emerald-300">■</span> строка · <span class="text-amber-300">■</span> число · <span class="text-pink-300">■</span> имя ресурса/схемы
   </div>
 </div>
 
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson6">← Занятие 6</a>
-  <a href="/lesson8">Занятие 8 →</a>
-</div>
-
----
-layout: default
----
-
-# Хотим безопасную систему. Что хотим…
-
-<div class="grid grid-cols-2 gap-3 mt-3">
-
-<!-- 1. Аутентификация -->
-<div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="flex-shrink-0 bg-blue-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <polyline points="16 11 18 13 22 9"/>
-      </svg>
-    </span>
-    <strong class="text-blue-900 text-base">Аутентификация</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Проверяет подлинность программы или человека, которые пытаются получить доступ к приложению</p>
-</div>
-
-<!-- 2. Авторизация -->
-<div class="bg-green-50 border-2 border-green-300 rounded-xl p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="flex-shrink-0 bg-green-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
-      </svg>
-    </span>
-    <strong class="text-green-900 text-base">Авторизация</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Проверяет, позволено ли субъекту выполнять запрошенную операцию с заданными данными</p>
-</div>
-
-<!-- 3. Аудит -->
-<div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="flex-shrink-0 bg-orange-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-        <line x1="9" y1="13" x2="15" y2="13"/>
-        <line x1="9" y1="17" x2="15" y2="17"/>
-        <line x1="9" y1="9" x2="11" y2="9"/>
-      </svg>
-    </span>
-    <strong class="text-orange-900 text-base">Аудит</strong>
-  </div>
-  <p class="text-xs leading-relaxed">Отслеживает операции, выполняемые субъектом, чтобы обнаруживать проблемы с безопасностью</p>
-</div>
-
-<!-- 4. Безопасное межсервисное взаимодействие -->
-<div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-3">
-  <div class="flex items-center gap-2 mb-2">
-    <span class="flex-shrink-0 bg-purple-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-    </span>
-    <strong class="text-purple-900 text-base leading-tight">Безопасное межсервисное взаимодействие</strong>
-  </div>
-  <p class="text-xs leading-relaxed">В идеале любое взаимодействие субъектом внутри сервисов и за их пределами должно производиться поверх TLS</p>
-</div>
-
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson6">← Занятие 6</a>
-  <a href="/lesson8">Занятие 8 →</a>
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
 </div>

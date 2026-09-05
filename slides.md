@@ -3,6 +3,10 @@ src: ./pages/title.md
 ---
 
 ---
+src: ./pages/introduction.md
+---
+
+---
 src: ./pages/lesson1.md
 ---
 
@@ -40,4 +44,8 @@ src: ./pages/lesson9.md
 
 ---
 src: ./pages/lesson10.md
+---
+
+---
+src: ./pages/lesson11.md
 ---

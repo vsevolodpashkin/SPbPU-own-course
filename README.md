@@ -1,16 +1,19 @@
-# Horizontal Well Presentation (Slidev)
+# Проектирование современных информационных систем (СПбПУ)
 
-A [Slidev](https://sli.dev) presentation with 4 slides covering two topics:
-horizontal drilling (with a `Horizontal-well-schema.png` schematic and a Kotlin code
-sample) and business analysis (with the BABOK v3 definition).
+[Slidev](https://sli.dev)-курс из 13 слайдов для Санкт-Петербургского Политехнического
+Университета Петра Великого. Покрывает архитектуру и проектирование информационных
+систем: BPMN, C4-модель, Camunda, микросервисы, распределённые системы,
+требования и др.
 
 ## Contents
 
-- `slides.md` — the presentation source (4 slides)
-- `Horizontal-well-schema.png` — image asset used on slide 2
-- `media/image_029.png` — source image for slide 4 (also copied to `public/image_029.png` for Vite)
-- `public/` — static assets served by Vite at the site root
-- `package.json` — Slidev CLI dependency and npm scripts
+- `slides.md` — точка входа Slidev, импортирует слайды из `pages/`
+- `pages/title.md` — титульный слайд
+- `pages/introduction.md` — введение в курс
+- `pages/lesson1.md` … `pages/lesson11.md` — слайды занятий (11 шт.)
+- `public/` — статические ассеты (BPMN, C4, Camunda, микросервисы и т.п.)
+- `netlify.toml` — конфиг деплоя в Netlify (build, SPA-fallback, Node 20)
+- `package.json` — Slidev CLI и npm-скрипты
 
 ## Requirements
 
@@ -150,19 +153,11 @@ jobs:
 
 1. Push the repository to GitHub/GitLab/Bitbucket.
 2. In Netlify → **Add new site** → **Import an existing project**, select the repo.
-3. Set the build settings:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
-   - **Environment variable:** `NODE_VERSION=20` (if needed)
-4. Click **Deploy site**. Subsequent pushes to the linked branch will redeploy automatically.
+3. Click **Deploy site**. Subsequent pushes to the linked branch will redeploy automatically.
 
-A `netlify.toml` is optional but recommended:
-
-```toml
-[build]
-  command  = "npm run build"
-  publish  = "dist"
-```
+Build settings (command, publish directory, Node version) и SPA-fallback redirect
+подхватываются автоматически из `netlify.toml` — ничего дополнительно настраивать
+не нужно.
 
 ### Option 3 — Vercel
 
@@ -192,14 +187,15 @@ Slidev uses client-side navigation between slides.
 
 ```
 .
-├── Horizontal-well-schema.png   # image asset for slide 2
-├── media/
-│   └── image_029.png            # source image for slide 4
-├── public/
-│   └── image_029.png            # Vite-served copy of media/image_029.png
-├── package.json                 # Slidev CLI dependency & scripts
-├── README.md                    # this file
-└── slides.md                    # the 4-slide presentation source
+├── netlify.toml                 # Netlify build/publish/redirects config
+├── pages/
+│   ├── title.md                 # титульный слайд
+│   ├── introduction.md          # введение в курс
+│   └── lesson1.md … lesson11.md # слайды занятий (11 шт.)
+├── public/                      # статические ассеты, отдаваемые Vite
+├── package.json                 # Slidev CLI & npm-скрипты
+├── README.md                    # этот файл
+└── slides.md                    # точка входа Slidev
 ```
 
 ## License

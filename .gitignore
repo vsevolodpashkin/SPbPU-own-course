@@ -3,3 +3,5 @@ node_modules
 .codegraph
 package-lock.json
 dist
+.netlify
+index.html

@@ -1,0 +1,17 @@
+[build]
+  # Build command and publish directory for the Slidev static site.
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Pin Node.js version for reproducible builds (Slidev CLI 0.50 requires Node >= 18).
+  NODE_VERSION = "20"
+
+# SPA fallback: Slidev uses client-side routing between slides
+# (URLs like /1, /2, …). Netlify must serve index.html for unknown paths,
+# but real assets under /assets/* are matched first, so this only catches
+# paths that don't exist on disk.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

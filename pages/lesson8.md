@@ -4,321 +4,241 @@ layout: center
 
 # Архитектура ПО
 
-<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 2</div>
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 1. Архитектура ИС и стили. Документирование</div>
 <div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
 
----
-layout: default
----
-
-# Архитектурные стили
-
-<p class="text-sm leading-snug -mt-3">
-<strong class="text-gray-900">Архитектурный стиль</strong> — набор принципов и шаблонов, определяющих структуру системы: как организованы компоненты, как они взаимодействуют и развёртываются.
-</p>
-
-<div class="grid grid-cols-2 gap-x-6 mt-3">
-
-<!-- Монолитные -->
-<div>
-  <div class="flex items-baseline gap-2 mb-2 pb-1 border-b border-gray-300">
-    <span class="text-sm font-semibold uppercase tracking-wide text-gray-700">Монолитные</span>
-    <span class="text-xs text-gray-400">— единый артефакт развёртывания</span>
-  </div>
-
-  <!-- Многоуровневая (highlighted) -->
-  <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded p-2 mb-1.5">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-emerald-900 text-sm">Многоуровневая</strong>
-      <span class="text-xs text-emerald-700 italic">(Layered)</span>
-    </div>
-    <p class="text-xs text-gray-700 leading-snug mt-0.5">Разделение на слои: представление → бизнес-логика → данные.</p>
-  </div>
-
-  <!-- Конвейерная -->
-  <div class="px-2 py-1.5 mb-1.5">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">Конвейерная</strong>
-      <span class="text-xs text-gray-500 italic">(Pipeline)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Данные проходят цепочку последовательных обработчиков (фильтров).</p>
-  </div>
-
-  <!-- Микроядерная -->
-  <div class="px-2 py-1.5">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">Микроядерная</strong>
-      <span class="text-xs text-gray-500 italic">(Microkernel)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Минимальное ядро + подключаемые модули-плагины.</p>
-  </div>
-</div>
-
-<!-- Распределённые -->
-<div>
-  <div class="flex items-baseline gap-2 mb-2 pb-1 border-b border-gray-300">
-    <span class="text-sm font-semibold uppercase tracking-wide text-gray-700">Распределённые</span>
-    <span class="text-xs text-gray-400">— компоненты на разных узлах</span>
-  </div>
-
-  <!-- На основе сервисов -->
-  <div class="px-2 py-0 mb-0">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">На основе сервисов</strong>
-      <span class="text-xs text-gray-500 italic">(Service-Based)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Несколько крупных сервисов, разделяющих общую БД.</p>
-  </div>
-
-  <!-- Управляемая событиями -->
-  <div class="px-2 py-0 mb-0">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">Управляемая событиями</strong>
-      <span class="text-xs text-gray-500 italic">(Event-Driven)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Асинхронное взаимодействие через брокер событий.</p>
-  </div>
-
-  <!-- На основе пространства -->
-  <div class="px-2 py-0 mb-0">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">На основе пространства</strong>
-      <span class="text-xs text-gray-500 italic">(Space-Based)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Масштабирование через репликацию данных in-memory.</p>
-  </div>
-
-  <!-- Сервис-ориентированная -->
-  <div class="px-2 py-0 mb-0">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-gray-900 text-sm">Сервис-ориентированная</strong>
-      <span class="text-xs text-gray-500 italic">(SOA)</span>
-    </div>
-    <p class="text-xs text-gray-600 leading-snug mt-0.5">Слабо связанные сервисы, общаются через ESB.</p>
-  </div>
-
-  <!-- Микросервисов (highlighted) -->
-  <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded p-1">
-    <div class="flex items-baseline gap-2">
-      <strong class="text-emerald-900 text-sm">Микросервисов</strong>
-      <span class="text-xs text-emerald-700 italic">(Microservices)</span>
-    </div>
-    <p class="text-xs text-gray-700 leading-snug mt-0.5">Мелкие сервисы со своей БД и независимым деплоем.</p>
-  </div>
-</div>
-
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson8">← Занятие 8</a>
-  <a href="/lesson10">Занятие 10 →</a>
-</div>
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
 
 ---
 layout: default
 ---
 
-# Монолитная многоуровневая архитектура
+# Архитектура ПО по IEEE Std 1471-2000
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
-Единый артефакт с разделением кода на слои: <strong class="text-gray-700">Presentation → Business Logic → Data Access</strong>. Без строгой дисциплины быстро превращается в «big ball of mud».
+<em>Recommended Practice for Architectural Description of Software-Intensive Systems</em> — стандарт, определяющий терминологию и практики описания архитектуры программно-нагруженных систем.
 </p>
 
-<div class="grid grid-cols-2 gap-4 mt-2">
-
-<!-- Преимущества -->
-<div class="bg-emerald-50 border-l-4 border-emerald-500 rounded p-2.5">
-  <h3 class="text-sm font-semibold text-emerald-800 mb-1.5 flex items-center gap-1.5">
-    <span class="text-emerald-600">✓</span> Преимущества
-  </h3>
-  <ul class="text-xs text-gray-700 leading-snug space-y-1">
-    <li>• <strong class="text-gray-900">Простая структура</strong> — легко понять и начать</li>
-    <li>• <strong class="text-gray-900">Один артефакт</strong> — быстрый локальный деплой</li>
-    <li>• <strong class="text-gray-900">Стандартные паттерны</strong> — привычные инструменты</li>
-    <li>• <strong class="text-gray-900">Простое тестирование</strong> — слои изолированы</li>
-  </ul>
-</div>
-
-<!-- Недостатки -->
-<div class="bg-red-50 border-l-4 border-red-500 rounded p-2.5">
-  <h3 class="text-sm font-semibold text-red-800 mb-1.5 flex items-center gap-1.5">
-    <span class="text-red-600">✗</span> Недостатки
-  </h3>
-  <ul class="text-xs text-gray-700 leading-snug space-y-1">
-    <li>• <strong class="text-gray-900">Сильная связанность</strong> при слабой дисциплине</li>
-    <li>• <strong class="text-gray-900">Только целиком</strong> — нет частичного масштабирования</li>
-    <li>• <strong class="text-gray-900">Долгие build/deploy</strong> с ростом кодовой базы</li>
-    <li>• <strong class="text-gray-900">Lock-in на стек</strong> + single point of failure</li>
-  </ul>
-</div>
-
-</div>
-
-<!-- Пример спагетти-кода -->
-<div class="mt-2.5">
-  <div class="text-xs text-gray-500 mb-1 flex items-center gap-2">
-    <span class="font-mono text-gray-700">app.py</span>
-    <span class="text-gray-300">·</span>
-    <span>спагетти-вариант: все слои в одном файле</span>
+<!-- Главное определение -->
+<div class="mt-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-3 relative">
+  <div class="absolute top-2 right-2 flex items-center gap-1 bg-white border border-indigo-200 rounded px-2 py-1 shadow-sm">
+    <span class="font-mono font-bold text-indigo-800 text-sm">IEEE</span>
+    <span class="text-[9px] text-gray-500 font-mono leading-none">Std<br>1471<br>2000</span>
   </div>
-  <div class="bg-gray-900 rounded-lg p-2.5 overflow-hidden">
-
-<pre class="text-[9px] leading-[1.3] font-mono text-gray-100 overflow-auto"><code><span class="text-purple-400">import</span> sqlite3
-<span class="text-purple-400">from</span> flask <span class="text-purple-400">import</span> Flask, request, jsonify
-
-app = Flask(__name__)
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">db</span>(): <span class="text-purple-400">return</span> sqlite3.connect(<span class="text-emerald-300">"shop.db"</span>)  <span class="text-gray-500"># «слой данных»</span>
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">get_user</span>(uid):                                                <span class="text-gray-500"># бизнес</span>
-    r = db().execute(<span class="text-emerald-300">"SELECT * FROM users WHERE id=?"</span>, (uid,)).fetchone()
-    <span class="text-purple-400">return</span> r <span class="text-purple-400">and</span> {<span class="text-emerald-300">"id"</span>: r[<span class="text-amber-300">0</span>], <span class="text-emerald-300">"name"</span>: r[<span class="text-amber-300">1</span>], <span class="text-emerald-300">"balance"</span>: r[<span class="text-amber-300">2</span>]}
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">charge_user</span>(uid, amount):                                    <span class="text-gray-500"># бизнес → данные + email</span>
-    user = get_user(uid)
-    <span class="text-purple-400">if not</span> user <span class="text-purple-400">or</span> user[<span class="text-emerald-300">"balance"</span>] &lt; amount:
-        send_email(uid, <span class="text-emerald-300">"no money"</span>)                              <span class="text-gray-500"># → email</span>
-        <span class="text-purple-400">return</span> <span class="text-purple-400">False</span>
-    db().execute(<span class="text-emerald-300">"UPDATE users SET balance=balance-? WHERE id=?"</span>, (amount, uid))
-    <span class="text-purple-400">return</span> <span class="text-purple-400">True</span>
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">send_email</span>(uid, msg):                                         <span class="text-gray-500"># бизнес знает про SMTP</span>
-    <span class="text-purple-400">print</span>(<span class="text-green-300">f"[SMTP] u{uid}: {msg}"</span>)
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">place_order</span>(uid, items):                                     <span class="text-gray-500"># бизнес</span>
-    total = <span class="text-yellow-300">sum</span>(i[<span class="text-emerald-300">"price"</span>]*i[<span class="text-emerald-300">"qty"</span>] <span class="text-purple-400">for</span> i <span class="text-purple-400">in</span> items)
-    <span class="text-purple-400">if not</span> charge_user(uid, total): <span class="text-purple-400">return</span> <span class="text-purple-400">None</span>
-    cur = db().execute(<span class="text-emerald-300">"INSERT INTO orders VALUES(NULL,?,?,1)"</span>, (uid, total))
-    send_email(uid, <span class="text-emerald-300">f"order #{cur.lastrowid}"</span>)
-    <span class="text-purple-400">if</span> total &gt; <span class="text-amber-300">10000</span>: notify_admin(<span class="text-emerald-300">f"big #{cur.lastrowid}"</span>)  <span class="text-gray-500"># → админ</span>
-    <span class="text-purple-400">return</span> cur.lastrowid
-
-<span class="text-purple-400">def</span> <span class="text-yellow-300">notify_admin</span>(m): <span class="text-purple-400">print</span>(<span class="text-emerald-300">f"[ADMIN] {m}"</span>)              <span class="text-gray-500"># бизнес знает админа</span>
-
-<span class="text-cyan-300">@app</span>.route(<span class="text-emerald-300">"/users/&lt;int:uid&gt;"</span>)
-<span class="text-purple-400">def</span> <span class="text-yellow-300">user_view</span>(uid):                                             <span class="text-gray-500"># presentation</span>
-    user = get_user(uid)
-    <span class="text-purple-400">if not</span> user: <span class="text-purple-400">return</span> jsonify({<span class="text-emerald-300">"error"</span>:<span class="text-emerald-300">"not_found"</span>}), <span class="text-amber-300">404</span>
-    <span class="text-gray-500"># presentation лезет в БД напрямую:</span>
-    cnt = db().execute(<span class="text-emerald-300">"SELECT COUNT(*) FROM orders WHERE user_id=?"</span>, (uid,)).fetchone()[<span class="text-amber-300">0</span>]
-    <span class="text-purple-400">return</span> jsonify({**user, <span class="text-emerald-300">"orders_count"</span>: cnt})
-
-<span class="text-cyan-300">@app</span>.route(<span class="text-emerald-300">"/orders"</span>, methods=[<span class="text-emerald-300">"POST"</span>])
-<span class="text-purple-400">def</span> <span class="text-yellow-300">create_order</span>():
-    d = request.get_json()
-    oid = place_order(d[<span class="text-emerald-300">"user_id"</span>], d[<span class="text-emerald-300">"items"</span>])
-    <span class="text-purple-400">return</span> jsonify({<span class="text-emerald-300">"order_id"</span>: oid}) <span class="text-purple-400">if</span> oid <span class="text-purple-400">else</span> (jsonify({<span class="text-emerald-300">"error"</span>:<span class="text-emerald-300">"pay"</span>}), <span class="text-amber-300">402</span>)
-
-db().executescript(<span class="text-emerald-300">"CREATE TABLE users(id,name,balance); CREATE TABLE orders(id,user_id,total,paid);"</span>)
-app.run(debug=<span class="text-purple-400">True</span>)</code></pre>
+  <p class="text-[13px] text-gray-800 leading-relaxed pr-24">
+    <strong class="text-indigo-900">Архитектура</strong> — <em>фундаментальная организация системы</em>, воплощённая в её компонентах, их взаимосвязях друг с другом и со средой, а также принципах, определяющих её проектирование и эволюцию.
+  </p>
+  <div class="text-[10px] text-gray-500 italic mt-2">
+    Перевод термина 3.5 «architecture» из IEEE Std 1471-2000.
   </div>
 </div>
 
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson7">← Занятие 7</a>
-  <a href="/lesson9">Занятие 9 →</a>
+<!-- Ключевые термины -->
+<div class="grid grid-cols-3 gap-2 mt-3 text-xs">
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Stakeholder</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">заинтересованная сторона</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Лицо, группа или организация, имеющие интересы относительно системы.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Concern</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">интерес / забота</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">То, что важно для удовлетворения заинтересованной стороны в системе.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Mission</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">миссия</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Роль или назначение системы в её среде.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Architectural Description</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">архитектурное описание (AD)</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Коллекция продуктов, документирующих архитектуру.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">Viewpoint</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">точка зрения</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Спецификация соглашений для построения и использования представлений.</p>
+  </div>
+
+  <div class="bg-white border border-gray-200 rounded-lg p-2">
+    <div class="font-semibold text-indigo-700 text-[11px] uppercase tracking-wide">View</div>
+    <div class="text-gray-500 text-[10px] mt-0.5">представление</div>
+    <p class="text-gray-700 text-[11px] leading-snug mt-1">Репрезентация всей системы с позиции определённого набора интересов.</p>
+  </div>
+
+</div>
+
+<!-- Атрибуция -->
+<div class="mt-3 text-[9px] text-gray-400 leading-tight text-center italic">
+  IEEE, IEEE Std и название стандарта являются торговыми марками Institute of Electrical and Electronics Engineers, Inc.
+  Цитата термина приведена в учебных целях (fair use). Логотип IEEE не воспроизводится во избежание нарушения товарных знаков.
 </div>
 
 ---
 layout: default
 ---
 
-# Микросервисная архитектура
+# Теорема CAP
 
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-Стиль архитектуры, при котором система строится как набор слабо связанных, <strong class="text-gray-700">независимо развёртываемых сервисов</strong>, взаимодействующих через лёгкие сетевые протоколы (HTTP/REST, gRPC, очереди сообщений).
-</p>
+<p class="text-sm leading-snug -mt-2">Любая сетевая система, предоставляющая общие данные, может предоставлять только 2 из следующих 3-х свойств:</p>
+<ul class="text-xs leading-snug mt-1 mb-2 space-y-0.5 list-none">
+  <li><span class="font-bold text-blue-700">C</span>: <em>consistency</em> — согласованность, при которой общий и реплицируемый элемент данных отображается в виде единой актуальной копии</li>
+  <li><span class="font-bold text-green-700">A</span>: <em>availability</em> — доступность, с помощью которой всегда будут выполняться обновления</li>
+  <li><span class="font-bold text-orange-700">P</span>: <em>partition tolerance</em> — допустимость разделения группы процессов (например, из-за сбоя сети)</li>
+</ul>
 
-<!-- Hero-определение с иконкой -->
-<div class="mt-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-1 flex items-start gap-3">
-  <span class="flex-shrink-0 bg-indigo-600 text-white rounded-lg w-10 h-10 flex items-center justify-center">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="3"/>
-      <circle cx="4" cy="4" r="2"/>
-      <circle cx="20" cy="4" r="2"/>
-      <circle cx="4" cy="20" r="2"/>
-      <circle cx="20" cy="20" r="2"/>
-      <line x1="5.5" y1="5.5" x2="9.5" y2="9.5"/>
-      <line x1="14.5" y1="9.5" x2="18.5" y2="5.5"/>
-      <line x1="9.5" y1="14.5" x2="5.5" y2="18.5"/>
-      <line x1="14.5" y1="14.5" x2="18.5" y2="18.5"/>
-    </svg>
-  </span>
-  <div class="flex-1">
-    <div class="text-[10px] uppercase tracking-wider font-semibold text-indigo-600">определение</div>
-    <p class="text-sm text-gray-800 leading-snug mt-0.5">
-      <em>«Микросервисная архитектура»</em> — подход к разработке единой системы как набора <strong class="text-indigo-900">слабо связанных</strong>, <strong class="text-indigo-900">автономно развёртываемых</strong> сервисов, каждый из которых отвечает за <strong class="text-indigo-900">одну бизнес-возможность</strong> и общается с другими через сетевые протоколы.
-    </p>
+<div class="flex justify-center my-2">
+<svg viewBox="0 0 420 400" class="w-full max-w-md" text-rendering="optimizeLegibility">
+<polygon points="210,60 60,310 360,310" fill="#fafafa" stroke="#374151" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="210" cy="60" r="32" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+<circle cx="60" cy="310" r="32" fill="#10b981" stroke="#047857" stroke-width="2"/>
+<circle cx="360" cy="310" r="32" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
+<text x="210" y="60" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">C</text>
+<text x="60" y="310" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">A</text>
+<text x="360" y="310" text-anchor="middle" dominant-baseline="central" style="fill:white;font:bold 26px sans-serif">P</text>
+<text x="210" y="20" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Согласованность</text>
+<text x="60" y="372" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Доступность</text>
+<text x="360" y="372" text-anchor="middle" dominant-baseline="central" style="fill:#1f2937;font:600 12px sans-serif">Устойчивость</text>
+<text x="128" y="200" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">CA</text>
+<text x="292" y="200" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">CP</text>
+<text x="210" y="285" text-anchor="middle" dominant-baseline="central" style="fill:#374151;font:bold 18px sans-serif">AP</text>
+<text x="210" y="230" text-anchor="middle" dominant-baseline="central" style="fill:#6b7280;font:italic 11px sans-serif">при Partition →</text>
+<text x="210" y="248" text-anchor="middle" dominant-baseline="central" style="fill:#6b7280;font:italic 11px sans-serif">выбор: C или A</text>
+</svg>
+</div>
+
+<div class="grid grid-cols-3 gap-4">
+
+<!-- C card -->
+<div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="bg-blue-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">C</span>
+    <strong class="text-blue-900">Consistency</strong>
+  </div>
+  <p class="text-xs leading-relaxed mb-2">Каждое чтение возвращает результат последней записи или ошибку.</p>
+  <div class="text-xs opacity-75 leading-relaxed">
+    <span class="font-semibold">CP-системы:</span> HBase, MongoDB, etcd, Consul, ZooKeeper
   </div>
 </div>
 
-<!-- Плюсы и минусы -->
-<div class="grid grid-cols-2 gap-4 mt-3">
-
-  <!-- ПЛЮСЫ -->
-  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3">
-    <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-emerald-200">
-      <span class="flex-shrink-0 bg-emerald-600 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      </span>
-      <strong class="text-emerald-800 text-base">Плюсы</strong>
-    </div>
-    <ul class="text-xs text-gray-800 leading-snug space-y-1">
-      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Высокая масштабируемость</strong> — каждый сервис масштабируется независимо под свою нагрузку</div></li>
-      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Гибкость изменения</strong> — изменение одного сервиса не затрагивает остальные, легче катить релизы</div></li>
-      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Модульность</strong> — каждый сервис = отдельная бизнес-возможность со своей командой и стеком</div></li>
-      <li class="flex gap-1.5"><span class="text-emerald-600 font-bold mt-0.5">✓</span><div><strong class="text-gray-900">Эластичность</strong> — автоматическое масштабирование спотовой нагрузки, отказ отдельных узлов без потери системы</div></li>
-    </ul>
+<!-- A card -->
+<div class="bg-green-50 border-2 border-green-200 rounded-lg p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="bg-green-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">A</span>
+    <strong class="text-green-900">Availability</strong>
   </div>
-
-  <!-- МИНУСЫ -->
-  <div class="bg-red-50 border-2 border-red-300 rounded-xl p-3">
-    <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-red-200">
-      <span class="flex-shrink-0 bg-red-600 text-white rounded-lg w-8 h-8 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </span>
-      <strong class="text-red-800 text-base">Минусы</strong>
-    </div>
-    <ul class="text-xs text-gray-800 leading-snug space-y-1">
-      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Сложность общего решения</strong> — распределённые транзакции, сетевые задержки, eventual consistency</div></li>
-      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Общая стоимость владения</strong> — больше инфраструктуры, мониторинга, команд DevOps</div></li>
-      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Скорость работы</strong> — сетевые вызовы между сервисами медленнее вызовов функций в монолите</div></li>
-      <li class="flex gap-1.5"><span class="text-red-600 font-bold mt-0.5">✗</span><div><strong class="text-gray-900">Сложность инфраструктуры</strong> — CI/CD, service mesh, observability, развёртывание — отдельная дисциплина</div></li>
-    </ul>
+  <p class="text-xs leading-relaxed mb-2">Каждый запрос получает ответ, без гарантии свежести данных.</p>
+  <div class="text-xs opacity-75 leading-relaxed">
+    <span class="font-semibold">AP-системы:</span> Cassandra, DynamoDB, CouchDB, Riak
   </div>
+</div>
+
+<!-- P card -->
+<div class="bg-orange-50 border-2 border-orange-200 rounded-lg p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="bg-orange-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm">P</span>
+    <strong class="text-orange-900">Partition tolerance</strong>
+  </div>
+  <p class="text-xs leading-relaxed mb-2">Система работает при потере/задержке сообщений между узлами.</p>
+  <div class="text-xs opacity-75 leading-relaxed">
+    ⚠️ <span class="font-semibold">P обязательно</span> в любой распределённой системе → реальный выбор между CP и AP.
+  </div>
+</div>
 
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/48">← C4 Level 2</a>
-  <a href="/lesson10">Занятие 10 →</a>
+  <a href="/lesson6">← Занятие 6</a>
+  <a href="/lesson8">Занятие 8 →</a>
 </div>
 
 ---
 layout: default
 ---
 
-# Микросервисная архитектура — пример
+# Хотим безопасную систему. Что хотим…
 
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-Типовая схема микросервисной системы на примере e-commerce
-</p>
+<div class="grid grid-cols-2 gap-3 mt-3">
 
-<!-- Изображение -->
-<div class="flex items-center justify-center mt-3">
-  <img src="/Microservices.png" alt="Схема микросервисной архитектуры e-commerce системы" class="rounded shadow-md border border-gray-200 max-h-[40vh] max-w-[90vw] object-contain bg-white" />
+<!-- 1. Аутентификация -->
+<div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-blue-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <polyline points="16 11 18 13 22 9"/>
+      </svg>
+    </span>
+    <strong class="text-blue-900 text-base">Аутентификация</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Проверяет подлинность программы или человека, которые пытаются получить доступ к приложению</p>
 </div>
 
-<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
-  На схеме: 5 доменных сервисов (пользователи, заказы, каталог, платежи, доставка) с собственными БД и общим API-шлюзом + наблюдаемость (логирование, мониторинг, трейсинг, конфигурирование, реестр сервисов).
+<!-- 2. Авторизация -->
+<div class="bg-green-50 border-2 border-green-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-green-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    </span>
+    <strong class="text-green-900 text-base">Авторизация</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Проверяет, позволено ли субъекту выполнять запрошенную операцию с заданными данными</p>
+</div>
+
+<!-- 3. Аудит -->
+<div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-orange-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="9" y1="13" x2="15" y2="13"/>
+        <line x1="9" y1="17" x2="15" y2="17"/>
+        <line x1="9" y1="9" x2="11" y2="9"/>
+      </svg>
+    </span>
+    <strong class="text-orange-900 text-base">Аудит</strong>
+  </div>
+  <p class="text-xs leading-relaxed">Отслеживает операции, выполняемые субъектом, чтобы обнаруживать проблемы с безопасностью</p>
+</div>
+
+<!-- 4. Безопасное межсервисное взаимодействие -->
+<div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-purple-500 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </span>
+    <strong class="text-purple-900 text-base leading-tight">Безопасное межсервисное взаимодействие</strong>
+  </div>
+  <p class="text-xs leading-relaxed">В идеале любое взаимодействие субъектом внутри сервисов и за их пределами должно производиться поверх TLS</p>
+</div>
+
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/49">← Определение MSA</a>
-  <a href="/lesson10">Занятие 10 →</a>
+  <a href="/lesson6">← Занятие 6</a>
+  <a href="/lesson8">Занятие 8 →</a>
 </div>
