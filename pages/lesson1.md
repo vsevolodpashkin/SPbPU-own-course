@@ -535,10 +535,367 @@ layout: default
 layout: default
 ---
 
-# Цели по SMART
+# Бизнес-цели. Методология SMART
 
-<div class="flex items-center justify-center h-full">
-  <img src="/SMART_01.png" alt="Цели по SMART" class="rounded shadow-lg max-h-[40vh]" />
+<!-- Определение бизнес-цели -->
+<div class="bg-blue-50 border-l-4 border-blue-100 rounded-r-lg p-2 mb-3">
+  <div class="text-[10px] font-semibold text-blue-700 uppercase tracking-wider mb-1">Бизнес-цель · определение</div>
+  <p class="text-sm text-gray-800 leading-snug italic">
+    «Суммирует важные преимущества бизнеса, предоставляемые продуктом, в количественном и измеряемом виде.»
+  </p>
+</div>
+
+<!-- Изображение SMART -->
+<div class="flex justify-center">
+  <img src="/SMART_01.png" alt="Цели по SMART" class="rounded shadow-lg max-h-[30vh]" />
+</div>
+
+<!-- Источник определения -->
+<div class="text-[10px] text-gray-500 leading-tight italic text-center mt-3">
+  Источник определения:&nbsp;
+  Вигерс К., Битти Дж. <em>Разработка требований к программному обеспечению</em> / пер. с англ. — 3-е изд. — М.: БХВ-Петербург, 2014. — <a href="https://www.bhv.ru/" class="underline" target="_blank" rel="noopener">bhv.ru</a>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/title">← Титульный слайд</a>
+  <a href="/lesson2">Занятие 2 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Заинтересованные стороны ИТ-проекта
+
+<p class="text-xs opacity-70 italic -mt-2">
+<strong>Заинтересованная сторона</strong> (stakeholder) — любое лицо или группа, влияющие на проект или подверженные его влиянию.
+</p>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useMotion } from '@vueuse/motion'
+
+// Каждая карточка получает свой экземпляр useMotion с двумя вариантами:
+// initial — серая карточка лежит на своём месте (покрывает содержимое)
+// dismissed — карточка «улетает» за пределы слайда (вправо-вверх, с поворотом и затуханием)
+// Клик по карточке переключает состояние через apply() с пружинной анимацией.
+function makeCard() {
+  const target = ref<HTMLElement | null>(null)
+  const motion = useMotion(target, {
+    initial: {
+      x: 0, y: 0, opacity: 1, rotate: 0, scale: 1,
+      transition: { type: 'spring', stiffness: 220, damping: 22 },
+    },
+    dismissed: {
+      x: 240, y: -220, opacity: 0, rotate: 12, scale: 0.9,
+      transition: { type: 'spring', stiffness: 180, damping: 18 },
+    },
+  })
+  const revealed = ref(false)
+  const toggle = () => {
+    revealed.value = !revealed.value
+    motion.apply(revealed.value ? 'dismissed' : 'initial')
+  }
+  return { target, revealed, toggle }
+}
+
+const cards = {
+  devs:      makeCard(),
+  ops:       makeCard(),
+  sec:       makeCard(),
+  sponsor:   makeCard(),
+  users:     makeCard(),
+  regulator: makeCard(),
+}
+</script>
+
+<style scoped>
+.stake-card {
+  position: relative;
+  overflow: visible;
+  border-radius: 0.5rem;
+}
+.stake-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, #94a3b8 0%, #475569 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25), inset 0 0 0 2px rgba(255,255,255,0.08);
+  will-change: transform, opacity;
+}
+.stake-cover-name { font-size: 12px; line-height: 1.1; text-align: center; padding: 0 6px; }
+.stake-cover-hint { font-size: 9px; opacity: 0.85; margin-top: 6px; font-weight: 400; letter-spacing: 0.02em; }
+.stake-cover-tap  { font-size: 14px; opacity: 0.9; margin-bottom: 3px; }
+</style>
+
+<!-- ============ ВНУТРЕННИЕ ЗАИНТЕРЕСОВАННЫЕ СТОРОНЫ ============ -->
+<h3 class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mt-2 mb-1.5 flex items-center gap-2">
+<span class="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
+Внутренние · команда проекта · 3
+</h3>
+
+<div class="grid grid-cols-3 gap-2">
+
+  <!-- 1. Разработчик ПО -->
+  <div class="stake-card bg-emerald-50 border-2 border-emerald-200 p-2 cursor-pointer" @click="cards.devs.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-emerald-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-900 text-xs">Разработчик ПО</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> реализуемость, качество кода, сроки спринтов.
+    </p>
+    <div :ref="cards.devs.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Разработчик ПО</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+  <!-- 2. Специалисты Эксплуатации -->
+  <div class="stake-card bg-emerald-50 border-2 border-emerald-200 p-2 cursor-pointer" @click="cards.ops.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-emerald-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+          <polyline points="6 9 9 12 13 8"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-900 text-xs">Специалисты Эксплуатации</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> надёжность (SLA), наблюдаемость, MTTR.
+    </p>
+    <div :ref="cards.ops.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Специалисты Эксплуатации</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+  <!-- 3. Службы контроля (ИБ) -->
+  <div class="stake-card bg-emerald-50 border-2 border-emerald-200 p-2 cursor-pointer" @click="cards.sec.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-emerald-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <strong class="text-emerald-900 text-xs">Службы контроля (ИБ)</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> защита данных, политики ИБ, аудит.
+    </p>
+    <div :ref="cards.sec.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Службы контроля (ИБ)</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ ВНЕШНИЕ ЗАИНТЕРЕСОВАННЫЕ СТОРОНЫ ============ -->
+<h3 class="text-[11px] font-semibold text-amber-700 uppercase tracking-wider mt-2.5 mb-1.5 flex items-center gap-2">
+<span class="inline-block w-2 h-2 bg-amber-500 rounded-full"></span>
+Внешние · за пределами команды · 3
+</h3>
+
+<div class="grid grid-cols-3 gap-2">
+
+  <!-- 4. Спонсоры (инвесторы) -->
+  <div class="stake-card bg-amber-50 border-2 border-amber-200 p-2 cursor-pointer" @click="cards.sponsor.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-amber-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <line x1="12" y1="1" x2="12" y2="23"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </span>
+      <strong class="text-amber-900 text-xs">Спонсоры (инвесторы)</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> ROI, стратегические цели, контроль бюджета.
+    </p>
+    <div :ref="cards.sponsor.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Спонсоры (инвесторы)</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+  <!-- 5. Пользователи -->
+  <div class="stake-card bg-amber-50 border-2 border-amber-200 p-2 cursor-pointer" @click="cards.users.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-amber-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </span>
+      <strong class="text-amber-900 text-xs">Пользователи</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> UX, функциональность, стабильность.
+    </p>
+    <div :ref="cards.users.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Пользователи</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+  <!-- 6. Регулирующие органы -->
+  <div class="stake-card bg-amber-50 border-2 border-amber-200 p-2 cursor-pointer" @click="cards.regulator.toggle()">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="flex-shrink-0 bg-amber-600 text-white rounded w-7 h-7 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <path d="M3 21h18"/>
+          <path d="M5 21V7l7-4 7 4v14"/>
+          <line x1="9" y1="9" x2="9" y2="15"/>
+          <line x1="15" y1="9" x2="15" y2="15"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+        </svg>
+      </span>
+      <strong class="text-amber-900 text-xs">Регулирующие органы</strong>
+    </div>
+    <p class="text-[10px] text-gray-800 leading-tight">
+      <strong>Интересы:</strong> 152-ФЗ / GDPR, лицензии, отчётность.
+    </p>
+    <div :ref="cards.regulator.target" class="stake-cover">
+      <span class="stake-cover-tap">↗</span>
+      <span class="stake-cover-name">Регулирующие органы</span>
+      <span class="stake-cover-hint">нажмите</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-500 leading-tight italic text-center mt-2">
+Источник определения «заинтересованной стороны»:&nbsp;
+Халл Э., Джексон К., Дик Дж. <em>Инженерия требований</em> / пер. с англ. — М.: ДМК Пресс, 2023. — <a href="https://dmkpress.com/search/?q=%D0%B8%D0%BD%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%B8%D1%8F+%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9+%D1%85%D0%B0%D0%BB%D0%BB" class="underline" target="_blank" rel="noopener">dmkpress.com</a>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/title">← Титульный слайд</a>
+  <a href="/lesson2">Занятие 2 →</a>
+</div>
+
+---
+layout: default
+---
+
+# Основные шаги при инициации ИТ-проекта
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+На старте проекта аналитик последовательно отвечает на три вопроса — <strong class="text-gray-700">кто</strong>, <strong class="text-gray-700">зачем</strong> и <strong class="text-gray-700">что важнее</strong>. Результаты этих шагов ложатся в основу BRD.
+</p>
+
+<div class="grid grid-cols-3 gap-3 mt-3">
+
+<!-- 1. Заинтересованные стороны -->
+<div v-click class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-indigo-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    </span>
+    <strong class="text-indigo-900 text-base">1. Выявить ключевые заинтересованные стороны и их интересы</strong>
+  </div>
+  <p class="text-xs text-gray-800 leading-snug mb-2">
+    Составить полный перечень лиц и групп, <strong class="text-indigo-800">влияющих на проект</strong> или <strong class="text-indigo-800">испытывающих его влияние</strong>, и зафиксировать их интересы.
+  </p>
+  <div class="bg-white/70 border border-indigo-200 rounded-lg p-2">
+    <div class="text-[10px] font-semibold text-indigo-700 uppercase tracking-wider mb-1">Пример · мобильный банк</div>
+    <ul class="text-[11px] text-gray-700 leading-snug space-y-0.5">
+      <li>👤 <strong>Розничные клиенты</strong> — удобство и безопасность операций</li>
+      <li>👤 <strong>Операционисты отделений</strong> — снижение нагрузки и очередей</li>
+      <li>👤 <strong>ИБ и комплаенс</strong> — соответствие 152-ФЗ, PCI DSS</li>
+      <li>👤 <strong>Бизнес-спонсор</strong> — рост доли digital-канала</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. Бизнес-цели -->
+<div v-click class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-emerald-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    </span>
+    <strong class="text-emerald-900 text-base">2. Выявить бизнес-цели из понимания предназначения и системных интересов заинтересованных сторон</strong>
+  </div>
+  <p class="text-xs text-gray-800 leading-snug mb-2">
+    Перевести интересы сторон в <strong class="text-emerald-800">измеримые цели проекта</strong>, опираясь на предназначение будущей системы.
+  </p>
+  <div class="bg-white/70 border border-emerald-200 rounded-lg p-2">
+    <div class="text-[10px] font-semibold text-emerald-700 uppercase tracking-wider mb-1">Пример · мобильный банк</div>
+    <ul class="text-[11px] text-gray-700 leading-snug space-y-0.5">
+      <li>🎯 Доля операций в приложении <strong>40% → 65%</strong> за 12 месяцев</li>
+      <li>🎯 Среднее время платежа <strong>18 → 7 секунд</strong></li>
+      <li>🎯 NPS активных пользователей <strong>≥ 60</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3. Приоритизация целей -->
+<div v-click class="bg-amber-50 border-2 border-amber-300 rounded-xl p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="flex-shrink-0 bg-amber-600 text-white rounded-lg w-9 h-9 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="8" y1="6" x2="21" y2="6"/>
+        <line x1="8" y1="12" x2="21" y2="12"/>
+        <line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/>
+        <line x1="3" y1="12" x2="3.01" y2="12"/>
+        <line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+    </span>
+    <strong class="text-amber-900 text-base">3. Ранжировать бизнес-цели по приоритету</strong>
+  </div>
+  <p class="text-xs text-gray-800 leading-snug mb-2">
+    Упорядочить цели, чтобы при <strong class="text-amber-800">ограниченных ресурсах</strong> команда понимала, что делать в первую очередь (MoSCoW, value/effort).
+  </p>
+  <div class="bg-white/70 border border-amber-200 rounded-lg p-2">
+    <div class="text-[10px] font-semibold text-amber-700 uppercase tracking-wider mb-1">Пример · MoSCoW</div>
+    <ul class="text-[11px] text-gray-700 leading-snug space-y-0.5">
+      <li><strong class="text-red-700">Must:</strong> комплаенс 152-ФЗ, безопасная аутентификация</li>
+      <li><strong class="text-amber-700">Should:</strong> ускорение платежей до 7 секунд</li>
+      <li><strong class="text-emerald-700">Could:</strong> предиктивные подсказки по расходам</li>
+      <li><strong class="text-slate-600">Won't (now):</strong> инвестиционные инструменты</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<!-- Итог -->
+<div class="mt-3 text-[11px] text-gray-600 leading-snug">
+  <strong class="text-gray-800">Итог шага инициации:</strong> заполнены разделы BRD «Цели проекта», «Ключевые заинтересованные стороны» и «Основные положения» — фундамент для дальнейшего сбора требований.
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -552,13 +909,128 @@ layout: default
 
 # Шаблон фиксации бизнес-требований (BRD)
 
-1. **Основные положения**
-2. **Цели проекта**
-3. **Объем проекта**
-4. **Бизнес-требования**
-5. **Ключевые заинтересованные стороны**
-6. **Ограничения проекта**
-7. **Анализ затрат и выгод**
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+</p>
+
+<!-- Slide-in анимация для v-click: выезжают справа -->
+<style>
+.slidev-vclick-hidden {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.slidev-vclick-target {
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+</style>
+
+<div class="grid grid-cols-2 gap-2 mt-3">
+
+<!-- 1. Основные положения -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
+      <strong class="text-indigo-900 text-sm">Основные положения</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— краткое описание продукта/системы и решаемой проблемы</li>
+      <li>— стратегический контекст и обоснование запуска проекта</li>
+      <li>— ключевые термины и сокращения для однозначной трактовки остальных разделов</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. Цели проекта -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
+      <strong class="text-indigo-900 text-sm">Цели проекта</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— SMART-цели с измеримыми метриками (KPI)</li>
+      <li>— критерии успеха и ожидаемые результаты</li>
+      <li>— явная связь с интересами заинтересованных сторон</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3. Объем проекта -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
+      <strong class="text-indigo-900 text-sm">Объем проекта</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— что входит в scope (in-scope)</li>
+      <li>— что явно исключено (out-of-scope)</li>
+      <li>— границы системы и ключевые допущения</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 4. Бизнес-требования -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">4</span>
+      <strong class="text-indigo-900 text-sm">Бизнес-требования</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— высокоуровневые «что», без «как»</li>
+      <li>— формулировки от лица бизнеса</li>
+      <li>— прослеживаемость до целей и заинтересованных сторон</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 5. Ключевые заинтересованные стороны -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">5</span>
+      <strong class="text-indigo-900 text-sm">Ключевые заинтересованные стороны</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— список лиц/групп с ролями и интересами</li>
+      <li>— модель «власть/интерес» или RACI</li>
+      <li>— контактные лица и каналы коммуникации</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6. Ограничения проекта -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">6</span>
+      <strong class="text-indigo-900 text-sm">Ограничения проекта</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— бюджетные, временные, технологические</li>
+      <li>— регуляторные требования (152-ФЗ, GDPR, PCI DSS)</li>
+      <li>— обязательные стандарты и политики организации</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 7. Анализ затрат и выгод -->
+<div v-click>
+  <div class="bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2 h-full">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="bg-indigo-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">7</span>
+      <strong class="text-indigo-900 text-sm">Анализ затрат и выгод</strong>
+    </div>
+    <ul class="text-[10px] text-gray-700 leading-tight space-y-0.5 ml-8">
+      <li>— TCO: CAPEX + OPEX на горизонте проекта</li>
+      <li>— прогноз выгод в денежном выражении</li>
+      <li>— ROI, срок окупаемости, NPV</li>
+    </ul>
+  </div>
+</div>
+
+</div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
   <a href="/1">← Титульный слайд</a>
