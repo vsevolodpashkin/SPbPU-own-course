@@ -1,0 +1,64 @@
+@startuml Educational_System_Context
+title Контекстная диаграмма образовательной системы
+
+skinparam component {
+  BackgroundColor #eef5ff
+  BorderColor #2563eb
+  FontColor #1e40af
+  FontStyle bold
+}
+skinparam package {
+  BackgroundColor #f8fafc
+  BorderColor #475569
+  FontStyle bold
+  FontColor #1e293b
+}
+skinparam actor {
+  FontSize 11
+  FontStyle bold
+}
+skinparam arrow {
+  FontSize 10
+  Color #475569
+}
+
+actor "👨‍🏫\nУчитель" as T
+actor "🎓\nСтудент" as S
+actor "👪\nРодитель" as P
+
+package "Образовательная система" {
+  component "Уведомления"               as N
+  component "Формирование отчётности"  as R
+  component "Электронный дневник"       as D
+  component "Форум"                     as F
+  component "Контроль посещений (СКУД)" as ACC
+  component "Обучение"                  as L
+}
+
+actor "🏛\nВнешняя ИС\nгосотчётности" as EXT
+
+' === Потоки данных от Учителя ===
+T --> D   : оценки, задания
+T --> ACC : отметка посещаемости
+T --> F   : общение с родителями
+T --> R   : данные для отчётов
+T --> N   : уведомления
+T --> L   : учебный контент
+
+' === Потоки данных от Студента ===
+S --> D   : оценки / задания
+S --> F   : общение
+S --> L   : прохождение курсов
+S --> N   : уведомления
+S --> ACC : приход/уход
+
+' === Потоки данных от Родителя ===
+P --> D : оценки ребёнка
+P --> F : общение с учителями
+P --> N : уведомления
+P --> R : отчёты
+
+' === Система → внешняя ИС ===
+R --> EXT : госотчётность
+
+@enduml
