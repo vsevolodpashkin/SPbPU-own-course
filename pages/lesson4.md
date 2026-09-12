@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -77,6 +79,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -148,6 +151,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -211,6 +215,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -252,7 +257,7 @@ layout: default
 
 <!-- Диаграмма -->
 <div class="flex items-center justify-center mt-2">
-  <img src="/edu-context-diagram.png" alt="Контекстная диаграмма образовательной системы — учитель, студент, родитель и Внешняя ИС госотчётности взаимодействуют с компонентами образовательной системы" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
+  <img src="/edu-context-diagram.webp" alt="Контекстная диаграмма образовательной системы — учитель, студент, родитель и Внешняя ИС госотчётности взаимодействуют с компонентами образовательной системы" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
 </div>
 
 <!-- Источник -->

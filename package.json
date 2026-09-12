@@ -16,5 +16,10 @@
     "@slidev/cli": "^0.50.0",
     "@slidev/theme-default": "^0.25.0",
     "@vueuse/motion": "^2.2.6"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4",
+    "svgo": "^4.1.0",
+    "vite-plugin-image-optimizer": "^2.0.3"
   }
 }

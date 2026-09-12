@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -21,6 +22,7 @@ h1 {
 
 ---
 layout: default
+hide: true
 ---
 
 # Ценность контекстных диаграмм
@@ -69,6 +71,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -96,7 +99,7 @@ layout: default
 
 <!-- Диаграмма -->
 <div class="flex items-center justify-center mt-2">
-  <img src="/c4-context.png" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
+  <img src="/c4-context.webp" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
 </div>
 
 <!-- Источник -->
@@ -111,6 +114,7 @@ layout: default
 
 
 ---
+hide: true
 layout: default
 ---
 
@@ -178,6 +182,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -186,6 +191,7 @@ layout: default
 A minimal domain model for a horizontal well, illustrating the geometry behind the schematic.
 
 ---
+hide: true
 layout: default
 ---
 
@@ -263,6 +269,7 @@ layout: default
 </p>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -356,6 +363,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 

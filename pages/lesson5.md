@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -120,6 +122,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -189,6 +192,7 @@ TCP устанавливает соединение через <strong class="te
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -258,6 +262,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -268,7 +273,7 @@ layout: default
 </blockquote>
 
 <div class="flex justify-center mt-2">
-  <img src="/Distributed_system.png" alt="Распределённая система: 6 автономных узлов и пользователь" class="rounded shadow-md border border-gray-200 max-h-[50vh] max-w-[80vw] object-contain bg-white" />
+  <img src="/Distributed_system.webp" alt="Распределённая система: 6 автономных узлов и пользователь" class="rounded shadow-md border border-gray-200 max-h-[50vh] max-w-[80vw] object-contain bg-white" />
 </div>
 
 <p class="text-[10px] text-slate-500 italic mt-2 text-center">
@@ -281,6 +286,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 

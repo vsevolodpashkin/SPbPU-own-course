@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -91,6 +93,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -169,6 +172,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 

@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 

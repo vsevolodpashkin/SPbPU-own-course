@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -39,7 +41,7 @@ layoutClass: gap-8
 ::right::
 
 <div class="flex items-center justify-center h-full">
-  <img src="/FTP_06.png" alt="Обмен файлами (File Transfer)" class="rounded shadow-lg max-h-[65vh]" />
+  <img src="/FTP_06.webp" alt="Обмен файлами (File Transfer)" class="rounded shadow-lg max-h-[65vh]" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -48,6 +50,7 @@ layoutClass: gap-8
 </div>
 
 ---
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -68,7 +71,7 @@ layoutClass: gap-8
 ::right::
 
 <div class="flex items-center justify-center h-full">
-  <img src="/sharedDB_06.png" alt="Общая база данных (Shared Database)" class="rounded shadow-lg max-h-[65vh]" />
+  <img src="/sharedDB_06.webp" alt="Общая база данных (Shared Database)" class="rounded shadow-lg max-h-[65vh]" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -77,6 +80,7 @@ layoutClass: gap-8
 </div>
 
 ---
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -95,7 +99,7 @@ layoutClass: gap-8
 ::right::
 
 <div class="flex items-center justify-center h-full">
-  <img src="/remoteProcedure_06.png" alt="Удалённый вызов процедур (RPC)" class="rounded shadow-lg max-h-[65vh]" />
+  <img src="/remoteProcedure_06.webp" alt="Удалённый вызов процедур (RPC)" class="rounded shadow-lg max-h-[65vh]" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -104,6 +108,7 @@ layoutClass: gap-8
 </div>
 
 ---
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -124,7 +129,7 @@ layoutClass: gap-8
 ::right::
 
 <div class="flex items-center justify-center h-full">
-  <img src="/messaging_06.png" alt="Обмен сообщениями (Messaging)" class="rounded shadow-lg max-h-[65vh]" />
+  <img src="/messaging_06.webp" alt="Обмен сообщениями (Messaging)" class="rounded shadow-lg max-h-[65vh]" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -134,6 +139,7 @@ layoutClass: gap-8
 
 
 ---
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -221,6 +227,7 @@ em {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -316,6 +323,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -399,6 +407,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -517,6 +526,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -578,6 +588,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 

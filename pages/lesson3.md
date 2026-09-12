@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -84,6 +86,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -205,6 +208,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -272,13 +276,14 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
 # Свод по BPMN
 
 <div class="flex items-center justify-center h-full">
-  <img src="/BPMN_03.png" alt="Свод по BPMN" class="rounded shadow-lg max-h-[40vh] max-w-[90vw] object-contain" />
+  <img src="/BPMN_03.webp" alt="Свод по BPMN" class="rounded shadow-lg max-h-[40vh] max-w-[90vw] object-contain" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">

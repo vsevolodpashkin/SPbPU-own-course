@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -21,6 +22,7 @@ h1 {
 
 
 ---
+hide: true
 layout: default
 ---
 

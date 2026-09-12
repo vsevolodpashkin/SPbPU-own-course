@@ -146,7 +146,7 @@ layout: default
 # 2-я половина XX века - время каскадных моделей (Waterfall)
 
 <div class="flex justify-center mt-2">
-<img src="/GANT_DIAGRAM.png" alt="Календарный план проекта — диаграмма Ганта" class="max-h-[40vh] max-w-[100%] object-contain rounded shadow-lg" />
+<img src="/GANT_DIAGRAM.webp" alt="Календарный план проекта — диаграмма Ганта" class="max-h-[40vh] max-w-[100%] object-contain rounded shadow-lg" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -496,7 +496,7 @@ layout: default
 <p class="text-sm opacity-70 italic -mt-2">Иерархия требований: от общего видения к деталям реализации</p>
 
 <div class="flex items-center justify-center mt-2">
-<img src="/REQUIREMENTS.png" alt="Виды требований — иерархия" class="max-h-[40vh] max-w-[92%] object-contain rounded shadow-lg" />
+<img src="/REQUIREMENTS.webp" alt="Виды требований — иерархия" class="max-h-[40vh] max-w-[92%] object-contain rounded shadow-lg" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -513,7 +513,7 @@ layout: default
 <div class="grid grid-cols-2 gap-8 mt-2">
 
 <div class="flex items-center justify-center">
-  <img src="/image_029.png" alt="Бизнес-анализ" class="rounded shadow-lg" />
+  <img src="/Business-analysis.webp" alt="Бизнес-анализ" class="rounded shadow-lg" />
 </div>
 
 <div class="text-center flex flex-col justify-center">
@@ -547,7 +547,7 @@ layout: default
 
 <!-- Изображение SMART -->
 <div class="flex justify-center">
-  <img src="/SMART_01.png" alt="Цели по SMART" class="rounded shadow-lg max-h-[30vh]" />
+  <img src="/SMART_01.webp" alt="Цели по SMART" class="rounded shadow-lg max-h-[30vh]" />
 </div>
 
 <!-- Источник определения -->

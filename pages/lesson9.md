@@ -1,4 +1,5 @@
 ---
+hide: true
 layout: center
 ---
 
@@ -20,6 +21,7 @@ h1 {
 </style>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -127,6 +129,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -232,6 +235,7 @@ app.run(debug=<span class="text-purple-400">True</span>)</code></pre>
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -312,6 +316,7 @@ layout: default
 </div>
 
 ---
+hide: true
 layout: default
 ---
 
@@ -323,7 +328,7 @@ layout: default
 
 <!-- Изображение -->
 <div class="flex items-center justify-center mt-3">
-  <img src="/Microservices.png" alt="Схема микросервисной архитектуры e-commerce системы" class="rounded shadow-md border border-gray-200 max-h-[40vh] max-w-[90vw] object-contain bg-white" />
+  <img src="/Microservices.webp" alt="Схема микросервисной архитектуры e-commerce системы" class="rounded shadow-md border border-gray-200 max-h-[40vh] max-w-[90vw] object-contain bg-white" />
 </div>
 
 <div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
