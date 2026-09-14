@@ -290,6 +290,78 @@ hide: true
 layout: default
 ---
 
+# Сервисы
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Базовый строительный блок микросервисной архитектуры — <strong class="text-gray-700">автономная единица развёртывания</strong> с собственным API.
+</p>
+
+<!-- 2 колонки: текст слева, изображение справа -->
+<div class="grid grid-cols-2 gap-5 mt-3">
+
+  <!-- ЛЕВАЯ КОЛОНКА: определение -->
+  <div>
+    <div class="text-xs text-gray-500 mb-1.5 flex items-center gap-2">
+      <span class="font-mono text-gray-700">Определение</span>
+      <span class="text-gray-300">·</span>
+      <span>по К. Ричардсону</span>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-2.5">
+      <p class="text-[13px] text-gray-800 leading-relaxed">
+        <strong class="text-gray-900">Сервис</strong> — это автономный, независимо развертываемый программный компонент, который реализует определённые функции.
+      </p>
+      <p class="text-[13px] text-gray-700 leading-relaxed">
+        У него есть <strong class="text-gray-900">внешний интерфейс (API)</strong>, через который сервис предоставляет доступ к своим функциям.
+      </p>
+      <div class="border-t border-slate-200 pt-2.5">
+        <div class="text-[10px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">API состоит из</div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-2 text-center">
+            <div class="text-blue-700 font-semibold text-xs">Команды</div>
+            <div class="text-blue-600/80 text-[10px] mt-0.5">действие</div>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-center">
+            <div class="text-emerald-700 font-semibold text-xs">Запросы</div>
+            <div class="text-emerald-600/80 text-[10px] mt-0.5">чтение</div>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-2 text-center">
+            <div class="text-purple-700 font-semibold text-xs">События</div>
+            <div class="text-purple-600/80 text-[10px] mt-0.5">уведомление</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПРАВАЯ КОЛОНКА: стек виртуальной машины -->
+  <div>
+    <div class="text-xs text-gray-500 mb-1.5 flex items-center gap-2">
+      <span class="font-mono text-gray-700">Инфраструктура</span>
+      <span class="text-gray-300">·</span>
+      <span>где работает сервис</span>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-2">
+      <img src="/VM.png" alt="Стек виртуальной машины: от слоя приложения до физического сервера" class="w-full max-h-[400px] object-contain" />
+    </div>
+  </div>
+
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Ричардсон К. Микросервисы. Паттерны разработки и рефакторинга / пер. с англ. — СПб. : Питер, 2019. — 544 с. — (Серия «Библиотека программиста»).
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson4">← Занятие 4</a>
+  <a href="/lesson6">Занятие 6 →</a>
+</div>
+
+---
+hide: true
+layout: default
+---
+
 # Нельзя просто взять и создать распределенную систему
 
 <p class="text-sm opacity-70 italic -mt-2">Восемь ложных предположений (по Л. Питеру Дойчу и Дж. Гослингу)</p>

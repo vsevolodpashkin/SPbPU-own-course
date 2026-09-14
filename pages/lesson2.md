@@ -1,11 +1,11 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
 # Бизнес-анализ
 
-<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 2. Контексты</div>
+<div class="text-xl text-gray-400 font-light mt-3 tracking-[0.2em] uppercase">Часть 2. Контексты. Функциональные требования</div>
 <div class="mt-5 mx-auto w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
 
 <style>
@@ -21,8 +21,300 @@ h1 {
 </style>
 
 ---
+hide: false
 layout: default
-hide: true
+---
+
+# 4 уровня моделирования системы
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Модель <strong class="text-gray-700">C4</strong> (Simon Brown) — иерархия представлений архитектуры от общего к частному:
+  <strong class="text-gray-700">Контекст → Контейнеры → Компоненты → Код</strong>.
+</p>
+
+<!-- 4 уровня — карточки -->
+<div class="grid grid-cols-4 gap-2.5 mt-3">
+
+  <!-- L1: Контекст -->
+  <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-1.5 mb-1.5">
+      <span class="bg-blue-600 text-white rounded px-1.5 py-0.5 font-mono font-bold text-[10px]">L1</span>
+      <strong class="text-blue-900 text-xs">Контекст</strong>
+    </div>
+    <p class="text-[10.5px] text-gray-700 leading-snug mb-1">
+      Система в окружении: пользователи, внешние системы и потоки данных между ними.
+    </p>
+    <p class="text-[10px] text-gray-500 italic">→ все стейкхолдеры</p>
+  </div>
+
+  <!-- L2: Контейнеры -->
+  <div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-1.5 mb-1.5">
+      <span class="bg-indigo-600 text-white rounded px-1.5 py-0.5 font-mono font-bold text-[10px]">L2</span>
+      <strong class="text-indigo-900 text-xs">Контейнеры</strong>
+    </div>
+    <p class="text-[10.5px] text-gray-700 leading-snug mb-1">
+      Приложения, БД, очереди — отдельные запускаемые процессы и выбранный стек технологий.
+    </p>
+    <p class="text-[10px] text-gray-500 italic">→ разработчики, DevOps</p>
+  </div>
+
+  <!-- L3: Компоненты -->
+  <div class="bg-violet-50 border-2 border-violet-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-1.5 mb-1.5">
+      <span class="bg-violet-600 text-white rounded px-1.5 py-0.5 font-mono font-bold text-[10px]">L3</span>
+      <strong class="text-violet-900 text-xs">Компоненты</strong>
+    </div>
+    <p class="text-[10.5px] text-gray-700 leading-snug mb-1">
+      Структурные блоки внутри контейнера: контроллеры, сервисы, репозитории.
+    </p>
+    <p class="text-[10px] text-gray-500 italic">→ архитекторы, разработчики</p>
+  </div>
+
+  <!-- L4: Код -->
+  <div class="bg-fuchsia-50 border-2 border-fuchsia-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-1.5 mb-1.5">
+      <span class="bg-fuchsia-600 text-white rounded px-1.5 py-0.5 font-mono font-bold text-[10px]">L4</span>
+      <strong class="text-fuchsia-900 text-xs">Код</strong>
+    </div>
+    <p class="text-[10.5px] text-gray-700 leading-snug mb-1">
+      Диаграммы классов, ER-схемы. Часто избыточен — код самодокументируем.
+    </p>
+    <p class="text-[10px] text-gray-500 italic">→ разработчики</p>
+  </div>
+
+</div>
+
+<!-- Принцип zoom-in -->
+<div class="mt-2.5 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-[11px] text-gray-700 leading-snug text-center">
+  <strong class="text-gray-900">Принцип zoom-in:</strong>
+  каждый следующий уровень детализирует <em>один</em> блок предыдущего.
+  Начинайте с <strong class="text-blue-700">L1</strong> и углубляйтесь только там, где это добавляет ценность для аудитории.
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Simon Brown. <em>The C4 Model: Visualizing Software Architecture</em> —
+  <a href="https://c4model.com" class="underline hover:text-gray-600">c4model.com</a>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/13">← Ценность контекстных диаграмм</a>
+  <a href="/15">Контекстная диаграмма (C4 Level 1) →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Контекстная диаграмма (C4 Level 1)
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+Самый верхний уровень модели <strong class="text-gray-700">C4</strong> (Simon Brown): система в её окружении — кто с ней взаимодействует, какие внешние системы задействованы, какие потоки данных между ними.
+</p>
+
+<!-- Легенда нотации -->
+<div class="mt-2 grid grid-cols-3 gap-2 text-[10px]">
+  <div class="flex items-center gap-1.5 px-2 py-1 bg-blue-900 text-white rounded">
+    <span class="w-2 h-2 rounded-sm bg-white"></span>
+    <span class="font-medium">Person</span><span class="opacity-70">— пользователь системы</span>
+  </div>
+  <div class="flex items-center gap-1.5 px-2 py-1 bg-blue-600 text-white rounded">
+    <span class="w-2 h-2 rounded-sm bg-white"></span>
+    <span class="font-medium">Software System</span><span class="opacity-70">— в скоупе проекта</span>
+  </div>
+  <div class="flex items-center gap-1.5 px-2 py-1 bg-gray-500 text-white rounded">
+    <span class="w-2 h-2 rounded-sm bg-white"></span>
+    <span class="font-medium">External System</span><span class="opacity-70">— вне скоупа</span>
+  </div>
+</div>
+
+<!-- Диаграмма -->
+<div class="flex items-center justify-center mt-2">
+  <img src="/c4-context.webp" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
+  Нотация: C4 Model (Simon Brown, <a href="https://c4model.com" class="underline hover:text-gray-600">c4model.com</a>). Диаграмма построена в PlantUML.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/14">← 4 уровня моделирования системы</a>
+  <a href="/lesson3">Занятие 3 →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Доменные контексты (DDD)
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Стратегическая классификация поддоменов по <strong class="text-gray-700">Эрику Эвансу</strong>:
+  <strong class="text-gray-700">где создавать инновации, а что покупать</strong>.
+</p>
+<!-- 2 колонки: матрица слева, описания справа -->
+<div class="grid grid-cols-2 gap-4 mt-3">
+
+  <!-- ЛЕВАЯ КОЛОНКА: матрица -->
+  <div>
+    <div class="text-[10px] text-gray-500 mb-1 flex items-center gap-2">
+      <span class="font-mono text-gray-700">Strategic Domain Chart</span>
+      <span class="text-gray-300">·</span>
+      <span>Важность × Сложность</span>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-2">
+      <img src="/DDD.png" alt="DDD Strategic Domain Chart — Ядро, Поддерживающая, Общее" class="w-full max-h-[220px] object-contain" />
+    </div>
+    <!-- Источник -->
+    <div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+      Источник: Eric Evans. <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em> — Addison-Wesley, 2003.
+    </div>
+  </div>
+
+  <!-- ПРАВАЯ КОЛОНКА: 3 карточки -->
+  <div class="space-y-2 flex flex-col">
+    <!-- 1. Ядро (Core) — зелёный (top-right на матрице) -->
+    <div class="bg-green-50 border-2 border-green-300 rounded-xl p-2.5">
+      <div class="flex items-center gap-1.5 mb-1.5">
+        <span class="bg-green-600 text-white rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px]">1</span>
+        <strong class="text-green-900 text-xs">Ядро (Core)</strong>
+      </div>
+      <p class="text-[10.5px] text-gray-700 leading-snug">
+        <strong class="text-gray-900">Главное конкурентное преимущество</strong> (УТП). Здесь создаётся основная ценность, сюда инвестируется <strong class="text-gray-900">максимум ресурсов</strong> и талантов.
+      </p>
+    </div>
+    <!-- 2. Поддерживающий (Supporting) — жёлтый (top-left на матрице) -->
+    <div class="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-2.5">
+      <div class="flex items-center gap-1.5 mb-1.5">
+        <span class="bg-yellow-500 text-white rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px]">2</span>
+        <strong class="text-yellow-900 text-xs">Поддерживающий (Supporting)</strong>
+      </div>
+      <p class="text-[10.5px] text-gray-700 leading-snug">
+        <strong class="text-gray-900">Специфичен для нашего бизнеса</strong>, нужен для работы Ядра, но не является главным УТП. Может быть кастомным, но не требует инноваций мирового уровня.
+      </p>
+    </div>
+    <!-- 3. Общий (Generic) — синий (bottom-right на матрице) -->
+    <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-2.5">
+      <div class="flex items-center gap-1.5 mb-1.5">
+        <span class="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center font-bold text-[10px]">3</span>
+        <strong class="text-blue-900 text-xs">Общий (Generic)</strong>
+      </div>
+      <p class="text-[10.5px] text-gray-700 leading-snug">
+        <strong class="text-gray-900">Стандартная функция</strong> без уникальной бизнес-ценности. Лучше <strong class="text-gray-900">купить (SaaS)</strong> или взять open-source, чтобы не отвлекать разработчиков.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/15">← Контекстная диаграмма (C4 Level 1)</a>
+  <a href="/17">Бизнес по доставке еды →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Бизнес по доставке еды
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Конкретный пример разбивки продукта на домены по <strong class="text-gray-700">DDD-классификации</strong> —
+  кейс food delivery (Яндекс Еда, Delivery Club, Uber Eats и подобные сервисы).
+</p>
+
+<!-- 3 колонки: Ядро / Поддерживающие / Общие -->
+<div class="grid grid-cols-3 gap-3 mt-5">
+
+  <!-- =============== ЯДРО (Core) =============== -->
+  <div class="bg-red-50 border-2 border-red-300 rounded-xl p-3">
+    <div class="flex items-center justify-between mb-3">
+      <span class="bg-red-600 text-white rounded-md px-2 py-1 font-bold text-[10px] uppercase tracking-wider">Ядро</span>
+      <span class="text-[10px] text-red-700 font-semibold">2 домена · УТП</span>
+    </div>
+    <div class="space-y-2">
+      <div class="bg-white border border-red-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">1</span>
+        <strong class="text-sm text-red-900 leading-snug">Исполнение заказа</strong>
+      </div>
+      <div class="bg-white border border-red-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">2</span>
+        <strong class="text-sm text-red-900 leading-snug">Логистика</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============== ПОДДЕРЖИВАЮЩИЕ (Supporting) =============== -->
+  <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-3">
+    <div class="flex items-center justify-between mb-3">
+      <span class="bg-blue-600 text-white rounded-md px-2 py-1 font-bold text-[10px] uppercase tracking-wider">Поддерживающие</span>
+      <span class="text-[10px] text-blue-700 font-semibold">3 домена · кастом</span>
+    </div>
+    <div class="space-y-2">
+      <div class="bg-white border border-blue-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">3</span>
+        <strong class="text-sm text-blue-900 leading-snug">Каталог и меню</strong>
+      </div>
+      <div class="bg-white border border-blue-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">4</span>
+        <strong class="text-sm text-blue-900 leading-snug">Управление партнёрами</strong>
+      </div>
+      <div class="bg-white border border-blue-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">5</span>
+        <strong class="text-sm text-blue-900 leading-snug">Лояльность и маркетинг</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============== ОБЩИЕ (Generic) =============== -->
+  <div class="bg-slate-50 border-2 border-slate-300 rounded-xl p-3">
+    <div class="flex items-center justify-between mb-3">
+      <span class="bg-slate-600 text-white rounded-md px-2 py-1 font-bold text-[10px] uppercase tracking-wider">Общие</span>
+      <span class="text-[10px] text-slate-700 font-semibold">3 домена · купить / SaaS</span>
+    </div>
+    <div class="space-y-2">
+      <div class="bg-white border border-slate-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-slate-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">6</span>
+        <strong class="text-sm text-slate-900 leading-snug">Коммуникации и уведомления</strong>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-slate-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">7</span>
+        <strong class="text-sm text-slate-900 leading-snug">Служба поддержки</strong>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-lg p-2.5 flex items-center gap-3">
+        <span class="shrink-0 bg-slate-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">8</span>
+        <strong class="text-sm text-slate-900 leading-snug">Биллинг и финансы</strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Принцип распределения -->
+<div class="mt-4 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-[11px] text-gray-700 leading-snug text-center">
+  <strong class="text-gray-900">Принцип:</strong>
+  ресурсы разработки концентрируются на <strong class="text-red-700">2 доменах Ядра</strong> —
+  именно они создают конкурентное преимущество и отличают продукт от конкурентов.
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Пример разобран по стратегической классификации Eric Evans. <em>Domain-Driven Design</em>, 2003.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/16">← Доменные контексты (DDD)</a>
+  <a href="/18">Чек-лист качества требований →</a>
+</div>
+
+---
+layout: default
+hide: false
 ---
 
 # Ценность контекстных диаграмм
@@ -71,50 +363,7 @@ hide: true
 </div>
 
 ---
-hide: true
-layout: default
----
-
-# Контекстная диаграмма (C4 Level 1)
-
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-Самый верхний уровень модели <strong class="text-gray-700">C4</strong> (Simon Brown): система в её окружении — кто с ней взаимодействует, какие внешние системы задействованы, какие потоки данных между ними.
-</p>
-
-<!-- Легенда нотации -->
-<div class="mt-2 grid grid-cols-3 gap-2 text-[10px]">
-  <div class="flex items-center gap-1.5 px-2 py-1 bg-blue-900 text-white rounded">
-    <span class="w-2 h-2 rounded-sm bg-white"></span>
-    <span class="font-medium">Person</span><span class="opacity-70">— пользователь системы</span>
-  </div>
-  <div class="flex items-center gap-1.5 px-2 py-1 bg-blue-600 text-white rounded">
-    <span class="w-2 h-2 rounded-sm bg-white"></span>
-    <span class="font-medium">Software System</span><span class="opacity-70">— в скоупе проекта</span>
-  </div>
-  <div class="flex items-center gap-1.5 px-2 py-1 bg-gray-500 text-white rounded">
-    <span class="w-2 h-2 rounded-sm bg-white"></span>
-    <span class="font-medium">External System</span><span class="opacity-70">— вне скоупа</span>
-  </div>
-</div>
-
-<!-- Диаграмма -->
-<div class="flex items-center justify-center mt-2">
-  <img src="/c4-context.webp" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
-</div>
-
-<!-- Источник -->
-<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
-  Нотация: C4 Model (Simon Brown, <a href="https://c4model.com" class="underline hover:text-gray-600">c4model.com</a>). Диаграмма построена в PlantUML.
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/13">← Ценность контекстных диаграмм</a>
-  <a href="/lesson3">Занятие 3 →</a>
-</div>
-
-
----
-hide: true
+hide: false
 layout: default
 ---
 
@@ -177,21 +426,12 @@ layout: default
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson2">← Занятие 2</a>
+  <a href="/17">← Бизнес по доставке еды</a>
   <a href="/lesson3">Занятие 3 →</a>
 </div>
 
 ---
-hide: true
-layout: default
----
-
-# Почему нужны хорошие требования
-
-A minimal domain model for a horizontal well, illustrating the geometry behind the schematic.
-
----
-hide: true
+hide: false
 layout: default
 ---
 
@@ -269,7 +509,7 @@ layout: default
 </p>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -363,7 +603,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 

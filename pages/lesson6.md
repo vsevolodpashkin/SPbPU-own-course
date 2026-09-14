@@ -20,3 +20,15 @@ h1 {
 }
 </style>
 
+---
+hide: true
+layout: default
+---
+
+# Организация инфраструктуры ИТ-систем
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/48">← C4 Level 2</a>
+  <a href="/lesson10">Занятие 10 →</a>
+</div>
+
