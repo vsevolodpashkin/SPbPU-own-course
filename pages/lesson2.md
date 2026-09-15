@@ -110,10 +110,6 @@ layout: default
 
 # Контекстная диаграмма (C4 Level 1)
 
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-Самый верхний уровень модели <strong class="text-gray-700">C4</strong> (Simon Brown): система в её окружении — кто с ней взаимодействует, какие внешние системы задействованы, какие потоки данных между ними.
-</p>
-
 <!-- Легенда нотации -->
 <div class="mt-2 grid grid-cols-3 gap-2 text-[10px]">
   <div class="flex items-center gap-1.5 px-2 py-1 bg-blue-900 text-white rounded">
@@ -132,7 +128,7 @@ layout: default
 
 <!-- Диаграмма -->
 <div class="flex items-center justify-center mt-2">
-  <img src="/c4-context.webp" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
+  <img src="/c4-context.webp" alt="C4 Level 1 — контекстная диаграмма ИТ-системы предприятия" class="max-h-[380px] max-w-[860px] object-contain rounded shadow-md border border-gray-200 bg-white" />
 </div>
 
 <!-- Источник -->
@@ -215,6 +211,57 @@ layout: default
   <a href="/15">← Контекстная диаграмма (C4 Level 1)</a>
   <a href="/17">Бизнес по доставке еды →</a>
 </div>
+
+---
+layout: default
+hide: false
+---
+
+# Ценность контекстных диаграмм
+
+<p class="text-sm opacity-70 italic -mt-2">Четыре причины, почему контекстная диаграмма — первый артефакт системного анализа</p>
+
+<v-clicks>
+
+<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1 mt-2">
+<span class="shrink-0 w-7 h-7 bg-red-100 text-red-700 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+<div>
+<strong class="text-sm text-slate-900">Предотвращение «разрастания границ» (Scope Creep)</strong>
+<p class="text-xs text-slate-600 mt-1 leading-snug">Чёткое понимание контекста позволяет аргументированно отказывать стейкхолдерам в добавлении функционала, который выходит за рамки изначальных границ системы.</p>
+</div>
+</div>
+
+<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1">
+<span class="shrink-0 w-7 h-7 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+<div>
+<strong class="text-sm text-slate-900">Выявление точек интеграции</strong>
+<p class="text-xs text-slate-600 mt-1 leading-snug">Позволяет заранее понять, сколько внешних систем нужно «стыковать», какие потребуются адаптеры и кто владеет данными на других концах.</p>
+</div>
+</div>
+
+<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1">
+<span class="shrink-0 w-7 h-7 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+<div>
+<strong class="text-sm text-slate-900">Управление рисками</strong>
+<p class="text-xs text-slate-600 mt-1 leading-snug">Помогает увидеть «слепые зоны» - неучтенные системы или взаимодействия, без которых бизнес-процесс на сможет работать</p>
+</div>
+</div>
+
+<div class="bg-white border border-slate-200 rounded-lg p-1 flex items-start gap-1">
+<span class="shrink-0 w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+<div>
+<strong class="text-sm text-slate-900">Понимание ценности</strong>
+<p class="text-xs text-slate-600 mt-1 leading-snug">Показывает, какую именно бизнес-проблему решает система во взаимодействии с внешним миром, не уходя в технические дебри.</p>
+</div>
+</div>
+
+</v-clicks>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/12">← Занятие 1</a>
+  <a href="/18">Занятие 3 →</a>
+</div>
+
 
 ---
 hide: false
@@ -309,57 +356,7 @@ layout: default
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
   <a href="/16">← Доменные контексты (DDD)</a>
-  <a href="/18">Чек-лист качества требований →</a>
-</div>
-
----
-layout: default
-hide: false
----
-
-# Ценность контекстных диаграмм
-
-<p class="text-sm opacity-70 italic -mt-2">Четыре причины, почему контекстная диаграмма — первый артефакт системного анализа</p>
-
-<v-clicks>
-
-<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1 mt-2">
-<span class="shrink-0 w-7 h-7 bg-red-100 text-red-700 rounded-full flex items-center justify-center font-bold text-sm">1</span>
-<div>
-<strong class="text-sm text-slate-900">Предотвращение «разрастания границ» (Scope Creep)</strong>
-<p class="text-xs text-slate-600 mt-1 leading-snug">Чёткое понимание контекста позволяет аргументированно отказывать стейкхолдерам в добавлении функционала, который выходит за рамки изначальных границ системы.</p>
-</div>
-</div>
-
-<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1">
-<span class="shrink-0 w-7 h-7 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm">2</span>
-<div>
-<strong class="text-sm text-slate-900">Выявление точек интеграции</strong>
-<p class="text-xs text-slate-600 mt-1 leading-snug">Позволяет заранее понять, сколько внешних систем нужно «стыковать», какие потребуются адаптеры и кто владеет данными на других концах.</p>
-</div>
-</div>
-
-<div class="bg-white border border-slate-200 rounded-lg p-1 mb-2 flex items-start gap-1">
-<span class="shrink-0 w-7 h-7 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">3</span>
-<div>
-<strong class="text-sm text-slate-900">Управление рисками</strong>
-<p class="text-xs text-slate-600 mt-1 leading-snug">Помогает увидеть «слепые зоны» - неучтенные системы или взаимодействия, без которых бизнес-процесс на сможет работать</p>
-</div>
-</div>
-
-<div class="bg-white border border-slate-200 rounded-lg p-1 flex items-start gap-1">
-<span class="shrink-0 w-7 h-7 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">4</span>
-<div>
-<strong class="text-sm text-slate-900">Понимание ценности</strong>
-<p class="text-xs text-slate-600 mt-1 leading-snug">Показывает, какую именно бизнес-проблему решает система во взаимодействии с внешним миром, не уходя в технические дебри.</p>
-</div>
-</div>
-
-</v-clicks>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/12">← Занятие 1</a>
-  <a href="/18">Занятие 3 →</a>
+  <a href="/23">От контекста к функциональным требованиям →</a>
 </div>
 
 ---
@@ -367,67 +364,106 @@ hide: false
 layout: default
 ---
 
-# Чек-лист качества требований
+# От контекста к функциональным требованиям
 
-<!-- 7 критериев -->
-<div class="grid grid-cols-2 gap-x-6 gap-y-1.5 mt-3 text-xs">
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Полнота</strong> — <span class="text-gray-700">все требования зафиксированы</span></div>
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Как из <strong class="text-gray-700">доменной модели</strong> и потоков данных рождаются функциональные требования —
+  на примере <strong class="text-gray-700">фудтех-приложения</strong> (домен «Исполнение заказа»).
+</p>
+
+<!-- Pipeline (вертикальный) -->
+<div class="mt-3 space-y-1.5">
+
+  <!-- 1. Домен -->
+  <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-2.5 flex items-start gap-2.5">
+    <span class="shrink-0 w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</span>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-baseline gap-2 mb-0.5">
+        <strong class="text-blue-900 text-sm font-semibold">Домен</strong>
+        <span class="text-[10px] text-blue-700 font-mono uppercase tracking-wider">Bounded Context</span>
+      </div>
+      <div class="text-[12.5px] text-gray-800">
+        <strong>Исполнение заказа</strong> — <span class="text-gray-700">ядро бизнеса (Core Domain)</span>
+      </div>
+      <div class="text-[10px] text-gray-500 mt-0.5">
+        Агрегаты: <code class="bg-white px-1 rounded font-mono">Order</code>,
+        <code class="bg-white px-1 rounded font-mono">OrderItem</code>,
+        <code class="bg-white px-1 rounded font-mono">Payment</code>
+      </div>
+    </div>
   </div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Структурированность</strong> — <span class="text-gray-700">ясная структура документа</span></div>
+
+  <div class="flex justify-center text-gray-400 text-sm leading-none">↓</div>
+
+  <!-- 2. Use Case -->
+  <div class="bg-green-50 border-2 border-green-300 rounded-xl p-2.5 flex items-start gap-2.5">
+    <span class="shrink-0 w-7 h-7 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-baseline gap-2 mb-0.5">
+        <strong class="text-green-900 text-sm font-semibold">Сценарий использования</strong>
+        <span class="text-[10px] text-green-700 font-mono uppercase tracking-wider">Use Case</span>
+      </div>
+      <div class="text-[12.5px] text-gray-800">
+        <strong>«Оформить заказ»</strong> — <span class="text-gray-700">покупатель оформляет и оплачивает заказ в системе</span>
+      </div>
+      <div class="text-[10px] text-gray-500 mt-0.5">
+        Актёр: <strong>Покупатель</strong> · Предусловие: авторизован, в корзине ≥ 1 товар
+      </div>
+    </div>
   </div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Непротиворечивость</strong> — <span class="text-gray-700">нет противоречий</span></div>
+
+  <div class="flex justify-center text-gray-400 text-sm leading-none">↓</div>
+
+  <!-- 3. User Story -->
+  <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5 flex items-start gap-2.5">
+    <span class="shrink-0 w-7 h-7 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-baseline gap-2 mb-0.5">
+        <strong class="text-amber-900 text-sm font-semibold">Пользовательская история</strong>
+        <span class="text-[10px] text-amber-700 font-mono uppercase tracking-wider">User Story</span>
+      </div>
+      <div class="text-[12px] text-gray-800 italic">
+        «Как <strong>покупатель</strong>, я хочу <strong>оформить заказ с оплатой онлайн</strong>, чтобы получить еду без звонка в ресторан.»
+      </div>
+    </div>
   </div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Удовлетворённость</strong> — <span class="text-gray-700">связи «удовлетворяется посредством» покрывают всё</span></div>
+
+  <div class="flex justify-center text-gray-400 text-sm leading-none">↓</div>
+
+  <!-- 4. Критерии приёмки -->
+  <div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-2.5 flex items-start gap-2.5">
+    <span class="shrink-0 w-7 h-7 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</span>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-baseline gap-2 mb-1">
+        <strong class="text-purple-900 text-sm font-semibold">Критерии приёмки</strong>
+        <span class="text-[10px] text-purple-700 font-mono uppercase tracking-wider">Acceptance Criteria</span>
+      </div>
+      <div class="text-[11px] text-gray-800 grid grid-cols-2 gap-x-3 gap-y-0.5">
+        <div><span class="text-emerald-600">✓</span> Заказ создан в БД</div>
+        <div><span class="text-emerald-600">✓</span> Уведомление ресторану</div>
+        <div><span class="text-emerald-600">✓</span> Оплата прошла</div>
+        <div><span class="text-emerald-600">✓</span> Email-подтверждение</div>
+      </div>
+    </div>
   </div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Отсутствие избыточности</strong> — <span class="text-gray-700">нет дублирования требований</span></div>
-  </div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Модульность</strong> — <span class="text-gray-700">связанные требования в одном разделе</span></div>
-  </div>
-  <div></div>
-  <div class="flex gap-2 items-start">
-    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    <div><strong class="text-gray-900">Тестируемость</strong> — <span class="text-gray-700">требования покрыты тестами</span></div>
-  </div>
+
 </div>
 
-<!-- Хороший и плохой пример — компактнее -->
-<div class="grid grid-cols-2 gap-4 mt-3">
-  <div class="bg-red-50 border-l-4 border-red-500 rounded p-2">
-    <div class="flex items-baseline gap-1.5">
-      <span class="text-red-600 font-bold text-base leading-none">✗</span>
-      <strong class="text-red-800 text-xs">«Система должна работать быстро»</strong>
-    </div>
-    <p class="text-[10px] text-gray-500 italic mt-0.5">расплывчато · не тестируемо · субъективно</p>
-  </div>
-  <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded p-2">
-    <div class="flex items-baseline gap-1.5">
-      <span class="text-emerald-600 font-bold text-base leading-none">✓</span>
-      <strong class="text-emerald-800 text-xs">«Система сохраняет результаты теста за ≤ 30 секунд»</strong>
-    </div>
-    <p class="text-[10px] text-gray-500 italic mt-0.5">конкретно · тестируемо · однозначно</p>
-  </div>
+<!-- Принцип трансформации -->
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-[11px] text-gray-700 leading-snug text-center">
+  <strong class="text-gray-900">Принцип:</strong>
+  на каждом шаге мы <em class="text-blue-700">сужаем</em> фокус —
+  от <em class="text-blue-700">общего контекста</em> к <em class="text-purple-700">проверяемым критериям готовности</em>.
 </div>
 
-<!-- Источник — в подвале -->
-<div class="text-[8px] text-gray-400 leading-tight italic text-center mt-2">
-  Источник: Халл Э., Джексон К., Дик Дж. <em>Инженерия требований: практ. руководство</em> / пер. с англ. А.&nbsp;Снастина — М.&nbsp;: ДМК Пресс, 2017. — 225&nbsp;с.
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
+  Основано на практиках Domain-Driven Design (Eric Evans) и Use Case 2.0. Пример — фудтех-приложение из слайда «Бизнес по доставке еды».
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/17">← Бизнес по доставке еды</a>
-  <a href="/lesson3">Занятие 3 →</a>
+  <a href="/21">← Бизнес по доставке еды</a>
+  <a href="/24">Ценность контекстных диаграмм →</a>
 </div>
 
 ---
@@ -695,4 +731,72 @@ layout: default
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
   <a href="/12">← Занятие 1</a>
   <a href="/18">Занятие 3 →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Чек-лист качества требований
+
+<!-- 7 критериев -->
+<div class="grid grid-cols-2 gap-x-6 gap-y-1.5 mt-3 text-xs">
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Полнота</strong> — <span class="text-gray-700">все требования зафиксированы</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Структурированность</strong> — <span class="text-gray-700">ясная структура документа</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Непротиворечивость</strong> — <span class="text-gray-700">нет противоречий</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Удовлетворённость</strong> — <span class="text-gray-700">связи «удовлетворяется посредством» покрывают всё</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Отсутствие избыточности</strong> — <span class="text-gray-700">нет дублирования требований</span></div>
+  </div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Модульность</strong> — <span class="text-gray-700">связанные требования в одном разделе</span></div>
+  </div>
+  <div></div>
+  <div class="flex gap-2 items-start">
+    <svg class="flex-shrink-0 text-emerald-600 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><strong class="text-gray-900">Тестируемость</strong> — <span class="text-gray-700">требования покрыты тестами</span></div>
+  </div>
+</div>
+
+<!-- Хороший и плохой пример — компактнее -->
+<div class="grid grid-cols-2 gap-4 mt-3">
+  <div class="bg-red-50 border-l-4 border-red-500 rounded p-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="text-red-600 font-bold text-base leading-none">✗</span>
+      <strong class="text-red-800 text-xs">«Система должна работать быстро»</strong>
+    </div>
+    <p class="text-[10px] text-gray-500 italic mt-0.5">расплывчато · не тестируемо · субъективно</p>
+  </div>
+  <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded p-2">
+    <div class="flex items-baseline gap-1.5">
+      <span class="text-emerald-600 font-bold text-base leading-none">✓</span>
+      <strong class="text-emerald-800 text-xs">«Система сохраняет результаты теста за ≤ 30 секунд»</strong>
+    </div>
+    <p class="text-[10px] text-gray-500 italic mt-0.5">конкретно · тестируемо · однозначно</p>
+  </div>
+</div>
+
+<!-- Источник — в подвале -->
+<div class="text-[8px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Халл Э., Джексон К., Дик Дж. <em>Инженерия требований: практ. руководство</em> / пер. с англ. А.&nbsp;Снастина — М.&nbsp;: ДМК Пресс, 2017. — 225&nbsp;с.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/23">← От контекста к функциональным требованиям</a>
+  <a href="/lesson3">Занятие 3 →</a>
 </div>
