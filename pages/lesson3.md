@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -21,7 +21,7 @@ h1 {
 </style>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -81,14 +81,14 @@ layout: default
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-<a href="/17">← Свод по BPMN</a>
-<a href="/lesson4">Занятие 4 →</a>
+  <a href="/lesson2">← Занятие 2</a>
+  <a href="/lesson4">Занятие 4 →</a>
 </div>
 
 ---
-hide: true
+
+hide: false
 layout: default
----
 
 # Характеристика бизнес-процессов
 
@@ -208,7 +208,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -276,7 +276,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -290,3 +290,27 @@ layout: default
   <a href="/lesson2">← Занятие 2</a>
   <a href="/lesson4">Занятие 4 →</a>
 </div>
+
+---
+
+# Плохие практики BPMN. Пример 1
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Найдите <strong class="text-gray-700">ошибки моделирования</strong> в схеме ниже.
+  Кликните на баннер — увидите разбор.
+</p>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
+  Ошибки намеренные, для учебных целей. Основано на спецификации BPMN 2.0 (OMG).
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson3">← Свод по BPMN</a>
+  <a href="/lesson4">Занятие 4 →</a>
+</div>
+
+<script setup>
+import { ref } from 'vue'
+const reveal = ref(false)
+</script>

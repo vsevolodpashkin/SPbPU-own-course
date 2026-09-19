@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -21,7 +21,7 @@ h1 {
 </style>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -129,7 +129,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -235,7 +235,7 @@ app.run(debug=<span class="text-purple-400">True</span>)</code></pre>
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -316,7 +316,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 

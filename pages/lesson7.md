@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -20,8 +20,132 @@ h1 {
 }
 </style>
 
+--
+hide: false
+layout: default
 ---
-hide: true
+
+# Стили интеграции систем
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Четыре <strong class="text-gray-700">фундаментальных подхода</strong> к обмену данными между приложениями.
+  Клик — следующий стиль.
+</p>
+
+<!-- 4 стиля интеграции (v-click 1..4) -->
+<div class="grid grid-cols-2 gap-3 mt-3">
+
+  <!-- 1. File Transfer -->
+  <div v-click="1"
+       class="bg-orange-50 border-2 border-orange-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">📄</span>
+      <div>
+        <strong class="text-orange-900 text-sm">Обмен файлами</strong>
+        <div class="text-[10px] text-orange-700 font-mono">File Transfer</div>
+      </div>
+    </div>
+    <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+      Одна система записывает файл, другая периодически читает.
+    </p>
+    <div class="text-[10px] space-y-0.5">
+      <div><span class="text-emerald-600">✓</span> Простота, независимость реализации</div>
+      <div><span class="text-rose-600">✗</span> Рассинхронизация, низкая частота</div>
+    </div>
+    <div class="mt-1.5 flex flex-wrap gap-1">
+      <span class="bg-white border border-orange-200 text-orange-800 px-1.5 py-0.5 rounded text-[10px] font-mono">SFTP</span>
+      <span class="bg-white border border-orange-200 text-orange-800 px-1.5 py-0.5 rounded text-[10px] font-mono">CSV/JSON</span>
+      <span class="bg-white border border-orange-200 text-orange-800 px-1.5 py-0.5 rounded text-[10px] font-mono">ETL</span>
+    </div>
+  </div>
+
+  <!-- 2. Shared Database -->
+  <div v-click="2"
+       class="bg-cyan-50 border-2 border-cyan-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">🗄️</span>
+      <div>
+        <strong class="text-cyan-900 text-sm">Общая база данных</strong>
+        <div class="text-[10px] text-cyan-700 font-mono">Shared Database</div>
+      </div>
+    </div>
+    <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+      Несколько приложений читают и пишут в одну общую БД.
+    </p>
+    <div class="text-[10px] space-y-0.5">
+      <div><span class="text-emerald-600">✓</span> Реал-тайм, минимум кода интеграции</div>
+      <div><span class="text-rose-600">✗</span> Сильная связанность, конфликты схемы</div>
+    </div>
+    <div class="mt-1.5 flex flex-wrap gap-1">
+      <span class="bg-white border border-cyan-200 text-cyan-800 px-1.5 py-0.5 rounded text-[10px] font-mono">PostgreSQL</span>
+      <span class="bg-white border border-cyan-200 text-cyan-800 px-1.5 py-0.5 rounded text-[10px] font-mono">MySQL</span>
+      <span class="bg-white border border-cyan-200 text-cyan-800 px-1.5 py-0.5 rounded text-[10px] font-mono">Oracle</span>
+    </div>
+  </div>
+
+  <!-- 3. Remote Procedure Invocation -->
+  <div v-click="3"
+       class="bg-violet-50 border-2 border-violet-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">📡</span>
+      <div>
+        <strong class="text-violet-900 text-sm">Удалённый вызов</strong>
+        <div class="text-[10px] text-violet-700 font-mono">Remote Procedure Call</div>
+      </div>
+    </div>
+    <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+      Приложение синхронно вызывает функции другого по сети.
+    </p>
+    <div class="text-[10px] space-y-0.5">
+      <div><span class="text-emerald-600">✓</span> Привычные паттерны (REST/gRPC/SOAP)</div>
+      <div><span class="text-rose-600">✗</span> Блокировки, каскадные отказы</div>
+    </div>
+    <div class="mt-1.5 flex flex-wrap gap-1">
+      <span class="bg-white border border-violet-200 text-violet-800 px-1.5 py-0.5 rounded text-[10px] font-mono">REST</span>
+      <span class="bg-white border border-violet-200 text-violet-800 px-1.5 py-0.5 rounded text-[10px] font-mono">gRPC</span>
+      <span class="bg-white border border-violet-200 text-violet-800 px-1.5 py-0.5 rounded text-[10px] font-mono">GraphQL</span>
+    </div>
+  </div>
+
+  <!-- 4. Messaging -->
+  <div v-click="4"
+       class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-2.5">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">📨</span>
+      <div>
+        <strong class="text-emerald-900 text-sm">Асинхронные сообщения</strong>
+        <div class="text-[10px] text-emerald-700 font-mono">Messaging</div>
+      </div>
+    </div>
+    <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+      Приложения обмениваются сообщениями через брокер.
+    </p>
+    <div class="text-[10px] space-y-0.5">
+      <div><span class="text-emerald-600">✓</span> Отказоустойчивость, слабая связанность</div>
+      <div><span class="text-rose-600">✗</span> Сложнее инфраструктура, eventual consistency</div>
+    </div>
+    <div class="mt-1.5 flex flex-wrap gap-1">
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono">Kafka</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono">RabbitMQ</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10px] font-mono">NATS</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Хопп Г., Вульф Б. <em>Шаблоны интеграции корпоративных приложений</em> / пер. с англ. — М. : Символ-Плюс, 2008. — 624 с. (Серия «High Tech»).
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
+</div>
+
+
+---
+hide: false
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -50,7 +174,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: true
+hide: false
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -80,7 +204,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: true
+hide: false
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -108,126 +232,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: true
-layout: two-cols
-layoutClass: gap-8
----
-
-# Обмен сообщениями (Messaging)
-
-## Преимущества
-
-- ✅ Асинхронный способ интеграции
-- ✅ Масштабируемость системы
-
-## Недостатки
-
-- ❌ Критически важны тактики надежности в распределенной системе (отказоустойчивость)
-- ❌ При неправильной архитектуре большой latency системы
-- ❌ Проблемы с согласованностью данных
-
-::right::
-
-<div class="flex items-center justify-center h-full">
-  <img src="/messaging_06.webp" alt="Обмен сообщениями (Messaging)" class="rounded shadow-lg max-h-[65vh]" />
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson5">← Занятие 5</a>
-  <a href="/lesson7">Занятие 7 →</a>
-</div>
-
-
----
-hide: true
-layout: two-cols
-layoutClass: gap-8
----
-
-# Сообщения
-
-Для передачи информации между двумя приложениями используйте формат сообщений
-
-```python
-producer = KafkaProducer(
-    bootstrap_servers='localhost:9092',
-    value_serializer=lambda v: json.dumps(v).encode(),
-    key_serializer=lambda k: k.encode() if k else None,
-)
-
-producer.send(
-    'orders',
-    key='order-12345',
-    value={'order_id': '12345', 'customer': 'Alice', 'total': 229.48},
-    headers=[
-        ('content-type', b'application/json'),
-        ('source', b'orders-service'),
-        ('trace-id', b'abc-def-123'),
-    ],
-)
-
-producer.flush()
-```
-
-::right::
-
-## Структура сообщения
-
-### 🔑 Key
-
-```
-order-12345
-```
-
-
-### 📋 Headers
-
-```
-content-type: application/json
-source: orders-service
-trace-id: abc-def-123
-```
-
-### 📦 Payload (Value)
-
-```json
-{
-  "order_id": "12345",
-  "customer": "Alice",
-  "items": [
-    {"sku": "ABC-001", "qty": 2, "price": 49.99},
-    {"sku": "XYZ-099", "qty": 1, "price": 129.50}
-  ],
-  "total": 229.48
-}
-```
-
-<div class="abs-b m-2 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson5">← Занятие 5</a>
-  <a href="/lesson7">Занятие 7 →</a>
-</div>
-
-<style>
-h3 {
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-h2 {
-  font-size: 1.1rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-em {
-  font-size: 0.75rem;
-  opacity: 0.7;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-</style>
-
----
-hide: true
+hide: false
 layout: default
 ---
 
@@ -323,7 +328,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -407,7 +412,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -526,7 +531,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -588,7 +593,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -678,4 +683,243 @@ layout: default
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
   <a href="/lesson5">← Занятие 5</a>
   <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+---
+hide: false
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Обмен сообщениями (Messaging)
+
+## Преимущества
+
+- ✅ Асинхронный способ интеграции
+- ✅ Масштабируемость системы
+
+## Недостатки
+
+- ❌ Критически важны тактики надежности в распределенной системе (отказоустойчивость)
+- ❌ При неправильной архитектуре большой latency системы
+- ❌ Проблемы с согласованностью данных
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img src="/messaging_06.webp" alt="Обмен сообщениями (Messaging)" class="rounded shadow-lg max-h-[65vh]" />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+---
+hide: false
+layout: two-cols
+layoutClass: gap-8
+---
+
+# Сообщения
+
+Для передачи информации между двумя приложениями используйте формат сообщений
+
+```python
+producer = KafkaProducer(
+    bootstrap_servers='localhost:9092',
+    value_serializer=lambda v: json.dumps(v).encode(),
+    key_serializer=lambda k: k.encode() if k else None,
+)
+
+producer.send(
+    'orders',
+    key='order-12345',
+    value={'order_id': '12345', 'customer': 'Alice', 'total': 229.48},
+    headers=[
+        ('content-type', b'application/json'),
+        ('source', b'orders-service'),
+        ('trace-id', b'abc-def-123'),
+    ],
+)
+
+producer.flush()
+```
+
+::right::
+
+## Структура сообщения
+
+### 🔑 Key
+
+```
+order-12345
+```
+
+
+### 📋 Headers
+
+```
+content-type: application/json
+source: orders-service
+trace-id: abc-def-123
+```
+
+### 📦 Payload (Value)
+
+```json
+{
+  "order_id": "12345",
+  "customer": "Alice",
+  "items": [
+    {"sku": "ABC-001", "qty": 2, "price": 49.99},
+    {"sku": "XYZ-099", "qty": 1, "price": 129.50}
+  ],
+  "total": 229.48
+}
+```
+
+<div class="abs-b m-2 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson5">← Занятие 5</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
+<style>
+h3 {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+em {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+</style>
+
+
+---
+hide: false
+layout: default
+---
+
+# Системы сообщений
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  <strong class="text-gray-700">Система сообщений</strong> — инфраструктура асинхронного обмена данными: состоит из
+  <strong class="text-gray-700">брокера</strong> (роутинг + доставка) и <strong class="text-gray-700">системы хранения</strong> (персистентность).
+</p>
+
+<!-- 2 колонки: схема слева, типы решений справа -->
+<div class="grid grid-cols-2 gap-5 mt-3">
+
+  <!-- ЛЕВАЯ КОЛОНКА: схема -->
+  <div>
+    <div class="text-[10px] text-gray-500 mb-1 flex items-center gap-2">
+      <span class="font-mono text-gray-700">Типовая архитектура</span>
+      <span class="text-gray-300">·</span>
+      <span>producer → broker ⇄ storage → consumer</span>
+    </div>
+    <div class="bg-white border border-slate-200 rounded-xl p-3">
+      <!-- Главный поток: продюсер → брокер → консьюмер -->
+      <div class="flex items-center justify-around gap-1">
+        <div class="bg-blue-100 border-2 border-blue-400 rounded-lg px-3 py-2 text-center min-w-[80px]">
+          <div class="text-[11px] font-semibold text-blue-900">Продюсер</div>
+          <div class="text-[9px] text-blue-700">producer</div>
+        </div>
+        <div class="text-gray-400 text-[11px]">──→</div>
+        <div class="bg-purple-100 border-2 border-purple-400 rounded-lg px-2 py-2 text-center min-w-[90px]">
+          <div class="text-[11px] font-semibold text-purple-900">Брокер</div>
+          <div class="text-[9px] text-purple-700">broker</div>
+          <div class="mt-1 text-[8px] font-mono bg-white border border-purple-200 rounded px-1 text-purple-700">route + deliver</div>
+        </div>
+        <div class="text-gray-400 text-[11px]">──→</div>
+        <div class="bg-emerald-100 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center min-w-[80px]">
+          <div class="text-[11px] font-semibold text-emerald-900">Консьюмер</div>
+          <div class="text-[9px] text-emerald-700">consumer</div>
+        </div>
+      </div>
+      <!-- Storage подключен к брокеру -->
+      <div class="flex items-center justify-center gap-2 mt-3">
+        <div class="text-gray-400 text-[11px]">↕</div>
+        <div class="bg-amber-100 border-2 border-amber-400 rounded-full px-5 py-1.5 text-center">
+          <div class="text-[11px] font-semibold text-amber-900">Storage</div>
+          <div class="text-[8px] text-amber-700">система хранения</div>
+        </div>
+        <div class="text-[9px] text-gray-500 italic ml-1">persist / fetch</div>
+      </div>
+    </div>
+    <div class="text-[10px] text-gray-500 mt-1 italic">
+      <strong class="text-gray-700">Брокер</strong> принимает/роутит/доставляет;
+      <strong class="text-gray-700">система хранения</strong> персистирует сообщения.
+    </div>
+  </div>
+
+  <!-- ПРАВАЯ КОЛОНКА: 2 типа решений -->
+  <div>
+    <div class="text-[10px] text-gray-500 mb-1 flex items-center gap-2">
+      <span class="font-mono text-gray-700">Два типа решений</span>
+      <span class="text-gray-300">·</span>
+      <span>как хранить сообщения</span>
+    </div>
+    <div class="space-y-2">
+      <!-- 1. Очередь сообщений -->
+      <div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2.5">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-lg">📬</span>
+          <strong class="text-indigo-900 text-sm">Очередь сообщений</strong>
+          <span class="text-[10px] text-indigo-700 font-mono">Message Queue</span>
+        </div>
+        <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+          Сообщения хранятся в очереди, доставляются <strong>один раз</strong> и удаляются.
+        </p>
+        <div class="text-[10px] text-gray-600 space-y-0.5">
+          <div><span class="text-emerald-600">✓</span> Point-to-point, гарантированная доставка</div>
+          <div><span class="text-rose-600">✗</span> Нет реплея, нет истории после прочтения</div>
+        </div>
+        <div class="mt-1.5 flex flex-wrap gap-1">
+          <span class="bg-white border border-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded text-[10px] font-mono">RabbitMQ</span>
+          <span class="bg-white border border-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded text-[10px] font-mono">ActiveMQ</span>
+          <span class="bg-white border border-indigo-200 text-indigo-800 px-1.5 py-0.5 rounded text-[10px] font-mono">AWS SQS</span>
+        </div>
+      </div>
+      <!-- 2. Журнал событий -->
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2.5">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-lg">📜</span>
+          <strong class="text-amber-900 text-sm">Журнал событий</strong>
+          <span class="text-[10px] text-amber-700 font-mono">Event Log / Stream</span>
+        </div>
+        <p class="text-[11px] text-gray-700 leading-snug mb-1.5">
+          Сообщения хранятся в append-only логе; консьюмер читает с <strong>любой позиции</strong>.
+        </p>
+        <div class="text-[10px] text-gray-600 space-y-0.5">
+          <div><span class="text-emerald-600">✓</span> Реплей, много консьюмеров, история</div>
+          <div><span class="text-rose-600">✗</span> Больше места на диске, сложнее эксплуатация</div>
+        </div>
+        <div class="mt-1.5 flex flex-wrap gap-1">
+          <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded text-[10px] font-mono">Kafka</span>
+          <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded text-[10px] font-mono">Pulsar</span>
+          <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded text-[10px] font-mono">NATS JetStream</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Основано на: Хопп Г., Вульф Б. <em>Шаблоны интеграции корпоративных приложений</em>. — Глава 3 «Каналы передачи сообщений».
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson7">← Занятие 7</a>
+  <a href="/lesson9">Занятие 9 →</a>
 </div>

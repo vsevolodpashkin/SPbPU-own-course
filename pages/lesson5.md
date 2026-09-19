@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -21,7 +21,99 @@ h1 {
 </style>
 
 ---
-hide: true
+hide: false
+layout: default
+---
+
+# Модели взаимодействия устройств в сети
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Два базовых паттерна обмена данными между узлами сети — <strong class="text-gray-700">клиент-сервер</strong> и <strong class="text-gray-700">peer-to-peer</strong>.
+</p>
+
+<!-- Определение компьютерной сети -->
+<div class="mt-2 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-2.5">
+  <div class="text-[10px] uppercase tracking-wider text-blue-700 font-semibold mb-0.5">Компьютерная сеть</div>
+  <div class="text-[13px] text-blue-900 leading-snug">
+    <strong class="text-blue-900">Совокупность компьютеров и периферийных устройств</strong>, соединённых каналами связи для <strong class="text-blue-900">совместного использования ресурсов и обмена данными</strong>.
+    <span class="text-[10px] text-blue-700/80 italic block mt-0.5">— Э. Танненбаум, «Компьютерные сети»</span>
+  </div>
+</div>
+
+<!-- 2 колонки: клиент-сервер / P2P -->
+<div class="grid grid-cols-2 gap-3 mt-3">
+
+  <!-- ЛЕВАЯ КОЛОНКА: Клиент-сервер -->
+  <div class="bg-blue-50 border-2 border-blue-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">🖥️ → 📡</span>
+      <div>
+        <strong class="text-blue-900 text-sm font-semibold">Клиент-серверная</strong>
+        <div class="text-[10px] text-blue-700 font-mono">Client–Server</div>
+      </div>
+    </div>
+    <p class="text-[11.5px] text-gray-800 leading-snug mb-2">
+      Есть <strong>выделенный сервер</strong>, обслуживающий множество клиентов. Клиенты только потребляют сервисы.
+    </p>
+    <div class="text-[10px] uppercase tracking-wider text-blue-700 font-semibold mb-1">Характеристики</div>
+    <ul class="text-[10.5px] text-gray-700 space-y-0.5 leading-snug mb-2">
+      <li class="flex gap-1.5"><span class="text-blue-600 shrink-0">▸</span><span><strong class="text-gray-900">Централизация</strong> — управление и данные в одном месте</span></li>
+      <li class="flex gap-1.5"><span class="text-blue-600 shrink-0">▸</span><span><strong class="text-gray-900">Асимметрия ролей</strong> — сервер ≠ клиент</span></li>
+      <li class="flex gap-1.5"><span class="text-blue-600 shrink-0">▸</span><span><strong class="text-gray-900">Single point of failure</strong> — без сервера нет сервиса</span></li>
+    </ul>
+    <div class="text-[10px] uppercase tracking-wider text-blue-700 font-semibold mb-1">Примеры систем</div>
+    <div class="flex flex-wrap gap-1">
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">WWW (HTTP)</span>
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">DNS</span>
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">SMTP/POP3</span>
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">AWS S3 API</span>
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">Netflix</span>
+      <span class="bg-white border border-blue-200 text-blue-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">MySQL</span>
+    </div>
+  </div>
+  <!-- ПРАВАЯ КОЛОНКА: P2P -->
+  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3">
+    <div class="flex items-center gap-2 mb-1.5">
+      <span class="text-xl">📡 ↔ 📡</span>
+      <div>
+        <strong class="text-emerald-900 text-sm font-semibold">P2P (одноранговая)</strong>
+        <div class="text-[10px] text-emerald-700 font-mono">Peer-to-Peer</div>
+      </div>
+    </div>
+    <p class="text-[11.5px] text-gray-800 leading-snug mb-2">
+      Все узлы <strong>равноправны</strong>: каждый может как потреблять, так и предоставлять ресурсы.
+    </p>
+    <div class="text-[10px] uppercase tracking-wider text-emerald-700 font-semibold mb-1">Характеристики</div>
+    <ul class="text-[10.5px] text-gray-700 space-y-0.5 leading-snug mb-2">
+      <li class="flex gap-1.5"><span class="text-emerald-600 shrink-0">▸</span><span><strong class="text-gray-900">Децентрализация</strong> — нет единого центра</span></li>
+      <li class="flex gap-1.5"><span class="text-emerald-600 shrink-0">▸</span><span><strong class="text-gray-900">Симметрия ролей</strong> — каждый = и клиент, и сервер</span></li>
+      <li class="flex gap-1.5"><span class="text-emerald-600 shrink-0">▸</span><span><strong class="text-gray-900">Отказоустойчивость</strong> — нет single point of failure</span></li>
+    </ul>
+    <div class="text-[10px] uppercase tracking-wider text-emerald-700 font-semibold mb-1">Примеры систем</div>
+    <div class="flex flex-wrap gap-1">
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">BitTorrent</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">IPFS</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">Bitcoin</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">Ethereum</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">Skype (early)</span>
+      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded text-[10.5px] font-mono">Gnutella</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: Таненбаум Э., Уэзеролл Д. <em>Компьютерные сети</em> / пер. с англ. — 5-е изд. — СПб. : Питер, 2014. — 960 с. — ISBN 978-5-496-00922-3.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson4">← Занятие 4</a>
+  <a href="/lesson6">Занятие 6 →</a>
+</div>
+
+---
+hide: false
 layout: default
 ---
 
@@ -122,7 +214,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -192,7 +284,7 @@ TCP устанавливает соединение через <strong class="te
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -262,7 +354,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -286,7 +378,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -358,7 +450,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
