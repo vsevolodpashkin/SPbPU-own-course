@@ -1,5 +1,5 @@
 ---
-hide: false
+hide: true
 layout: center
 ---
 
@@ -20,8 +20,8 @@ h1 {
 }
 </style>
 
---
-hide: false
+---
+hide: true
 layout: default
 ---
 
@@ -145,7 +145,7 @@ layout: default
 
 
 ---
-hide: false
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -204,7 +204,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: false
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -232,7 +232,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -328,7 +328,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -412,7 +412,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -531,7 +531,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -593,7 +593,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -686,7 +686,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -805,7 +805,7 @@ em {
 
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 

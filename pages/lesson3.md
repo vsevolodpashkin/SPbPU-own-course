@@ -86,9 +86,9 @@ layout: default
 </div>
 
 ---
-
 hide: false
 layout: default
+---
 
 # Характеристика бизнес-процессов
 
@@ -291,6 +291,9 @@ layout: default
   <a href="/lesson4">Занятие 4 →</a>
 </div>
 
+---
+hide: false
+layout: default
 ---
 
 # Плохие практики BPMN. Пример 1

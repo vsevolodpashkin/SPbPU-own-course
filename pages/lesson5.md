@@ -1,5 +1,5 @@
 ---
-hide: false
+hide: true
 layout: center
 ---
 
@@ -21,7 +21,7 @@ h1 {
 </style>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -113,7 +113,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -214,7 +214,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -284,7 +284,7 @@ TCP устанавливает соединение через <strong class="te
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -354,7 +354,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -450,7 +450,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
