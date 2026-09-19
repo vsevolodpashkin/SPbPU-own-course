@@ -174,7 +174,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: false
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
@@ -716,7 +716,7 @@ layoutClass: gap-8
 </div>
 
 ---
-hide: false
+hide: true
 layout: two-cols
 layoutClass: gap-8
 ---
