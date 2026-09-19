@@ -378,7 +378,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
