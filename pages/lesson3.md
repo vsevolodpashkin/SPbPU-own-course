@@ -281,9 +281,8 @@ layout: default
 ---
 
 # Свод по BPMN
-
 <div class="flex items-center justify-center h-full">
-  <img src="/BPMN_03.webp" alt="Свод по BPMN" class="rounded shadow-lg max-h-[40vh] max-w-[90vw] object-contain" />
+  <img src="/BPMN_03.webp" alt="Свод по BPMN" class="rounded shadow-lg max-h-[45vh] max-w-[90vw] object-contain" />
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
@@ -291,29 +290,32 @@ layout: default
   <a href="/lesson4">Занятие 4 →</a>
 </div>
 
+
 ---
 hide: false
 layout: default
 ---
 
-# Плохие практики BPMN. Пример 1
+# Попробуем заказать пиццу
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
-  Найдите <strong class="text-gray-700">ошибки моделирования</strong> в схеме ниже.
-  Кликните на баннер — увидите разбор.
+  Пример <strong class="text-gray-700">BPMN-процесса</strong> — от выбора пиццы до доставки курьером.
+  Экспорт из <strong class="text-gray-700">bpmn.io</strong> с оверлеями (simulation, search).
 </p>
 
-<!-- Источник -->
-<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-1.5">
-  Ошибки намеренные, для учебных целей. Основано на спецификации BPMN 2.0 (OMG).
+<!-- BPMN-диаграмма с оверлеями -->
+<div class="mt-2 flex items-center justify-center h-full">
+  <img src="/Заказ пиццы_with_overlays.svg"
+       alt="BPMN-диаграмма процесса заказа пиццы: выбор пиццы → оформление → оплата → готовка → курьер → доставка"
+       class="rounded shadow-md border border-gray-200 max-h-[50vh] max-w-[95vw] object-contain bg-white" />
+</div>
+
+<!-- Примечание -->
+<div class="text-[10px] text-gray-500 leading-snug mt-2 px-2 italic">
+  💡 На диаграмме можно <strong>запустить симуляцию</strong> (▶ Play) — увидеть движение токенов по процессу в реальном времени.
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson3">← Свод по BPMN</a>
+  <a href="/Свод BPMN">← Свод по BPMN</a>
   <a href="/lesson4">Занятие 4 →</a>
 </div>
-
-<script setup>
-import { ref } from 'vue'
-const reveal = ref(false)
-</script>
