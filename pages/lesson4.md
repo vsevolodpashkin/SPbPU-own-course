@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -21,7 +21,7 @@ h1 {
 </style>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -79,7 +79,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -151,7 +151,7 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
@@ -215,49 +215,35 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
 # Контекстная диаграмма образовательной системы
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
-Системный контекст (C4 Level 1): <strong class="text-gray-700">кто</strong> взаимодействует с образовательной системой и <strong class="text-gray-700">какие потоки данных</strong> проходят между акторами и её компонентами.
+  Системный контекст (C4 Level 1): <strong class="text-gray-700">кто</strong> взаимодействует с образовательной системой и <strong class="text-gray-700">какие потоки данных</strong> проходят между акторами и её компонентами.
 </p>
 
-<!-- Легенда нотации -->
-<div class="mt-2 grid grid-cols-3 gap-2 text-[10px]">
-  <div class="flex items-center gap-1.5 px-2 py-1.5 bg-gray-100 border border-gray-300 rounded">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700">
-      <circle cx="12" cy="6" r="3"/>
-      <line x1="12" y1="9" x2="12" y2="16"/>
-      <line x1="9" y1="13" x2="15" y2="13"/>
-      <line x1="12" y1="16" x2="9" y2="22"/>
-      <line x1="12" y1="16" x2="15" y2="22"/>
-    </svg>
-    <span class="font-medium text-gray-900">Actor</span><span class="opacity-70">— пользователь системы</span>
+<!-- Компактная легенда (1 строка, 3 элемента) -->
+<div class="mt-1.5 flex items-center gap-3 text-[10px] flex-wrap">
+  <div class="flex items-center gap-1 px-1.5 py-1 bg-gray-100 border border-gray-300 rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-700"><circle cx="12" cy="6" r="3"/><line x1="12" y1="9" x2="12" y2="16"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="12" y1="16" x2="9" y2="22"/><line x1="12" y1="16" x2="15" y2="22"/></svg>
+    <span class="font-medium text-gray-900">Actor</span>
   </div>
-  <div class="flex items-center gap-1.5 px-2 py-1.5 bg-blue-50 border border-blue-300 rounded">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-700">
-      <rect x="3" y="6" width="18" height="14" rx="1"/>
-    </svg>
-    <span class="font-medium text-blue-900">Component</span><span class="opacity-70">— внутри скоупа проекта</span>
+  <div class="flex items-center gap-1 px-1.5 py-1 bg-blue-50 border border-blue-300 rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-700"><rect x="3" y="6" width="18" height="14" rx="1"/></svg>
+    <span class="font-medium text-blue-900">Component (в скоупе)</span>
   </div>
-  <div class="flex items-center gap-1.5 px-2 py-1.5 bg-amber-50 border border-amber-300 rounded">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-700">
-      <circle cx="12" cy="6" r="3"/>
-      <line x1="12" y1="9" x2="12" y2="16"/>
-      <line x1="9" y1="13" x2="15" y2="13"/>
-      <line x1="12" y1="16" x2="9" y2="22"/>
-      <line x1="12" y1="16" x2="15" y2="22"/>
-    </svg>
-    <span class="font-medium text-amber-900">External System</span><span class="opacity-70">— вне скоупа</span>
+  <div class="flex items-center gap-1 px-1.5 py-1 bg-amber-50 border border-amber-300 rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-700"><circle cx="12" cy="6" r="3"/><line x1="12" y1="9" x2="12" y2="16"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="12" y1="16" x2="9" y2="22"/><line x1="12" y1="16" x2="15" y2="22"/></svg>
+    <span class="font-medium text-amber-900">External System</span>
   </div>
 </div>
 
-<!-- Диаграмма -->
-<div class="flex items-center justify-center mt-2">
-  <img src="/edu-context-diagram.webp" alt="Контекстная диаграмма образовательной системы — учитель, студент, родитель и Внешняя ИС госотчётности взаимодействуют с компонентами образовательной системы" class="max-h-[58vh] max-w-[90vw] object-contain rounded shadow-md border border-gray-200 bg-white" />
+<!-- Диаграмма (фиксированные пиксели) -->
+<div class="flex items-center justify-center mt-1.5">
+  <img src="/edu-context-diagram.webp" alt="Контекстная диаграмма образовательной системы — учитель, студент, родитель и Внешняя ИС госотчётности взаимодействуют с компонентами образовательной системы" style="max-height: 260px; max-width: 920px; width: auto; height: auto;" class="object-contain rounded shadow-md border border-gray-200 bg-white" />
 </div>
 
 <!-- Источник -->

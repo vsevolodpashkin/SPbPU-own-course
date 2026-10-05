@@ -1,5 +1,5 @@
 ---
-hide: true
+hide: false
 layout: center
 ---
 
@@ -21,11 +21,12 @@ h1 {
 </style>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
 # Модели взаимодействия устройств в сети
+
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
   Два базовых паттерна обмена данными между узлами сети — <strong class="text-gray-700">клиент-сервер</strong> и <strong class="text-gray-700">peer-to-peer</strong>.
@@ -113,108 +114,435 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
 layout: default
 ---
 
-# Модель TCP/IP
+# Краткая историческая справка. Сети APRANET и NSFNET
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
-Четырёхуровневая сетевая модель Интернета. Каждый уровень решает свою задачу и опирается на сервисы нижнего. Данные при передаче «обрастают» заголовками — это называется <strong class="text-gray-700">инкапсуляцией</strong>.
+  Как росли американские компьютерные сети от экспериментальной четвёрки узлов до национальной магистрали.
 </p>
 
-<div class="mt-3 space-y-1.5">
-
-  <!-- Уровень 4: Прикладной -->
-  <div class="bg-sky-50 border-l-4 border-sky-500 rounded-r-lg p-2 flex items-center gap-3">
-    <span class="bg-sky-500 text-white font-bold rounded w-8 h-8 flex items-center justify-center text-sm shrink-0">4</span>
-    <div class="shrink-0 w-44">
-      <div class="text-sky-900 font-semibold text-sm leading-tight">Прикладной</div>
-      <div class="text-sky-700 text-[10px] font-mono uppercase leading-tight">Application</div>
-    </div>
-    <div class="text-xs text-gray-700 leading-snug flex-1 min-w-0">API для пользовательских приложений. Взаимодействие пользовательских приложений с сетью.</div>
-    <div class="flex flex-wrap gap-1 shrink-0 justify-end" style="max-width: 420px;">
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">HTTP</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">HTTPS</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">FTP</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">SMTP</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">DNS</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">SSH</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">SNMP</span>
-      <span class="bg-white border border-sky-200 text-sky-800 px-1.5 py-0.5 rounded font-mono text-[11px]">NTP</span>
-    </div>
+<!-- ARPANET -->
+<div v-click="1" class="mt-2 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg p-3">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="bg-orange-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm shrink-0">1</span>
+    <strong class="text-orange-900 text-base">ARPANET</strong>
+    <span class="text-orange-700 text-[11px] font-mono">1969 — Advanced Research Projects Agency Network</span>
   </div>
-
-  <!-- Уровень 3: Транспортный -->
-  <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg p-2 flex items-center gap-3">
-    <span class="bg-emerald-500 text-white font-bold rounded w-8 h-8 flex items-center justify-center text-sm shrink-0">3</span>
-    <div class="shrink-0 w-44">
-      <div class="text-emerald-900 font-semibold text-sm leading-tight">Транспортный</div>
-      <div class="text-emerald-700 text-[10px] font-mono uppercase leading-tight">Transport</div>
-    </div>
-    <div class="text-xs text-gray-700 leading-snug flex-1 min-w-0">End-to-end доставка данных между процессами (сокетами).</div>
-    <div class="flex flex-wrap gap-1 shrink-0 justify-end" style="max-width: 420px;">
-      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded font-mono text-[11px]">TCP</span>
-      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded font-mono text-[11px]">UDP</span>
-      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded font-mono text-[11px]">DCCP</span>
-      <span class="bg-white border border-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded font-mono text-[11px]">SCTP</span>
-    </div>
+  <div class="text-[12.5px] text-gray-800 leading-snug">
+    Проект <strong>ARPA</strong> Министерства обороны США. Первая в мире пакетная сеть с коммутацией.
+    <strong>Октябрь 1969:</strong> старт с 4 узлов — UCLA, Stanford Research Institute (SRI), UCSB, University of Utah.
+    Управлялась ARPANET IMP (Interface Message Processor) на базе мини-компьютеров Honeywell DDP-516.
+    Эволюция: <code class="bg-white px-1 rounded">50 кбит/с</code> → <code class="bg-white px-1 rounded">56 кбит/с</code> → <code class="bg-white px-1 rounded">1.5 Мбит/с (T1)</code>.
   </div>
-
-  <!-- Уровень 2: Межсетевой -->
-  <div class="bg-amber-50 border-l-4 border-amber-500 rounded-r-lg p-2 flex items-center gap-3">
-    <span class="bg-amber-500 text-white font-bold rounded w-8 h-8 flex items-center justify-center text-sm shrink-0">2</span>
-    <div class="shrink-0 w-44">
-      <div class="text-amber-900 font-semibold text-sm leading-tight">Межсетевой</div>
-      <div class="text-amber-700 text-[10px] font-mono uppercase leading-tight">Internet</div>
-    </div>
-    <div class="text-xs text-gray-700 leading-snug flex-1 min-w-0">Адресация и маршрутизация пакетов между сетями.</div>
-    <div class="flex flex-wrap gap-1 shrink-0 justify-end" style="max-width: 420px;">
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">IP v4/v6</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">ICMP</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">IGMP</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">ARP</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">RARP</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">OSPF</span>
-      <span class="bg-white border border-amber-200 text-amber-800 px-1.5 py-0.5 rounded font-mono text-[11px]">BGP</span>
-    </div>
-  </div>
-
-  <!-- Уровень 1: Канальный -->
-  <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-lg p-2 flex items-center gap-3">
-    <span class="bg-rose-500 text-white font-bold rounded w-8 h-8 flex items-center justify-center text-sm shrink-0">1</span>
-    <div class="shrink-0 w-44">
-      <div class="text-rose-900 font-semibold text-sm leading-tight">Канальный</div>
-      <div class="text-rose-700 text-[10px] font-mono uppercase leading-tight">Link · Network Access</div>
-    </div>
-    <div class="text-xs text-gray-700 leading-snug flex-1 min-w-0">Передача фреймов в одном сегменте сети. Физическая адресация (MAC).</div>
-    <div class="flex flex-wrap gap-1 shrink-0 justify-end" style="max-width: 420px;">
-      <span class="bg-white border border-rose-200 text-rose-800 px-1.5 py-0.5 rounded font-mono text-[11px]">Ethernet</span>
-      <span class="bg-white border border-rose-200 text-rose-800 px-1.5 py-0.5 rounded font-mono text-[11px]">Wi-Fi</span>
-      <span class="bg-white border border-rose-200 text-rose-800 px-1.5 py-0.5 rounded font-mono text-[11px]">PPP</span>
-      <span class="bg-white border border-rose-200 text-rose-800 px-1.5 py-0.5 rounded font-mono text-[11px]">SLIP</span>
-      <span class="bg-white border border-rose-200 text-rose-800 px-1.5 py-0.5 rounded font-mono text-[11px]">802.11</span>
-    </div>
-  </div>
-
 </div>
 
-<!-- Единицы данных (инкапсуляция) -->
-<div class="mt-3 grid grid-cols-4 gap-2 text-[10px] text-center">
-  <div class="bg-sky-50 border border-sky-200 rounded px-1.5 py-1"><span class="font-semibold text-sky-700">Data</span><div class="text-sky-600/70 text-[9px]">приложение</div></div>
-  <div class="bg-emerald-50 border border-emerald-200 rounded px-1.5 py-1"><span class="font-semibold text-emerald-700">Segment</span><div class="text-emerald-600/70 text-[9px]">транспорт</div></div>
-  <div class="bg-amber-50 border border-amber-200 rounded px-1.5 py-1"><span class="font-semibold text-amber-700">Packet</span><div class="text-amber-600/70 text-[9px]">сеть</div></div>
-  <div class="bg-rose-50 border border-rose-200 rounded px-1.5 py-1"><span class="font-semibold text-rose-700">Frame</span><div class="text-rose-600/70 text-[9px]">канал</div></div>
+<!-- NSFNET -->
+<div v-click="2" class="mt-2 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-3">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="bg-blue-500 text-white font-bold rounded w-7 h-7 flex items-center justify-center text-sm shrink-0">2</span>
+    <strong class="text-blue-900 text-base">NSFNET</strong>
+    <span class="text-blue-700 text-[11px] font-mono">1986 — National Science Foundation Network</span>
+  </div>
+  <div class="text-[12.5px] text-gray-800 leading-snug">
+    Создана Национальным научным фондом США как <strong>магистраль для суперкомпьютерных центров</strong>.
+    <strong>1986:</strong> 6 узлов на скорости <code class="bg-white px-1 rounded">56 кбит/с</code>.
+    Постепенно <em>заменила ARPANET</em> как основную сеть для академического сообщества.
+    Эволюция: <code class="bg-white px-1 rounded">56 кбит/с</code> → <code class="bg-white px-1 rounded">1.5 Мбит/с (T1, 1988)</code> →
+    <code class="bg-white px-1 rounded">45 Мбит/с (T3, 1991)</code> → <code class="bg-white px-1 rounded">155 Мбит/с (OC3, 1996)</code>.
+    В 1995 коммерциализирована → стала основой для современного интернета.
+  </div>
 </div>
-<div class="text-center text-[10px] text-gray-400 italic -mt-1">единицы данных на каждом уровне</div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson3">← Занятие 3</a>
-  <a href="/lesson5">Занятие 5 →</a>
+  <a href="/Модели взаимодействия">← Модели взаимодействия устройств в сети</a>
+  <a href="/Карта сетей">Карта сетей →</a>
 </div>
 
 ---
-hide: true
+hide: false
+layout: default
+---
+
+# Сеть ARPANET
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Топология первой в мире пакетной сети с коммутацией — <strong class="text-gray-700">4 узла в 1969 г.</strong>,
+  выросшей к 1970-м в общенациональную инфраструктуру.
+</p>
+
+<!-- Картинка по центру -->
+<div class="mt-3 flex items- justify-center h-full">
+  <img src="/APRANET_1969.png"
+       alt="Топология сети APRANET в 1969 году — четыре узла: UCLA, SRI (Stanford Research Institute), UCSB (University of California Santa Barbara), University of Utah, соединённые выделенными линиями 50 кбит/с"
+       style="max-height: 360px; max-width: 820px; width: auto; height: auto;"
+       class="object-contain rounded shadow-md border border-gray-200 bg-white" />
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: историческая схема ARPANET, 1969. Подписи узлов: UCLA, SRI, UCSB (Univ. of California, Santa Barbara), Univ. of Utah.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Краткая историческая">← Краткая историческая справка</a>
+  <a href="/Модель TCP/IP">Модель TCP/IP →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Сеть NSFNET
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  <strong class="text-gray-700">NSFNET</strong> — национальная магистраль для академического и научного сообщества США,
+  заменившая ARPANET к концу 1980-х.
+</p>
+
+<!-- Картинка по центру -->
+<div class="mt-3 flex items-start justify-center h-full">
+  <img src="/NSFNET.png"
+       alt="Топология сети NSFNET — национальная академическая магистраль США с узлами в ведущих университетах и исследовательских центрах"
+       style="max-height: 360px; max-width: 880px; width: auto; height: auto;"
+       class="object-contain rounded shadow-md border border-gray-200 bg-white" />
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Источник: историческая схема NSFNET (National Science Foundation Network), США. Заменила ARPANET как основную сеть для академического и научного сообщества.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Сеть APRANET">← Сеть APRANET</a>
+  <a href="/Модель TCP/IP">Модель TCP/IP →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Модель OSI
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Эталонная <strong class="text-gray-700">7-уровневая модель</strong> взаимодействия открытых систем (ISO/IEC 7498-1).
+  Каждый уровень решает свою задачу и опирается на сервисы нижнего.
+</p>
+
+<!-- 7 уровней OSI (компактные строки) -->
+<div class="mt-2 space-y-0.5 text-[10.5px]">
+
+  <!-- 7. Application -->
+  <div class="flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">7</span>
+    <strong class="text-indigo-900">Application</strong>
+    <span class="text-indigo-700 font-mono text-[9.5px]">прикладной</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">HTTP, FTP, SMTP, DNS — интерфейс с пользователем и сетью</span>
+  </div>
+
+  <!-- 6. Presentation -->
+  <div class="flex items-center gap-1.5 bg-purple-50 border border-purple-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">6</span>
+    <strong class="text-purple-900">Presentation</strong>
+    <span class="text-purple-700 font-mono text-[9.5px]">представительский</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">TLS/SSL, JPEG, MPEG — формат, кодирование, шифрование</span>
+  </div>
+
+  <!-- 5. Session -->
+  <div class="flex items-center gap-1.5 bg-pink-50 border border-pink-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">5</span>
+    <strong class="text-pink-900">Session</strong>
+    <span class="text-pink-700 font-mono text-[9.5px]">сеансовый</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">RPC, SIP — управление диалогом между приложениями</span>
+  </div>
+
+  <!-- 4. Transport -->
+  <div class="flex items-center gap-1.5 bg-rose-50 border border-rose-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-rose-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">4</span>
+    <strong class="text-rose-900">Transport</strong>
+    <span class="text-rose-700 font-mono text-[9.5px]">транспортный</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">TCP (надёжная), UDP (быстрая) — end-to-end доставка, порты</span>
+  </div>
+
+  <!-- 3. Network -->
+  <div class="flex items-center gap-1.5 bg-orange-50 border border-orange-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">3</span>
+    <strong class="text-orange-900">Network</strong>
+    <span class="text-orange-700 font-mono text-[9.5px]">сетевой</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">IP, ICMP, OSPF, BGP — маршрутизация пакетов между сетями</span>
+  </div>
+
+  <!-- 2. Data Link -->
+  <div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">2</span>
+    <strong class="text-amber-900">Data Link</strong>
+    <span class="text-amber-700 font-mono text-[9.5px]">канальный</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">Ethernet, Wi-Fi, MAC — фреймы в одном сегменте сети</span>
+  </div>
+
+  <!-- 1. Physical -->
+  <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-300 rounded px-1.5 py-0.5">
+    <span class="shrink-0 w-5 h-5 bg-slate-600 text-white rounded-full flex items-center justify-center font-bold text-[10px]">1</span>
+    <strong class="text-slate-900">Physical</strong>
+    <span class="text-slate-600 font-mono text-[9.5px]">физический</span>
+    <span class="text-gray-700 text-[10px] leading-tight ml-1">Кабели, оптика, радио — биты по физической среде</span>
+  </div>
+
+</div>
+
+<!-- Плюсы / Минусы -->
+<div class="mt-3 grid grid-cols-2 gap-3">
+  <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
+    <div class="text-[11px] font-bold text-emerald-800 mb-1">✓ Плюсы модели</div>
+    <ul class="text-[10.5px] text-emerald-900 space-y-0.5">
+      <li>• Чёткое разделение ответственности между уровнями</li>
+      <li>• Стандарт для обсуждения сетевых протоколов</li>
+      <li>• Каждый уровень разрабатывается независимо</li>
+      <li>• Упрощает диагностику (знаешь, какой уровень чинить)</li>
+      <li>• Модульность — замена протокола на уровне не ломает другие</li>
+    </ul>
+  </div>
+  <div class="bg-rose-50 border border-rose-200 rounded-lg p-2.5">
+    <div class="text-[11px] font-bold text-rose-800 mb-1">✗ Минусы модели</div>
+    <ul class="text-[10.5px] text-rose-900 space-y-0.5">
+      <li>• В основном теоретическая — не реализована «как есть»</li>
+      <li>• Session и Presentation почти не используются</li>
+      <li>• 7 уровней — избыточно для практики (TCP/IP = 4)</li>
+      <li>• Жёсткие границы усложняют сквозные оптимизации</li>
+      <li>• Реальная сеть не всегда укладывается в модель</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Источник -->
+<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
+  Стандарт: ISO/IEC 7498-1:1994 «Information technology — Open Systems Interconnection — Basic Reference Model».
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/TCP/IP">← Модель TCP/IP</a>
+  <a href="/TCP-conn">Жизненный цикл TCP →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Модель OSI. Физический уровень
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  <strong class="text-gray-700">Задача:</strong> представить <em>биты информации</em> (0 и 1) в виде
+  <em>физических сигналов</em> — электрических напряжений, радио-волн или оптических импульсов —
+  и передать их по среде передачи (медь, оптика, радио-эфир).
+</p>
+
+<!-- Два графика side-by-side -->
+<div class="mt-2 grid grid-cols-2 gap-3">
+  <div class="bg-white border border-slate-200 rounded-lg p-2">
+    <div class="text-[9.5px] uppercase tracking-wider text-slate-500 font-semibold mb-0.5 text-center">Цифровой сигнал</div>
+    <svg viewBox="0 0 280 90" class="w-full" style="max-height: 110px; height: auto;">
+      <line x1="0" y1="45" x2="280" y2="45" stroke="#94a3b8" stroke-width="0.5"/>
+      <line x1="20" y1="15" x2="20" y2="75" stroke="#94a3b8" stroke-width="0.5"/>
+      <text x="3" y="13" font-size="8" style="font-size:8px" fill="#64748b">A</text>
+      <text x="3" y="83" font-size="8" style="font-size:8px" fill="#64748b">0</text>
+      <text x="275" y="83" font-size="8" style="font-size:8px" fill="#64748b">t</text>
+      <rect x="20" y="25" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="50" y="45" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="80" y="25" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="110" y="45" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="140" y="25" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="170" y="45" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="200" y="25" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <rect x="230" y="45" height="20" width="30" fill="#3b82f6" opacity="0.7"/>
+      <text x="35" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">1</text>
+      <text x="65" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">0</text>
+      <text x="95" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">1</text>
+      <text x="125" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">0</text>
+      <text x="155" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">1</text>
+      <text x="185" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">0</text>
+      <text x="215" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">1</text>
+      <text x="245" y="75" text-anchor="middle" font-size="8" style="font-size:8px" fill="#1e40af">0</text>
+    </svg>
+  </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-2">
+    <div class="text-[9.5px] uppercase tracking-wider text-slate-500 font-semibold mb-0.5 text-center">Сумма синусоид (Фурье)</div>
+    <svg viewBox="0 0 280 90" class="w-full" style="max-height: 110px; height: auto;">
+      <line x1="0" y1="45" x2="280" y2="45" stroke="#94a3b8" stroke-width="0.5"/>
+      <line x1="20" y1="15" x2="20" y2="75" stroke="#94a3b8" stroke-width="0.5"/>
+      <text x="3" y="13" font-size="8" style="font-size:8px" fill="#64748b">A</text>
+      <text x="3" y="83" font-size="8" style="font-size:8px" fill="#64748b">0</text>
+      <text x="275" y="83" font-size="8" style="font-size:8px" fill="#64748b">t</text>
+      <path d="M 20 55 L 20 47 Q 24 40 28 35 Q 32 30 36 30 Q 40 30 44 36 Q 48 46 52 51 Q 56 56 60 50 Q 64 40 68 33 Q 72 28 76 33 Q 80 42 84 50 Q 88 55 92 51 Q 96 41 100 33 Q 104 39 108 47 Q 112 52 116 47 Q 120 38 124 32 Q 128 31 132 38 Q 136 47 140 53 Q 144 56 148 51 Q 152 42 156 33 Q 160 31 164 38 Q 168 48 172 54 Q 176 56 180 52 Q 184 42 188 33 Q 192 31 196 38 Q 200 49 204 56 Q 208 57 212 50 Q 216 40 220 32 Q 224 32 228 39 Q 232 49 236 55 Q 240 57 244 52 Q 248 43 252 33 Q 256 33 260 40 Q 264 50 268 55 Q 272 57 276 52 L 280 45" fill="none" stroke="#10b981" stroke-width="1.5"/>
+    </svg>
+  </div>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Модель OSI">← Модель OSI</a>
+  <a href="/Скорость доступа">Скорость доступа к данным →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Модель OSI. Транспортный уровень
+
+<!-- Тезис 1: Задача -->
+<div v-click="1" class="mt-2 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-3">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="bg-blue-500 text-white font-bold rounded w-6 h-6 flex items-center justify-center text-xs shrink-0">1</span>
+    <strong class="text-blue-900 text-sm">Задача транспортного уровня</strong>
+  </div>
+  <div class="text-[12px] text-gray-800 leading-snug ml-8">
+    Передача данных <strong>между процессами на разных хостах</strong>.
+    На одном хосте может работать множество сетевых приложений одновременно — и каждое должно получать «свои» данные.
+  </div>
+</div>
+
+<!-- Тезис 2: Порты -->
+<div v-click="2" class="mt-2 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-3">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="bg-indigo-500 text-white font-bold rounded w-6 h-6 flex items-center justify-center text-xs shrink-0">2</span>
+    <strong class="text-indigo-900 text-sm">Адресация — порт процесса</strong>
+  </div>
+  <div class="text-[12px] text-gray-800 leading-snug ml-8 space-y-1">
+    <div>Каждое сетевое приложение на хосте имеет свой <strong>порт</strong>.</div>
+    <div>Формат записи в адресе: <code class="bg-white px-1.5 py-0.5 rounded font-mono text-[11px] border border-indigo-200">ip-адрес : порт</code></div>
+    <div>Например: <code class="bg-white px-1.5 py-0.5 rounded font-mono text-[11px] border border-indigo-200">192.168.1.10:443</code> — IP-адрес хоста плюс порт сервиса.</div>
+    <div>Диапазон портов: <code class="bg-white px-1.5 py-0.5 rounded font-mono text-[11px] border border-indigo-200">1–65535</code> (16 бит). Порты <strong>1–1023</strong> — системные (well-known), остальные — динамические/пользовательские.</div>
+  </div>
+</div>
+
+<!-- Тезис 3: Известные порты -->
+<div v-click="3" class="mt-2 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg p-3">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="bg-emerald-500 text-white font-bold rounded w-6 h-6 flex items-center justify-center text-xs shrink-0">3</span>
+    <strong class="text-emerald-900 text-sm">Хорошо известные порты (well-known)</strong>
+  </div>
+  <div class="text-[12px] text-gray-800 leading-snug ml-8">
+    <div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1">
+      <div class="flex items-baseline gap-2">
+        <code class="bg-white border border-emerald-200 text-emerald-700 px-1.5 py-0.5 rounded font-mono text-[11px] min-w-[32px] text-center">80</code>
+        <span class="text-gray-700"><strong>HTTP</strong> — веб-сервер</span>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <code class="bg-white border border-emerald-200 text-emerald-700 px-1.5 py-0.5 rounded font-mono text-[11px] min-w-[32px] text-center">25</code>
+        <span class="text-gray-700"><strong>SMTP</strong> — почта (отправка)</span>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <code class="bg-white border border-emerald-200 text-emerald-700 px-1.5 py-0.5 rounded font-mono text-[11px] min-w-[32px] text-center">53</code>
+        <span class="text-gray-700"><strong>DNS</strong> — разрешение имён</span>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <code class="bg-white border border-emerald-200 text-emerald-700 px-1.5 py-0.5 rounded font-mono text-[11px] min-w-[32px] text-center">67, 68</code>
+        <span class="text-gray-700"><strong>DHCP</strong> — автоконфигурация</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Модель OSI. Физический уровень">← Модель OSI. Физический уровень</a>
+  <a href="/Жизненный цикл TCP-соединения">Жизненный цикл TCP-соединения →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Модель OSI и Модель TCP/IP
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Визуальное сопоставление: эталонная 7-уровневая модель <strong class="text-gray-700">OSI</strong>
+  и практичная 4-уровневая модель <strong class="text-gray-700">TCP/IP</strong>.
+</p>
+
+<div class="mt-2 grid grid-cols-2 gap-4">
+
+  <div>
+    <div class="text-[10.5px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">OSI / Модель открытых систем</div>
+    <div class="space-y-1">
+      <div class="bg-violet-100 border-l-4 border-violet-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-violet-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">7</span>
+        <strong class="text-violet-900 text-[11.5px]">Application</strong>
+        <span class="text-violet-700 text-[9.5px] font-mono ml-auto">прикладной</span>
+      </div>
+      <div class="bg-violet-50 border-l-4 border-violet-300 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-violet-400 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">6</span>
+        <strong class="text-violet-800 text-[11.5px]">Presentation</strong>
+        <span class="text-violet-600 text-[9.5px] font-mono ml-auto">представительский</span>
+      </div>
+      <div class="bg-violet-50 border-l-4 border-violet-300 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-violet-400 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">5</span>
+        <strong class="text-violet-800 text-[11.5px]">Session</strong>
+        <span class="text-violet-600 text-[9.5px] font-mono ml-auto">сеансовый</span>
+      </div>
+      <div class="bg-rose-100 border-l-4 border-rose-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-rose-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">4</span>
+        <strong class="text-rose-900 text-[11.5px]">Transport</strong>
+        <span class="text-rose-700 text-[9.5px] font-mono ml-auto">транспортный</span>
+      </div>
+      <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-emerald-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
+        <strong class="text-emerald-900 text-[11.5px]">Network</strong>
+        <span class="text-emerald-700 text-[9.5px] font-mono ml-auto">сетевой</span>
+      </div>
+      <div class="bg-amber-100 border-l-4 border-amber-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-amber-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
+        <strong class="text-amber-900 text-[11.5px]">Data Link</strong>
+        <span class="text-amber-700 text-[9.5px] font-mono ml-auto">канальный</span>
+      </div>
+      <div class="bg-slate-100 border-l-4 border-slate-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-slate-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
+        <strong class="text-slate-900 text-[11.5px]">Physical</strong>
+        <span class="text-slate-700 text-[9.5px] font-mono ml-auto">физический</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-[10.5px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">TCP / IP / 4 уровня</div>
+    <div class="space-y-1">
+      <div class="bg-violet-100 border-l-4 border-violet-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-violet-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">4</span>
+        <strong class="text-violet-900 text-[11.5px]">Application</strong>
+        <span class="text-violet-700 text-[9.5px] font-mono ml-auto">= OSI 7+6+5</span>
+      </div>
+      <div class="bg-rose-100 border-l-4 border-rose-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-rose-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">3</span>
+        <strong class="text-rose-900 text-[11.5px]">Transport</strong>
+        <span class="text-rose-700 text-[9.5px] font-mono ml-auto">= OSI 4</span>
+      </div>
+      <div class="bg-emerald-100 border-l-4 border-emerald-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-emerald-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">2</span>
+        <strong class="text-emerald-900 text-[11.5px]">Internet</strong>
+        <span class="text-emerald-700 text-[9.5px] font-mono ml-auto">= OSI 3</span>
+      </div>
+      <div class="bg-amber-100 border-l-4 border-amber-500 rounded-r-md p-1.5 flex items-center gap-2">
+        <span class="w-5 h-5 bg-amber-600 text-white rounded-full inline-flex items-center justify-center font-bold text-[10px] shrink-0">1</span>
+        <strong class="text-amber-900 text-[11.5px]">Network Access</strong>
+        <span class="text-amber-700 text-[9.5px] font-mono ml-auto">= OSI 2+1</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/L4">L4</a>
+  <a href="/TCP">TCP</a>
+</div>
+
+---
+hide: false
 layout: default
 ---
 
@@ -233,7 +561,7 @@ TCP устанавливает соединение через <strong class="te
 
 <!-- SVG-диаграмма -->
 <div class="mt-1 bg-white border border-gray-200 rounded-lg p-2">
-<svg viewBox="0 0 760 380" class="w-full" text-rendering="optimizeLegibility">
+<svg viewBox="0 0 760 380" class="w-full" style="max-height: 300px; height: auto;" text-rendering="optimizeLegibility">
 <defs>
 <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
 <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
@@ -284,7 +612,90 @@ TCP устанавливает соединение через <strong class="te
 </div>
 
 ---
-hide: true
+hide: false
+layout: default
+---
+
+# Разберём на примере вызовов в командной строке
+
+<div v-click="2" class="mt-2 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg p-3">
+  <div class="text-[10px] text-gray-600 mt-1 italic">
+    🟨 <strong>MAC-адрес</strong> <span v-mark.red="2"><code>(link/ether 52:54:00:...)</code></span> — идентификация узла на канальном уровне (L2) или уровень 1 TCP/IP
+  </div>
+</div>
+
+<div v-click="4" class="mt-2 bg-blue-50 border-l-4 border-orange-500 rounded-r-lg p-3">
+  <div class="text-[10px] text-gray-600 mt-1 italic">
+    🟦 <strong>IP-адрес</strong> + <span v-mark.red="4"><code>ICMP Echo</code></span>(Internet Control Message Protocol) — протокол сетевого уровня (L3)
+  </div>
+</div>
+
+<div v-click="6" class="mt-2 bg-blue-50 border-l-4 border-orange-500 rounded-r-lg p-3">
+  <div class="text-[10px] text-gray-600 mt-1 italic">
+    🟥 <strong>TCP-порт 443</strong> транспортный (L4) · 🟪 <strong>DNS / HTTPS / h2 / TLS</strong> прикладной (L7) · 🟩 <strong>HTTP-метод + ответ</strong> (L7)
+  </div>
+</div>
+
+
+````md magic-move {lines: true}
+<!-- 1. ip link show — канальный уровень -->
+```html {1|2-6|8}
+ip link show 
+1: lo: <LOOPBACK,UP> mtu 65536 qdisc noqueue state UNKNOWN
+    link/loopback 00:00:00:00:00:00
+2: eth0: <BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state UP
+link/ether 52:54:00:12:34:56
+```
+
+  <!-- 2. ping — сетевой уровень -->
+```html {1|2-6|8}
+ping -c2 google.com
+PING google.com 142.250.190.78 56(84) bytes of data.
+64 bytes from 142.250.190.78: icmp_seq=1 ttl=115 time=12.3 ms
+```
+
+<!-- 3. curl -v — прикладной + транспортный уровни -->
+```html {1|2-6|8}
+curl -v https://api.example.com/data<
+  Trying 93.184.216.34:443...
+* Connected to api.example.com port 443
+* ALPN: h2 · SSL: TLS
+> GET /data HTTP/1.1  ·  Host: api.example.com
+< HTTP/1.1 200 OK ·  Content-Type: application/json
+```
+````
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Сеть NSFNET">← Сеть NSFNET</a>
+  <a href="/lesson6">Занятие 6 →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
+# Распределённые системы
+
+<blockquote class="border-l-4 border-blue-500 bg-blue-50 pl-4 pr-3 py-2.5 my-2 italic text-slate-700 text-sm">
+  Распределённая система представляет собой совокупность автономных вычислительных элементов и является для его пользователей единой связанной системой.
+</blockquote>
+
+<div class="flex justify-center mt-2">
+  <img src="/Distributed_system.webp" alt="Распределённая система: 6 автономных узлов и пользователь" style="max-height: 280px; max-width: 760px; width: auto; height: auto;" class="object-contain rounded shadow-md border border-gray-200 bg-white" />
+</div>
+
+<p class="text-[10px] text-slate-500 italic mt-2 text-center">
+  Источник: Tanenbaum A., Van Steen M. Distributed Systems: Principles and Paradigms. — 2nd ed. — Upper Saddle River, NJ: Pearson Prentice Hall, 2007. — 704 p. — ISBN 978-0-13-239464-5.
+</p>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson3">← Занятие 3</a>
+  <a href="/lesson5">Занятие 5 →</a>
+</div>
+
+---
+hide: false
 layout: default
 ---
 
@@ -353,104 +764,10 @@ layout: default
   <a href="/lesson5">Занятие 5 →</a>
 </div>
 
----
-hide: true
-layout: default
----
 
-# Распределённые системы
-
-<blockquote class="border-l-4 border-blue-500 bg-blue-50 pl-4 pr-3 py-2.5 my-2 italic text-slate-700 text-sm">
-  Распределённая система представляет собой совокупность автономных вычислительных элементов и является для его пользователей единой связанной системой.
-</blockquote>
-
-<div class="flex justify-center mt-2">
-  <img src="/Distributed_system.webp" alt="Распределённая система: 6 автономных узлов и пользователь" class="rounded shadow-md border border-gray-200 max-h-[50vh] max-w-[80vw] object-contain bg-white" />
-</div>
-
-<p class="text-[10px] text-slate-500 italic mt-2 text-center">
-  Источник: Tanenbaum A., Van Steen M. Distributed Systems: Principles and Paradigms. — 2nd ed. — Upper Saddle River, NJ: Pearson Prentice Hall, 2007. — 704 p. — ISBN 978-0-13-239464-5.
-</p>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson3">← Занятие 3</a>
-  <a href="/lesson5">Занятие 5 →</a>
-</div>
 
 ---
-hide: true
-layout: default
----
-
-# Сервисы
-
-<p class="text-sm leading-snug -mt-3 text-gray-500">
-  Базовый строительный блок микросервисной архитектуры — <strong class="text-gray-700">автономная единица развёртывания</strong> с собственным API.
-</p>
-
-<!-- 2 колонки: текст слева, изображение справа -->
-<div class="grid grid-cols-2 gap-5 mt-3">
-
-  <!-- ЛЕВАЯ КОЛОНКА: определение -->
-  <div>
-    <div class="text-xs text-gray-500 mb-1.5 flex items-center gap-2">
-      <span class="font-mono text-gray-700">Определение</span>
-      <span class="text-gray-300">·</span>
-      <span>по К. Ричардсону</span>
-    </div>
-    <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-2.5">
-      <p class="text-[13px] text-gray-800 leading-relaxed">
-        <strong class="text-gray-900">Сервис</strong> — это автономный, независимо развертываемый программный компонент, который реализует определённые функции.
-      </p>
-      <p class="text-[13px] text-gray-700 leading-relaxed">
-        У него есть <strong class="text-gray-900">внешний интерфейс (API)</strong>, через который сервис предоставляет доступ к своим функциям.
-      </p>
-      <div class="border-t border-slate-200 pt-2.5">
-        <div class="text-[10px] uppercase tracking-wider text-gray-500 font-semibold mb-1.5">API состоит из</div>
-        <div class="grid grid-cols-3 gap-2">
-          <div class="bg-blue-50 border border-blue-200 rounded-lg p-2 text-center">
-            <div class="text-blue-700 font-semibold text-xs">Команды</div>
-            <div class="text-blue-600/80 text-[10px] mt-0.5">действие</div>
-          </div>
-          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-center">
-            <div class="text-emerald-700 font-semibold text-xs">Запросы</div>
-            <div class="text-emerald-600/80 text-[10px] mt-0.5">чтение</div>
-          </div>
-          <div class="bg-purple-50 border border-purple-200 rounded-lg p-2 text-center">
-            <div class="text-purple-700 font-semibold text-xs">События</div>
-            <div class="text-purple-600/80 text-[10px] mt-0.5">уведомление</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ПРАВАЯ КОЛОНКА: стек виртуальной машины -->
-  <div>
-    <div class="text-xs text-gray-500 mb-1.5 flex items-center gap-2">
-      <span class="font-mono text-gray-700">Инфраструктура</span>
-      <span class="text-gray-300">·</span>
-      <span>где работает сервис</span>
-    </div>
-    <div class="bg-white border border-slate-200 rounded-xl p-2">
-      <img src="/VM.png" alt="Стек виртуальной машины: от слоя приложения до физического сервера" class="w-full max-h-[400px] object-contain" />
-    </div>
-  </div>
-
-</div>
-
-<!-- Источник -->
-<div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
-  Источник: Ричардсон К. Микросервисы. Паттерны разработки и рефакторинга / пер. с англ. — СПб. : Питер, 2019. — 544 с. — (Серия «Библиотека программиста»).
-</div>
-
-<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson4">← Занятие 4</a>
-  <a href="/lesson6">Занятие 6 →</a>
-</div>
-
----
-hide: true
+hide: false
 layout: default
 ---
 
