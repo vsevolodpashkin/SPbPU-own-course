@@ -175,7 +175,7 @@ layout: default
 
 <!-- Картинка по центру -->
 <div class="mt-3 flex items- justify-center h-full">
-  <img src="/APRANET_1969.png"
+  <img src="/APRANET_1969.webp"
        alt="Топология сети APRANET в 1969 году — четыре узла: UCLA, SRI (Stanford Research Institute), UCSB (University of California Santa Barbara), University of Utah, соединённые выделенными линиями 50 кбит/с"
        style="max-height: 360px; max-width: 820px; width: auto; height: auto;"
        class="object-contain rounded shadow-md border border-gray-200 bg-white" />
@@ -205,7 +205,7 @@ layout: default
 
 <!-- Картинка по центру -->
 <div class="mt-3 flex items-start justify-center h-full">
-  <img src="/NSFNET.png"
+  <img src="/NSFNET.webp"
        alt="Топология сети NSFNET — национальная академическая магистраль США с узлами в ведущих университетах и исследовательских центрах"
        style="max-height: 360px; max-width: 880px; width: auto; height: auto;"
        class="object-contain rounded shadow-md border border-gray-200 bg-white" />

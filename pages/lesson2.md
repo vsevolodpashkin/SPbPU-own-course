@@ -163,7 +163,7 @@ layout: default
       <span>Важность × Сложность</span>
     </div>
     <div class="bg-white border border-slate-200 rounded-xl p-2">
-      <img src="/DDD.png" alt="DDD Strategic Domain Chart — Ядро, Поддерживающая, Общее" class="w-full max-h-[220px] object-contain" />
+      <img src="/DDD.webp" alt="DDD Strategic Domain Chart — Ядро, Поддерживающая, Общее" class="w-full max-h-[220px] object-contain" />
     </div>
     <!-- Источник -->
     <div class="text-[9px] text-gray-400 leading-tight italic text-center mt-2">
