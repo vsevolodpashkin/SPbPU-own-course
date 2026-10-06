@@ -544,6 +544,106 @@ hide: false
 layout: default
 ---
 
+# Модель OSI. Прикладной уровень
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Уровень <strong class="text-gray-700">сетевых приложений</strong>: HTTP, DNS, SMTP, FTP и др.
+  В TCP/IP объединяет функции уровня <strong class="text-gray-700">представительского</strong> (шифрование, форматы)
+  и <strong class="text-gray-700">сеансового</strong> (HTTP keep-alive) уровней.
+</p>
+
+<!-- Схема 1: DNS + HTTP взаимодействие -->
+<div class="mt-2 bg-white border border-slate-200 rounded-lg p-2">
+  <div class="text-[10px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">Схема: 3 компонента — Web-server, DNS-server, Клиент</div>
+  <div class="grid grid-cols-3 items-center text-center gap-2 my-1">
+    <!-- Клиент -->
+    <div class="flex flex-col items-center">
+      <div class="w-12 h-10 bg-emerald-100 border-2 border-emerald-500 rounded-lg flex items-center justify-center text-emerald-800 font-bold text-[10px] text-center leading-tight">
+        Web<br>браузер
+      </div>
+      <div class="text-[10px] text-slate-700 font-semibold mt-0.5">Клиент</div>
+    </div>
+    <!-- Стрелки и протоколы -->
+    <div class="flex flex-col gap-3 text-[10px]">
+      <div class="flex items-center gap-1 justify-end">
+        <span class="font-mono bg-sky-100 px-1.5 py-0.5 rounded text-sky-800 font-semibold">DNS</span>
+        <span class="text-slate-500">→</span>
+        <span class="text-[9.5px] text-slate-500">UDP/53</span>
+      </div>
+      <div class="flex items-center gap-1 justify-end">
+        <span class="font-mono bg-orange-100 px-1.5 py-0.5 rounded text-orange-800 font-semibold">HTTP</span>
+        <span class="text-slate-500">⇌</span>
+        <span class="text-[9.5px] text-slate-500">TCP/80 (HTTPS: TCP/443)</span>
+      </div>
+    </div>
+    <!-- Серверы -->
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-10 bg-sky-100 border-2 border-sky-500 rounded-lg flex items-center justify-center text-sky-800 font-bold text-[10px]">
+          DNS
+        </div>
+        <div class="text-[10px] text-slate-700 font-semibold mt-0.5">DNS-server</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-10 bg-orange-100 border-2 border-orange-500 rounded-lg flex items-center justify-center text-orange-800 font-bold text-[10px]">
+          Web
+        </div>
+        <div class="text-[10px] text-slate-700 font-semibold mt-0.5">Web-server</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Схема 2: HTTP/HTTPS стек -->
+<div class="mt-2 grid grid-cols-2 gap-2">
+  <!-- HTTP -->
+  <div class="bg-white border border-slate-200 rounded-lg p-2">
+    <div class="text-[10px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">Стек HTTP (снизу вверх)</div>
+    <div class="flex flex-col items-stretch text-center text-[10px] font-mono">
+      <div class="bg-emerald-100 border border-emerald-300 rounded p-1.5 text-emerald-900 font-bold">HTTP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-sky-100 border border-sky-300 rounded p-1.5 text-sky-900">TCP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-amber-100 border border-amber-300 rounded p-1.5 text-amber-900">IP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-slate-100 border border-slate-300 rounded p-1.5 text-slate-900">Ethernet</div>
+      <div class="text-[8px] text-slate-500 text-center mt-1">— физический кабель —</div>
+    </div>
+  </div>
+  <!-- HTTPS -->
+  <div class="bg-white border border-slate-200 rounded-lg p-2">
+    <div class="text-[10px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">Стек HTTPS = HTTP + шифрование</div>
+    <div class="flex flex-col items-stretch text-center text-[10px] font-mono">
+      <div class="bg-emerald-100 border border-emerald-300 rounded p-1.5 text-emerald-900 font-bold">HTTP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-purple-100 border border-purple-300 rounded p-1.5 text-purple-900 font-bold">TLS / SSL</div>
+      <div class="text-[8px] text-slate-500 text-center my-0 italic">шифрование + аутентификация</div>
+      <div class="bg-sky-100 border border-sky-300 rounded p-1.5 text-sky-900">TCP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-amber-100 border border-amber-300 rounded p-1.5 text-amber-900">IP</div>
+      <div class="text-[8px] text-slate-400 my-0">▲</div>
+      <div class="bg-slate-100 border border-slate-300 rounded p-1.5 text-slate-900">Ethernet</div>
+      <div class="text-[8px] text-slate-500 text-center mt-1">— физический кабель —</div>
+    </div>
+  </div>
+</div>
+
+<!-- Итог -->
+<div class="text-[10px] text-slate-500 leading-snug mt-1.5 italic text-center">
+  Прикладной уровень (L7) — это «фасад» для сетевого взаимодействия;
+  <strong>DNS</strong> решает «кто это» (UDP/53), <strong>HTTP/HTTPS</strong> — «как общаться» (TCP/80 или TCP/443).
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Трансп">← Транспортный уровень</a>
+  <a href="/Mодель OSI и Модель TCP/IP">Модель OSI и Модель TCP/IP →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
 # Модель OSI и Модель TCP/IP
 
 <p class="text-sm leading-snug -mt-3 text-gray-500">
@@ -628,7 +728,111 @@ layout: default
 </div>
 
 ---
-hide: true
+hide: false
+layout: default
+---
+
+# Модель TCP/IP
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  4-уровневая модель Интернета: схема <strong class="text-gray-700">сверху вниз</strong>
+  — от приложений к физической среде передачи.
+</p>
+
+<!-- Сетка 4 строк × 2 колонки -->
+<div class="mt-2 space-y-1">
+
+  <!-- Ряд 4: Прикладной (верхний) -->
+  <div class="flex items-stretch gap-1">
+    <div class="w-32 shrink-0 bg-rose-100 border-l-4 border-rose-500 rounded-md p-2 flex items-center">
+      <div>
+        <div class="text-[12px] font-bold text-rose-900">Прикладной</div>
+        <div class="text-[9.5px] text-rose-700 font-mono">application</div>
+      </div>
+    </div>
+    <div class="flex-1 bg-rose-50 border border-rose-200 rounded-md px-3 py-2 flex flex-wrap items-center gap-1.5">
+      <span class="bg-white border border-rose-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-rose-900">HTTP</span>
+      <span class="bg-white border border-rose-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-rose-900">DNS</span>
+      <span class="bg-white border border-rose-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-rose-900">FTP</span>
+      <span class="bg-white border border-rose-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-rose-900">SMTP</span>
+      <span class="text-[10px] text-rose-700 italic ml-1">— прикладные протоколы</span>
+    </div>
+  </div>
+
+  <!-- Ряд 3: Транспортный -->
+  <div class="flex items-stretch gap-1">
+    <div class="w-32 shrink-0 bg-orange-100 border-l-4 border-orange-500 rounded-md p-2 flex items-center">
+      <div>
+        <div class="text-[12px] font-bold text-orange-900">Транспортный</div>
+        <div class="text-[9.5px] text-orange-700 font-mono">transport</div>
+      </div>
+    </div>
+    <div class="flex-1 bg-orange-50 border border-orange-200 rounded-md px-3 py-2 flex flex-wrap items-center gap-1.5">
+      <span class="bg-white border border-orange-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-orange-900">TCP</span>
+      <span class="bg-white border border-orange-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-orange-900">UDP</span>
+      <span class="text-[10px] text-orange-700 italic ml-1">— надёжная и быстрая доставка</span>
+    </div>
+  </div>
+
+  <!-- Ряд 2: Сетевой -->
+  <div class="flex items-stretch gap-1">
+    <div class="w-32 shrink-0 bg-emerald-100 border-l-4 border-emerald-500 rounded-md p-2 flex items-center">
+      <div>
+        <div class="text-[12px] font-bold text-emerald-900">Сетевой</div>
+        <div class="text-[9.5px] text-emerald-700 font-mono">internet</div>
+      </div>
+    </div>
+    <div class="flex-1 bg-emerald-50 border border-emerald-200 rounded-md px-3 py-2 flex flex-wrap items-center gap-1.5">
+      <span class="bg-white border border-emerald-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-emerald-900">IP</span>
+      <span class="bg-white border border-emerald-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-emerald-900">ICMP</span>
+      <span class="text-[10px] text-emerald-700 italic ml-1">— адресация и маршрутизация</span>
+    </div>
+  </div>
+
+  <!-- Между Рядом 1 и 2: служебные протоколы -->
+  <div class="ml-32 flex items-center gap-1.5 text-[10.5px]">
+    <span class="text-slate-500 italic">плюс служебные:</span>
+    <span class="bg-white border border-slate-400 px-1.5 py-0.5 rounded font-mono text-slate-700">ARP</span>
+    <span class="text-slate-500 text-[10px]">(IP↔MAC)</span>
+    <span class="bg-white border border-slate-400 px-1.5 py-0.5 rounded font-mono text-slate-700">DHCP</span>
+    <span class="text-slate-500 text-[10px]">(динамическая выдача IP)</span>
+  </div>
+
+  <!-- Ряд 1: Сетевых интерфейсов (нижний) -->
+  <div class="flex items-stretch gap-1">
+    <div class="w-32 shrink-0 bg-blue-100 border-l-4 border-blue-500 rounded-md p-2 flex items-center">
+      <div>
+        <div class="text-[12px] font-bold text-blue-900">Сетевых интерфейсов</div>
+        <div class="text-[9.5px] text-blue-700 font-mono">link / network access</div>
+      </div>
+    </div>
+    <div class="flex-1 bg-blue-50 border border-blue-200 rounded-md px-3 py-2 flex flex-wrap items-center gap-1.5">
+      <span class="bg-white border border-blue-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-blue-900">Ethernet</span>
+      <span class="bg-white border border-blue-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-blue-900">Wi-Fi</span>
+      <span class="bg-white border border-blue-300 px-1.5 py-0.5 rounded font-mono text-[10.5px] text-blue-900">DSL</span>
+      <span class="text-[10px] text-blue-700 italic ml-1">— кадры по кабелю, радио, оптике</span>
+    </div>
+  </div>
+
+  <!-- Стрелка физической среды -->
+  <div class="text-center text-[10px] text-slate-500 mt-1 italic">
+    ── физическая среда: витая пара · оптика · радиоэфир ──
+  </div>
+</div>
+
+<!-- Итог -->
+<div class="text-[10px] text-slate-500 leading-snug mt-1.5 italic text-center">
+  В отличие от 7-уровневой OSI, TCP/IP объединяет <em>представительский</em> и <em>сеансовый</em> уровни
+  в <em>прикладной</em>, а <em>канальный</em> и <em>физический</em> — в <em>сетевых интерфейсов</em>. Итого: 4 уровня.
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/L7">← Прикладной уровень</a>
+  <a href="/Сравнение">Сравнение с OSI →</a>
+</div>
+
+---
+hide: false
 layout: default
 ---
 
