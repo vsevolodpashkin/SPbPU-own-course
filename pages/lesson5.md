@@ -392,6 +392,92 @@ hide: false
 layout: default
 ---
 
+# Модель OSI. Канальный уровень
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  <strong class="text-gray-700">Основная цель</strong> — выделить <em>отдельные сообщения</em> в общем потоке бит,
+  добавить служебную информацию и обеспечить контроль ошибок.
+</p>
+
+<!-- Преобразование бит → фрейм (слева) | структура фрейма (справа) -->
+<div class="mt-2 grid grid-cols-2 gap-3">
+
+  <!-- Левая колонка: бит → фрейм -->
+  <div>
+    <div class="text-[10.5px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">
+      Преобразование бит → фрейм
+    </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-2">
+      <div class="flex items-center gap-1.5">
+        <div class="flex-1">
+          <div class="text-[10px] text-slate-500 text-center mb-1 font-mono">RAW BITSTREAM</div>
+          <div class="bg-slate-100 font-mono text-[10px] text-slate-800 px-1.5 py-1 rounded text-center overflow-hidden whitespace-nowrap">01001011 00110010 11010101 00111100</div>
+        </div>
+        <div class="text-slate-400 text-2xl">→</div>
+        <div class="flex-1">
+          <div class="text-[10px] text-slate-500 text-center mb-1 font-mono">FRAMES</div>
+          <div class="flex flex-col gap-0.5">
+            <div class="bg-blue-100 px-1.5 py-0.5 rounded text-[9px] text-blue-800 font-mono">PRE 7B | SFD 1B | dst 6B | src 6B | type 2B</div>
+            <div class="bg-emerald-100 px-1.5 py-1 rounded text-[10px] text-emerald-800 font-mono text-center whitespace-nowrap">payload 46-1500 B</div>
+            <div class="bg-amber-100 px-1.5 py-0.5 rounded text-[9px] text-amber-800 font-mono text-right">FCS (CRC32) 4B</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-[10px] text-slate-500 mt-2 leading-snug">
+        📥 <strong>Преамбула</strong> — синхронизация приёмника.
+        🎯 <strong>MAC-адреса</strong> — кто кому (по 6 байт).
+        📦 <strong>Payload</strong> — данные с сетевого уровня (IP-пакет).
+        ✅ <strong>FCS</strong> — контрольная сумма (CRC32) для обнаружения ошибок.
+      </div>
+    </div>
+  </div>
+
+  <!-- Правая колонка: технологии -->
+  <div>
+    <div class="text-[10.5px] uppercase tracking-wider text-center text-slate-500 font-semibold mb-1">
+      Основные технологии
+    </div>
+    <div class="space-y-1.5">
+      <div class="bg-amber-50 border-l-4 border-amber-500 rounded-r-md p-2">
+        <div class="flex items-baseline gap-2 mb-0.5">
+          <strong class="text-amber-900 text-sm">Ethernet (IEEE 802.3)</strong>
+          <span class="text-[10px] text-amber-700 font-mono">проводной</span>
+        </div>
+        <div class="text-[11px] text-amber-900 leading-snug">
+          Кадры до <strong>1500 байт</strong>. Доступ к среде — <strong>CSMA/CD</strong>
+          (прослушивание + обнаружение коллизий). Скорости 100 Мбит/с → 100 Гбит/с.
+        </div>
+      </div>
+      <div class="bg-cyan-50 border-l-4 border-cyan-500 rounded-r-md p-2">
+        <div class="flex items-baseline gap-2 mb-0.5">
+          <strong class="text-cyan-900 text-sm">Wi-Fi (IEEE 802.11)</strong>
+          <span class="text-[10px] text-cyan-700 font-mono">беспроводной</span>
+        </div>
+        <div class="text-[11px] text-cyan-900 leading-snug">
+          Кадры до <strong>2304 байт</strong> (802.11n). Доступ к среде — <strong>CSMA/CA</strong>
+          (прослушивание + избежание коллизий). Полудуплекс по сути из-за общей среды.
+        </div>
+      </div>
+      <div class="bg-slate-50 border-l-4 border-slate-400 rounded-r-md p-2">
+        <div class="text-[11px] text-slate-700 leading-snug">
+          <strong>Сравнение:</strong> Ethernet надёжнее (детерминированные коллизии), Wi-Fi — мобильнее (общая среда).
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/Физ">← Физический уровень</a>
+  <a href="/Трансп">Транспортный уровень →</a>
+</div>
+
+---
+hide: false
+layout: default
+---
+
 # Модель OSI. Транспортный уровень
 
 <!-- Тезис 1: Задача -->
@@ -542,7 +628,7 @@ layout: default
 </div>
 
 ---
-hide: false
+hide: true
 layout: default
 ---
 
@@ -764,6 +850,77 @@ layout: default
   <a href="/lesson5">Занятие 5 →</a>
 </div>
 
+---
+# Задача двух генералов
+hide: false
+layout: default
+---
+
+# Задача двух армий
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  Классическая задача из <strong class="text-gray-700">распределённых систем</strong>, демонстрирующая невозможность
+  надёжной координации по ненадёжному каналу связи.
+</p>
+
+<!-- Сцена задачи -->
+<div class="mt-2 bg-amber-50 border-l-4 border-amber-500 rounded-r-md p-3">
+  <div class="text-[11px] font-bold text-amber-900 mb-1">⚔️ Сценарий</div>
+  <div class="text-[11.5px] text-amber-900 leading-snug">
+    Два генерала окружили вражеский город. Каждому нужно атаковать <em>одновременно</em>, чтобы победить.
+    Генералы разделены ущельем и общаются только через <strong>посланцев</strong>, которых могут перехватить.
+  </div>
+</div>
+
+<!-- Визуализация: два генерала + посланец -->
+<div class="mt-2 bg-white border border-slate-200 rounded-lg p-3">
+  <div class="grid grid-cols-3 items-center text-center">
+    <!-- Генерал 1 -->
+    <div class="flex flex-col items-center">
+      <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">A</div>
+      <div class="text-[12px] font-bold text-blue-900 mt-1">Генерал A</div>
+      <div class="text-[9.5px] text-slate-600">армия 1</div>
+    </div>
+    <!-- Стрелка туда-обратно -->
+    <div class="flex flex-col items-center text-[11px] text-slate-500">
+      <div class="text-base">🗣️ посланец</div>
+      <div class="my-0.5 font-mono">«атакуем<br>в 06:00?»</div>
+      <div class="text-base">↕</div>
+      <div class="font-mono">«да!»</div>
+      <div class="text-[10px] mt-0.5 text-rose-700">⚠️ может быть перехвачен</div>
+    </div>
+    <!-- Генерал 2 -->
+    <div class="flex flex-col items-center">
+      <div class="w-10 h-10 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold">B</div>
+      <div class="text-[12px] font-bold text-rose-900 mt-1">Генерал B</div>
+      <div class="text-[9.5px] text-slate-600">армия 2</div>
+    </div>
+  </div>
+</div>
+
+<!-- Проблема бесконечной рекурсии -->
+<div class="mt-2 grid grid-cols-2 gap-3">
+  <div class="bg-rose-50 border-l-4 border-rose-500 rounded-r-md p-2.5">
+    <div class="text-[11px] font-bold text-rose-900 mb-1">❌ Проблема</div>
+    <div class="text-[11px] text-rose-900 leading-snug">
+      Чтобы быть <strong>уверенным</strong>, что сообщение дошло, нужен <em>подтверждающий</em> посланец. Но
+      уверен ли <em>он</em>, что дойдёт? Тогда нужен ещё один, и так <strong>до бесконечности</strong>.
+      Никакое конечное число подтверждений не гарантирует договорённость.
+    </div>
+  </div>
+  <div class="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-md p-2.5">
+    <div class="text-[11px] font-bold text-emerald-900 mb-1">📌 Вывод</div>
+    <div class="text-[11px] text-emerald-900 leading-snug">
+      <strong>Невозможно гарантировать</strong> согласованное решение по ненадёжному каналу.
+      Поэтому распределённые системы <em>всегда</em> рискуют — выбирают между <strong>согласованностью</strong> и <strong>доступностью</strong>.
+    </div>
+  </div>
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/CAP">← Теорема CAP</a>
+  <a href="/PACELC">Классификация PACELC →</a>
+</div>
 
 
 ---
