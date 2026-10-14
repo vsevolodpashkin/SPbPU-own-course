@@ -218,7 +218,7 @@ layout: default
 
 
 ---
-hide: true
+hide: false
 layout: two-cols
 layoutClass: gap-8
 ---
