@@ -128,9 +128,169 @@ layout: default
 </div>
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
-  <a href="/lesson6">← Занятие 6</a>
+  <a href="/rdbms">← Реляционные БД</a>
   <a href="/er-notation">ER-нотации →</a>
 </div>
+
+---
+hide: false
+routeAlias: rdbms
+layout: two-cols
+---
+
+# Реляционные БД
+
+<p class="text-sm leading-snug -mt-3 text-gray-500">
+  <strong class="text-gray-700">Классическая модель</strong> хранения данных — таблицы со связями. Основана на реляционной алгебре (Кодд, 1970), доминирует 50+ лет.
+</p>
+
+**1. Реляционная модель данных**
+
+- Данные хранятся в **таблицах** (relations) со строками и столбцами
+- Связи между таблицами — через **внешние ключи** (FOREIGN KEY)
+- **Строгая схема** определена заранее (колонки, типы, ограничения)
+- Целостность обеспечивается автоматически
+
+**2. Примеры СУБД:**
+
+<div class="flex gap-1.5 flex-wrap mt-1.5">
+  <span class="bg-blue-100 text-blue-800 border border-blue-300 rounded-full px-2.5 py-0.5 text-[11px] font-semibold">PostgreSQL</span>
+  <span class="bg-slate-100 text-slate-800 border border-slate-300 rounded-full px-2.5 py-0.5 text-[11px] font-semibold">SQLite</span>
+  <span class="bg-red-100 text-red-800 border border-red-300 rounded-full px-2.5 py-0.5 text-[11px] font-semibold">Oracle</span>
+  <span class="bg-orange-100 text-orange-800 border border-orange-300 rounded-full px-2.5 py-0.5 text-[11px] font-semibold">MySQL</span>
+  <span class="bg-purple-100 text-purple-800 border border-purple-300 rounded-full px-2.5 py-0.5 text-[11px] font-semibold">MS SQL Server</span>
+</div>
+
+::right::
+
+**2. SQL — язык запросов**
+
+- **Декларативный**: описываем <em>что</em> хотим получить, а не <em>как</em>
+- Стандартизирован: ANSI SQL с 1986, регулярные обновления
+- Универсален: работает почти во всех РСУБД с минимальными отличиями
+
+
+**3. Типы SQL-запросов**
+
+<div class="grid grid-cols-2 gap-1.5 mt-1">
+
+  <div class="bg-rose-50 border border-rose-300 rounded p-1.5">
+    <div class="text-[12px] font-bold text-rose-900">DDL</div>
+    <div class="text-[9px] text-rose-700 italic leading-tight">Data Definition</div>
+    <div class="text-[10px] text-gray-700 leading-snug mt-0.5"><code class="text-rose-700">CREATE</code>, <code class="text-rose-700">ALTER</code>, <code class="text-rose-700">DROP</code></div>
+  </div>
+
+  <div class="bg-amber-50 border border-amber-300 rounded p-1.5">
+    <div class="text-[12px] font-bold text-amber-900">DML</div>
+    <div class="text-[9px] text-amber-700 italic leading-tight">Data Manipulation</div>
+    <div class="text-[10px] text-gray-700 leading-snug mt-0.5"><code class="text-amber-700">SELECT</code>, <code class="text-amber-700">INSERT</code>, <code class="text-amber-700">UPDATE</code>, <code class="text-amber-700">DELETE</code></div>
+  </div>
+
+  <div class="bg-emerald-50 border border-emerald-300 rounded p-1.5">
+    <div class="text-[12px] font-bold text-emerald-900">DCL</div>
+    <div class="text-[9px] text-emerald-700 italic leading-tight">Data Control</div>
+    <div class="text-[10px] text-gray-700 leading-snug mt-0.5"><code class="text-emerald-700">GRANT</code>, <code class="text-emerald-700">REVOKE</code></div>
+  </div>
+
+  <div class="bg-sky-50 border border-sky-300 rounded p-1.5">
+    <div class="text-[12px] font-bold text-sky-900">TCL</div>
+    <div class="text-[9px] text-sky-700 italic leading-tight">Transaction Control</div>
+    <div class="text-[10px] text-gray-700 leading-snug mt-0.5"><code class="text-sky-700">BEGIN</code>, <code class="text-sky-700">COMMIT</code>, <code class="text-sky-700">ROLLBACK</code></div>
+  </div>
+
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/lesson6">← Занятие 6</a>
+  <a href="/data-levels">Уровни моделирования данных →</a>
+</div>
+
+---
+hide: false
+routeAlias: transactions
+layout: two-cols
+---
+
+# Транзакционность — главное свойство РСУБД
+
+<blockquote class="text-[12.5px] leading-snug italic text-gray-700 border-l-4 border-blue-400 pl-3 my-1 -mt-1">
+  Транзакция — это набор последовательных операций с базой данных, соединённых в&nbsp;одну логическую единицу.
+</blockquote>
+
+
+**ACID — требования к транзакции:**
+
+<div class="grid grid-cols-2 gap-2 mt-1.5">
+
+  <div class="bg-red-50 border-2 border-red-300 rounded-lg p-2">
+    <div class="flex items-baseline gap-2">
+      <span class="text-[22px] font-extrabold text-red-600 leading-none">A</span>
+      <div class="flex-1 min-w-0">
+        <div class="text-[12px] font-bold text-red-900 leading-tight">Атомарность</div>
+        <div class="text-[9.5px] text-red-600 italic leading-tight">Atomicity</div>
+      </div>
+    </div>
+    <div class="text-[9.5px] text-gray-700 leading-tight mt-1">Либо <strong>все</strong> операции применятся, либо <strong>ни одна</strong>.</div>
+  </div>
+
+  <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-2">
+    <div class="flex items-baseline gap-2">
+      <span class="text-[22px] font-extrabold text-blue-600 leading-none">C</span>
+      <div class="flex-1 min-w-0">
+        <div class="text-[12px] font-bold text-blue-900 leading-tight">Согласованность</div>
+        <div class="text-[9.5px] text-blue-600 italic leading-tight">Consistency</div>
+      </div>
+    </div>
+    <div class="text-[9.5px] text-gray-700 leading-tight mt-1">База переходит из одного <strong>валидного</strong> состояния в другое.</div>
+  </div>
+
+  <div class="bg-violet-50 border-2 border-violet-300 rounded-lg p-2">
+    <div class="flex items-baseline gap-2">
+      <span class="text-[22px] font-extrabold text-violet-600 leading-none">I</span>
+      <div class="flex-1 min-w-0">
+        <div class="text-[12px] font-bold text-violet-900 leading-tight">Изолированность</div>
+        <div class="text-[9.5px] text-violet-600 italic leading-tight">Isolation</div>
+      </div>
+    </div>
+    <div class="text-[9.5px] text-gray-700 leading-tight mt-1">Параллельные транзакции <strong>не мешают</strong> друг другу.</div>
+  </div>
+
+  <div class="bg-emerald-50 border-2 border-emerald-300 rounded-lg p-2">
+    <div class="flex items-baseline gap-2">
+      <span class="text-[22px] font-extrabold text-emerald-600 leading-none">D</span>
+      <div class="flex-1 min-w-0">
+        <div class="text-[12px] font-bold text-emerald-900 leading-tight">Надёжность</div>
+        <div class="text-[9.5px] text-emerald-600 italic leading-tight">Durability</div>
+      </div>
+    </div>
+    <div class="text-[9.5px] text-gray-700 leading-tight mt-1">Результат <strong>сохраняется</strong> после фиксации (commit).</div>
+  </div>
+
+</div>
+
+<v-click>
+
+**Антоним в NoSQL:** принцип **BASE** (Basically Available, Soft state, Eventual consistency) — жертвует строгостью ради масштабируемости.
+
+</v-click>
+
+::right::
+
+**Жизненный цикл транзакции**
+
+<div class="flex justify-center my-1">
+  <img
+    src="/public/Transaction.png"
+    alt="Жизненный цикл транзакции"
+    class="max-h-[50vh] max-w-full rounded-lg shadow-md object-contain"
+  />
+</div>
+
+<div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
+  <a href="/ogranicheniya-tselostnosti">← Ограничения целостности</a>
+  <a href="/lesson7">Занятие 7 →</a>
+</div>
+
 
 ---
 hide: false
@@ -787,6 +947,6 @@ layout: default
 
 <div class="abs-b m-4 flex justify-between items-center text-sm opacity-70">
   <a href="/graph-store">← Графовые БД</a>
-  <a href="/integrity">Ограничения целостности →</a>
+  <a href="/transactions">Транзакционность →</a>
 </div>
 
