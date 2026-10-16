@@ -850,7 +850,7 @@ layout: two-cols
   <img
     src="/public/GraphDB.webp"
     alt="Графовые БД — структура данных"
-    class="max-h-[58vh] max-w-full rounded-lg shadow-md object-contain"
+    class="max-h-[50vh] max-w-full rounded-lg shadow-md object-contain"
   />
 </div>
 
