@@ -280,7 +280,7 @@ layout: two-cols
 
 <div class="flex justify-center my-1">
   <img
-    src="/public/Transaction.png"
+    src="/public/Transaction.webp"
     alt="Жизненный цикл транзакции"
     class="max-h-[50vh] max-w-full rounded-lg shadow-md object-contain"
   />
@@ -554,7 +554,7 @@ layout: default
 
 <div class="flex justify-center items-center h-[45vh]">
   <img
-    src="/public/CAP.png"
+    src="/public/CAP.webp"
     alt="Теорема CAP — схема"
     class="max-h-full max-w-full rounded-lg shadow-lg object-contain"
   />
@@ -741,7 +741,7 @@ layout: two-cols
 
 <div class="flex items-center justify-center h-full">
   <img
-    src="/public/OLAP.png"
+    src="/public/OLAP.webp"
     alt="OLAP — колоночное хранение данных"
     class="max-h-[38vh] max-w-full rounded-lg shadow-md object-contain"
   />
@@ -848,7 +848,7 @@ layout: two-cols
 
 <div class="flex justify-center my-1">
   <img
-    src="/public/GraphDB.png"
+    src="/public/GraphDB.webp"
     alt="Графовые БД — структура данных"
     class="max-h-[58vh] max-w-full rounded-lg shadow-md object-contain"
   />
